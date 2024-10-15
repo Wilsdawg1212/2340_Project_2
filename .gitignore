@@ -1,0 +1,54 @@
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Byte-compiled / optimized / compiled Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django specific
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+
+# Environment variables and secrets
+.env
+*.env
+
+# Logs and temporary files
+*.log
+*.pot
+*.pid
+*.py[cod]
+
+# IDE configurations
+.vscode/
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# PyCharm
+*.iml
+/.idea/
+
+# Test cache and coverage reports
+.pytest_cache/
+htmlcov/
+coverage.xml
+.cache/
+.tox/
+nosetests.xml
+
+# Build files and distributions
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Node (if using frontend packages)
+node_modules/
