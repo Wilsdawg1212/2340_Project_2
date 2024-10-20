@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Spotify Account</title>
+</head>
+<body>
+    <h1>Link Your Spotify Account</h1>
+
+    <p>To proceed, please link your Spotify account to personalize your experience.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Link Spotify Account</button>
+    </form>
+</body>
+</html>
