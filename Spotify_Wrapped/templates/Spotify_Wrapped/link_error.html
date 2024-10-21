@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Spotify Link Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #e74c3c;
+        }
+        p {
+            color: #555;
+        }
+        .button {
+            background-color: #1db954;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #14843c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Something went wrong</h1>
+        <p>We were unable to link your Spotify account. Please try again or contact support if the issue persists.</p>
+
+        <!-- Optional: Include a button to retry the OAuth flow -->
+        <a href="{% url 'spotify_auth' %}" class="button">Try Linking Spotify Again</a>
+
+        <!-- Optional: Provide a link to support or help page -->
+        <p><a href="/support">Contact Support</a></p>
+    </div>
+</body>
+</html>
