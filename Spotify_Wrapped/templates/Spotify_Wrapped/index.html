@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wrappify</title>
     <style>
+          /* Style the Google Translate dropdown */
+   #google_translate_element select {
+    background-color: #7513f3; /* Button background color */
+    color: white; /* Button text color */
+    border: 1px solid #7513f3; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Padding inside the button */
+    font-family: Arial, sans-serif; /* Change font */
+    font-size: 14px; /* Font size */
+    cursor: pointer;
+  }
+
+  /* Remove unwanted Google branding and text */
+  .goog-logo-link {
+    display: none !important;
+  }
+
+  .goog-te-gadget {
+    font-family: Arial, sans-serif; /* Change font */
+    color: #7513f3; /* Text color */
+  }
+
+  /* Optional: Style the Google Translate icon */
+  .goog-te-banner-frame.skiptranslate {
+    display: none !important; /* Hide Google Translate banner */
+  }
+
+  body {
+    top: 50px !important; /* Remove any extra margin added by Google */
+  }
         * {
             margin: 0;
             padding: 0;
@@ -123,6 +153,17 @@
         }
     </style>
 </head>
+<!-- Google Translate Element -->
+<div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <body>
     <div class="container">
         <header>
