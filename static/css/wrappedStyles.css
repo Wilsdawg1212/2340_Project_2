@@ -3,7 +3,7 @@
     margin-left: 7vw;      /* Add margin to the left */
     margin-right: 8vw;     /* Add margin to the right */
     width: 85vw;           /* Ensure the container is 90% wide to allow room for the margin */
-    background-color: var(--third-color);
+    background-color: var(--primary-color);
 }
 
 #icon {
@@ -63,7 +63,7 @@
 
 /* Background color for the page */
 body {
-    background-color: var(--primary-color);
+    background-color: var(--third-color);
 }
 
 /*Add margin to the container-fluid to create room on both sides */
