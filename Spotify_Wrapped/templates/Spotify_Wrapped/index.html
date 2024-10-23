@@ -2,10 +2,168 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrappify</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #170a42;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: #170a42;
+        }
+
+        .signup:hover {
+            background-color: #e5e5e5;
+        }
+
+        .spotify-logo {
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
+            background-size: contain;
+            margin: 40px auto 0;
+        }
+
+        .features {
+            margin-top: 80px;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'login' %}">Login Here</a>
-    <a href="{% url 'signup' %}">Signup here</a>
+    <div class="container">
+        <header>
+            <div class="nav">
+                <a href="#">sign in</a>
+                <a href="#">about</a>
+                <a href="#">contact</a>
+                <a href="#">dashboard</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Get Your Spotify Wrapped And More</h1>
+                <p>Sign in or create an account through an existing Spotify in order to get different Wraps, create duo Wraps, etc.</p>
+                <div class="buttons">
+                    <button class="btn">LOG IN</button>
+                    <span>OR</span>
+                    <button class="btn signup">SIGN UP</button>
+                </div>
+                <div class="spotify-logo"></div>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <h3>Duo-Wrapped</h3>
+                        <p>Create a custom Wrap with a friend by and save it to your Wraps list.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Access To All Wraps</h3>
+                        <p>Wrappify lets you save previous Wraps, as well as make wraps for custom timeframes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Generate Your Own Wraps</h3>
+                        <p>Have the ability to generate your own Spotify wraps whenever you want.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
