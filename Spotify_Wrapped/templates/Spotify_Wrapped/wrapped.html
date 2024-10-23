@@ -13,35 +13,36 @@
 <body>
 
     <!-- Header Section -->
-    <header class="d-flex justify-content-between align-items-center p-3 bg-primary text-white">
+    <header class="d-flex justify-content-between align-items-center p-3 bg-primary text-white" id="navbar">
         <h1 class="ms-4">Wrappify</h1>
         <div class="me-4">
             <button class="btn btn-light me-2">Dashboard</button>
             <button class="btn btn-outline-light">Sign Out</button>
+            <img src="{% static 'images/sun.png' %}" id = "icon">
         </div>
     </header>
 
     <!-- Full page container for centering the carousel -->
-    <div class="container-fluid vh-100 bg-dark">
+    <div class="container-fluid vh-100 ">
         <!-- Carousel -->
         <div id="wrappedCarousel" class="carousel slide w-100" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Slide 1 -->
-                <div class="carousel-item active">
+                <div class="carousel-item active" id="TotalSlide">
                     <div class="d-flex justify-content-center align-items-center full-slide">
-                        <h1 class="text-white display-1 shadow-text">Slide 1</h1>
+                        <h1 class="display-1 shadow-text" id="text">Slide 1</h1>
                     </div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center align-items-center full-slide">
-                        <h1 class="text-white display-1 shadow-text">Slide 2</h1>
+                        <h1 class="display-1 shadow-text" id="text">Slide 2</h1>
                     </div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center align-items-center full-slide">
-                        <h1 class="text-white display-1 shadow-text">Slide 3</h1>
+                        <h1 class="display-1 shadow-text" id="text">Slide 3</h1>
                     </div>
                 </div>
             </div>
@@ -59,6 +60,21 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function (){
+        document.body.classList.toggle("light-theme");
+        if(document.body.classList.contains("light-theme")){
+            icon.src="{% static 'images/moon.png' %}";
+        } else {
+            icon.src="{% static 'images/sun.png' %}";
+        }
+    }
+
+    </script>
 </body>
 </html>
 
