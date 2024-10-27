@@ -35,7 +35,7 @@ def signup(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)
-            return redirect('link_account')  # Route them to link their Spotify account
+            return redirect('dashboard')  # Route them to link their Spotify account
     else:
         form = SignupForm()
     return render(request, 'Spotify_Wrapped/signup.html', {'form': form})
@@ -62,20 +62,27 @@ def index(request):
 @login_required(login_url='index')
 def dashboard(request):
     user = request.user
-    # Refresh the token if necessary
-    access_token = refresh_spotify_token(user)
 
-    # Use the access token to make API requests if needed (optional)
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
-    spotify_response = requests.get('https://api.spotify.com/v1/me', headers=headers)
-
-    # Render the dashboard and pass Spotify data to the template
     return render(request, 'Spotify_Wrapped/dashboard.html', {
         'user': user,
-        'spotify_data': spotify_response.json()
     })
+
+# def check_account(request):
+#     user = request.user
+#     # Refresh the token if necessary
+#     access_token = refresh_spotify_token(user)
+#
+#     # Use the access token to make API requests if needed (optional)
+#     headers = {
+#         'Authorization': f'Bearer {access_token}'
+#     }
+#     spotify_response = requests.get('https://api.spotify.com/v1/me', headers=headers)
+#
+#     # Render the dashboard and pass Spotify data to the template
+#     return render(request, 'Spotify_Wrapped/dashboard.html', {
+#         'user': user,
+#         'spotify_data': spotify_response.json()
+#     })
 
 def spotify_callback(request):
     # Check if there's an authorization code in the request (from Spotify OAuth)
