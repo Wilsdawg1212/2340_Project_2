@@ -131,3 +131,6 @@ def exchange_code_for_tokens(code):
 def error_page(request):
     return render(request, 'Spotify_Wrapped/link_error.html')
 
+def contact_dev(request):
+    return render(request, 'Spotify_Wrapped/contact_dev.html')
+
