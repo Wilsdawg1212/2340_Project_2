@@ -2,11 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <style>
+        /* General layout styling */
+        .full-container {
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            background-color: #2D3748;
+            color: #fff;
+            width: 250px; /* Fixed width for sidebar */
+            min-height: 100vh;
+            padding-top: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-link {
+            color: #a0aec0;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .sidebar-link:hover {
+            background-color: #4A5568;
+            color: white;
+        }
+        
+        .sidebar .logout-link {
+            margin-top: auto;
+            padding-bottom: 1rem;
+        }
+
+        /* Main content styling */
+        .content {
+            flex: 1;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .welcome-text {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
+    <div class="full-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="position-sticky">
+                <h2 class="text-center">YourApp</h2>
+                <div class="nav flex-column">
+                    <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="sidebar-link" href="#">Yields</a>
+                    <a class="sidebar-link" href="#">DEXes</a>
+                    <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
+                    <a class="sidebar-link" href="#">Settings</a>
+                </div>
+                <a class="sidebar-link logout-link text-center mt-4" href="#">Log out</a>
+            </div>
+        </nav>
 
-    <a href="{% url 'link_account' %}">Link your spotify account here</a>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
+
