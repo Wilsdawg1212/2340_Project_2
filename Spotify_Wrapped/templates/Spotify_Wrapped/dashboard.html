@@ -8,80 +8,7 @@
     {% load static %}
     
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <style>
-        /* General layout styling */
-        .full-container {
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            background-color: #2D3748;
-            color: #fff;
-            width: 350px; /* Fixed width for sidebar */
-            min-height: 96vh;
-            padding-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: start; /* Align content to the left */
-            text-align: center; /* Center the entire block horizontally */
-        }
-        
-        .nav {
-            width: 100%;
-        }
-
-        .sidebar h2 {
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center; /* Center-aligns the top heading */
-            width: 100%; /* Ensures it spans the full width for consistent centering */
-        }
-
-        .sidebar-link {
-            color: #a0aec0;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: block;
-        }
-
-        .sidebar-link:hover {
-            color: white;
-        }
-        
-        .logout-link {
-            margin-top: auto; /* Pushes logout link to the bottom */
-            padding-bottom: 1rem;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Main content styling */
-        .content {
-            flex: 1;
-            padding: 2rem;
-            background-color: #f8f9fa;
-        }
-
-        .welcome-text {
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: #333;
-        }
-        
-        .logout-link {
-            margin-top: auto; /* Pushes logout link to the bottom */
-            padding-bottom: 1rem;
-            text-align: center;
-            width: 100%; /* Ensures full-width for centering */
-            display: flex;
-            justify-content: center; /* Centers the text horizontally */
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
     <div class="full-container">
@@ -90,8 +17,6 @@
            <h2 class="text-center">My Wrapped</h2>
             <div class="nav flex-column">
                 <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
-                <a class="sidebar-link" href="#">Yields</a>
-                <a class="sidebar-link" href="#">DEXes</a>
                 <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
                 <a class="sidebar-link" href="#">Settings</a>
             </div>
