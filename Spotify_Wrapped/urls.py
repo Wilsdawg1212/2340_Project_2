@@ -12,4 +12,5 @@ urlpatterns = [
     path('callback/', views.spotify_callback, name='spotify_callback'),
     path('link_error/', views.error_page, name='error_page'),
     path('logout/', views.logout_view, name='logout')
+    path('contact_dev/', views.contact_dev, name='contact_dev')
 ]

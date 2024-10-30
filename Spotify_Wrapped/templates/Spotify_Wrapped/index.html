@@ -2,10 +2,296 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrappify</title>
+    <style>
+        /* Style the Google Translate and Theme dropdowns */
+        #google_translate_element select,
+        #theme {
+            background-color: #7513f3; /* Button background color */
+            color: white; /* Button text color */
+            border: 1px solid #7513f3; /* Border color */
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px 10px; /* Padding inside the button */
+            font-family: Arial, sans-serif; /* Change font */
+            font-size: 14px; /* Font size */
+            cursor: pointer;
+        }
+
+        /* Remove unwanted Google branding and text */
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            font-family: Arial, sans-serif; /* Change font */
+            color: #7513f3; /* Text color */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #170a42;
+            color: white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0px;
+            background-color: transparent; /* Always transparent */
+            transition: color 0.3s ease;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        /* Positioning the Theme Switcher next to Google Translate */
+        #theme-switcher {
+            position: absolute;
+            top: 10px;
+            left: 250px; /* Adjust position relative to the Google Translate element */
+        }
+
+        label {
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+
+        /* Light theme */
+        body.light {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .light .nav a {
+            color: #333;
+        }
+
+        .light .btn {
+            border-color: #333;
+            color: #333;
+        }
+
+        .light .btn:hover {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .light .signup {
+            background-color: #333;
+            border-color: #333;
+        }
+
+        /* Neon theme */
+        body.neon {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+        }
+
+        .neon .nav a {
+            color: #0fdfd9;
+        }
+
+        .neon .btn {
+            border-color: #0fdfd9;
+            color: #0fdfd9;
+        }
+
+        .neon .btn:hover {
+            background-color: #0fdfd9;
+            color: #0f0f0f;
+        }
+
+        .neon .signup {
+            background-color: #0fdfd9;
+            border-color: #0fdfd9;
+        }
+
+        /* Dark theme (default) */
+        .dark .nav a {
+            color: white;
+        }
+
+        .dark .btn {
+            border-color: white;
+            color: white;
+        }
+
+        .dark .btn:hover {
+            background-color: white;
+            color: #170a42;
+        }
+
+        .dark .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .dark .signup:hover {
+            background-color: #e5e5e5;
+        }
+
+        /* Other elements */
+        .hero {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .spotify-logo {
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
+            background-size: contain;
+            margin: 40px auto 0;
+        }
+
+        .features {
+            margin-top: 80px;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
-<body>
-    <a href="{% url 'login' %}">Login Here</a>
-    <a href="{% url 'signup' %}">Signup here</a>
+<body class="dark"> <!-- default to dark theme -->
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="container">
+        <header>
+            <div class="nav">
+                <a href="/contact_dev/">contact the developers</a>
+                <a href="#">about</a>
+                <a href="#">contact</a>
+                <a href="#">dashboard</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Get Your Spotify Wrapped And More</h1>
+                <p>Sign in or create an account through an existing Spotify in order to get different Wraps, create duo Wraps, etc.</p>
+                <div class="buttons">
+                    <a href="login/">
+                        <button class="btn">LOG IN</button>
+                    </a>
+                    <span>OR</span>
+                    <a href="signup/">
+                        <button class="btn signup">SIGN UP</button>
+                    </a>
+                </div>
+                <div class="spotify-logo"></div>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <h3>Duo-Wrapped</h3>
+                        <p>Create a custom Wrap with a friend by and save it to your Wraps list.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Access To All Wraps</h3>
+                        <p>Wrappify lets you save previous Wraps, as well as make wraps for custom timeframes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Generate Your Own Wraps</h3>
+                        <p>Have the ability to generate your own Spotify wraps whenever you want.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Theme Switcher Script -->
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+        themeSwitcher.addEventListener('change', function() {
+            document.body.className = this.value;
+        });
+    </script>
 </body>
 </html>

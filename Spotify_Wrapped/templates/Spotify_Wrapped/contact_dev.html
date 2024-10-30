@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Feedback</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #170a42;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #251b5b;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        label {
+            font-size: 14px;
+            text-align: left;
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #7513f3;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            resize: vertical;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            padding: 12px 20px;
+            background-color: #7513f3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .submit-button:hover {
+            background-color: #5a0fc7;
+        }
+
+        /* Google Translate dropdown styling */
+        #google_translate_element {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        
+        #google_translate_element select {
+            background-color: #7513f3;
+            color: white;
+            border: 1px solid #7513f3;
+            border-radius: 5px;
+            padding: 5px;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+
+        /* Go Back button */
+        .go-back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #7513f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .go-back:hover {
+            background-color: #5a0fc7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <!-- Go Back Button -->
+    <a href="javascript:history.back()" class="go-back">Go Back</a>
+
+    <div class="container">
+        <h1>Send Feedback</h1>
+        <p>Your feedback helps us improve our website. Let us know how we're doing!</p>
+        <p>If you’d like us to follow up, please include your email address in the feedback section.</p>
+        
+        <form>
+            <label for="feedback">Feedback</label>
+            <textarea id="feedback" name="feedback" placeholder="Enter your feedback here..." required></textarea>
+            <button type="submit" class="submit-button">SEND</button>
+        </form>
+    </div>
+
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
