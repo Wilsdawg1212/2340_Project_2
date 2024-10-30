@@ -1,14 +1,34 @@
-        /* Style the Google Translate and Theme dropdowns */
-        #google_translate_element select,
-        #theme {
-            background-color: #7513f3; /* Button background color */
-            color: white; /* Button text color */
-            border: 1px solid #7513f3; /* Border color */
-            border-radius: 5px; /* Rounded corners */
-            padding: 5px 10px; /* Padding inside the button */
-            font-family: Arial, sans-serif; /* Change font */
-            font-size: 14px; /* Font size */
+
+        /* Default styling for the dropdown */
+        #theme, #google_translate_element select {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: Arial, sans-serif;
             cursor: pointer;
+        }
+
+        /* Light theme dropdown styling */
+        body.light #theme,
+        body.light #google_translate_element select {
+            background-color: #f0f0f0; /* Light background */
+            color: #333;               /* Dark text */
+            border: 1px solid #333;     /* Border color */
+        }
+
+        /* Neon theme dropdown styling */
+        body.neon #theme,
+        body.neon #google_translate_element select {
+            background-color: #0f0f0f; /* Dark background */
+            color: #0fdfd9;            /* Neon text */
+            border: 1px solid #0fdfd9; /* Neon border */
+        }
+
+        /* Dark theme dropdown styling */
+        body.dark #theme,
+        body.dark #google_translate_element select {
+            background-color: #170a42; /* Dark background */
+            color: white;              /* Light text */
+            border: 1px solid white;    /* Light border */
         }
 
         /* Remove unwanted Google branding and text */
@@ -83,7 +103,7 @@
         }
 
         .light .signup {
-            background-color: #333;
+            background-color: transparent;
             border-color: #333;
         }
 
@@ -108,8 +128,9 @@
         }
 
         .neon .signup {
-            background-color: #0fdfd9;
             border-color: #0fdfd9;
+            background-color: transparent;
+            color: #0fdfd9;
         }
 
         /* Dark theme (default) */
