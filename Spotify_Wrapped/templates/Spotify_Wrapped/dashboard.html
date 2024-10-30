@@ -21,19 +21,25 @@
         .sidebar {
             background-color: #2D3748;
             color: #fff;
-            width: 250px; /* Fixed width for sidebar */
-            min-height: 100vh;
+            width: 350px; /* Fixed width for sidebar */
+            min-height: 96vh;
             padding-top: 1rem;
-            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: start; /* Align content to the left */
+            text-align: center; /* Center the entire block horizontally */
+        }
+        
+        .nav {
+            width: 100%;
         }
 
         .sidebar h2 {
             color: #fff;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            text-align: center; /* Center-aligns the top heading */
+            width: 100%; /* Ensures it spans the full width for consistent centering */
         }
 
         .sidebar-link {
@@ -44,13 +50,14 @@
         }
 
         .sidebar-link:hover {
-            background-color: #4A5568;
             color: white;
         }
         
-        .sidebar .logout-link {
-            margin-top: auto;
+        .logout-link {
+            margin-top: auto; /* Pushes logout link to the bottom */
             padding-bottom: 1rem;
+            text-align: center;
+            width: 100%;
         }
 
         /* Main content styling */
@@ -65,23 +72,30 @@
             font-size: 1.5rem;
             color: #333;
         }
+        
+        .logout-link {
+            margin-top: auto; /* Pushes logout link to the bottom */
+            padding-bottom: 1rem;
+            text-align: center;
+            width: 100%; /* Ensures full-width for centering */
+            display: flex;
+            justify-content: center; /* Centers the text horizontally */
+        }
     </style>
 </head>
 <body>
     <div class="full-container">
         <!-- Sidebar -->
         <nav class="sidebar">
-            <div class="position-sticky">
-                <h2 class="text-center">YourApp</h2>
-                <div class="nav flex-column">
-                    <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
-                    <a class="sidebar-link" href="#">Yields</a>
-                    <a class="sidebar-link" href="#">DEXes</a>
-                    <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
-                    <a class="sidebar-link" href="#">Settings</a>
-                </div>
-                <a class="sidebar-link logout-link text-center mt-4" href="#">Log out</a>
+           <h2 class="text-center">My Wrapped</h2>
+            <div class="nav flex-column">
+                <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="sidebar-link" href="#">Yields</a>
+                <a class="sidebar-link" href="#">DEXes</a>
+                <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
+                <a class="sidebar-link" href="#">Settings</a>
             </div>
+            <a class="sidebar-link logout-link" href="{% url 'logout' %}">Log out</a>
         </nav>
 
         <!-- Main Content -->

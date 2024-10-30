@@ -9,8 +9,13 @@ from django.conf import settings
 from datetime import timedelta
 from django.utils import timezone
 from .utils import refresh_spotify_token
+from django.contrib.auth import logout
 
 # all the view functions
+
+def logout_view(request):
+    logout(request)  # Logs out the user
+    return redirect('index')
 def spotify_auth(request):
     scope = 'user-top-read user-library-read'  # or any scopes you need for your app
 
