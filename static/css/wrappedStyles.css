@@ -1,101 +1,94 @@
-/* Add margin to the container-fluid to create room on both sides */
-.container-fluid {
-    margin-left: 7vw;      /* Add margin to the left */
-    margin-right: 8vw;     /* Add margin to the right */
-    width: 85vw;           /* Ensure the container is 90% wide to allow room for the margin */
-    background-color: var(--primary-color);
+/* Custom styles for Wrappify */
+
+/* Navbar styles */
+.navbar {
+    font-family: Arial, sans-serif;
+    background-color: #23d14b;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
 
-#icon {
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    margin-right: 15px;
+}
+
+.nav-link:last-child {
+    margin-right: 0;
+}
+
+/* Slide 1 Styles */
+.carousel-item {
+    height: 80vh; /* Fixed height to avoid layout issues */
+    background: linear-gradient(135deg, #e613e3, #cc9407);
+    color: #fff;
+}
+
+.slide-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%; /* Ensure full height for centering */
+}
+
+.centered-rectangle {
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+    padding: 60px 80px;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+}
+
+.centered-rectangle h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.centered-rectangle p {
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Carousel Indicators */
+.carousel-indicators li {
+    background-color: #5a1b5a; /* Green color for indicators */
     width: 30px;
-    cursor: pointer;
+    height: 2px;
 }
 
-.me-4 {
-    flex: 1;
-    text-align: right;
+.carousel-indicators .active {
+    background-color: #100812; /* Darker green for active indicator */
 }
 
-.carousel-item {
-    background-color: var(--primary-color);
+/* Responsive Design */
+@media (max-width: 768px) {
+    .centered-rectangle {
+        padding: 40px 20px;
+    }
+
+    .centered-rectangle h1 {
+        font-size: 2.5rem;
+    }
+
+    .centered-rectangle p {
+        font-size: 1.2rem;
+    }
 }
 
-:root{
-    --primary-color: #343a40;
-    --secondary-color: #FFFFFFB2;
-    --third-color: #26292e;
-    --text-color: #FFFFFF
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none; /* Hides the icon inside the button */
 }
-
-.light-theme{
-    --primary-color: #ffffff;
-    --secondary-color: #000000FF;
-    --third-color: #ece7e0;
-    --text-color: #000000
-}
-
-/* Full page container with full carousel height */
-.full-slide {
-    height: 75vh;          /* Adjust the height for larger slides */
-    width: 100%;           /* Keep the width full within the container */
-}
-
-/* Large text with shadow */
-.shadow-text {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-/* Smooth transition between slides */
-.carousel-item {
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}
-
-#text{
-    color:var(--text-color);
-}
-
-
-/* Adjust carousel control colors */
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-}
-
-/* Background color for the page */
-body {
-    background-color: var(--third-color);
-}
-
-/*Add margin to the container-fluid to create room on both sides */
-/*.container-fluid {*/
-/*    margin-left: 7vw;      !* Add margin to the left *!*/
-/*    margin-right: 8vw;     !* Add margin to the right *!*/
-/*    width: 85vw;           !* Ensure the container is 90% wide to allow room for the margin *!*/
-/*}*/
-
-/*!* Full page container with full carousel height *!*/
-/*.full-slide {*/
-/*    height: 75vh;          !* Adjust the height for larger slides *!*/
-/*    width: 100%;           !* Keep the width full within the container *!*/
-/*}*/
-
-/*!* Large text with shadow *!*/
-/*.shadow-text {*/
-/*    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);*/
-/*}*/
-
-/*!* Smooth transition between slides *!*/
-/*.carousel-item {*/
-/*    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;*/
-/*}*/
-
-/*!* Adjust carousel control colors *!*/
-/*.carousel-control-prev-icon, .carousel-control-next-icon {*/
-/*    background-color: rgba(255, 255, 255, 0.7);*/
-/*    border-radius: 50%;*/
-/*}*/
-
-/*!* Background color for the page *!*/
-/*body {*/
-/*    background-color: #343a40;*/
-/*}*/
