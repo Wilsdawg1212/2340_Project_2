@@ -51,14 +51,23 @@ def login_view(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
+            print(f"Email: {email}")  # Debugging print statement
+            print(f"Password: {password}")  # Debugging print statement
+
             user = authenticate(request, email=email, password=password)
             if user is not None:
+                print("Authentication successful")  # Debugging print statement
                 login(request, user)
-                return redirect('dashboard')  # Redirect directly to the dashboard
+                return redirect('dashboard')  # Redirect to the dashboard
             else:
+                print("Authentication failed")  # Debugging print statement
                 form.add_error(None, 'Invalid email or password.')
+        else:
+            print("Form is not valid")  # Debugging print statement
+            print(form.errors)  # Print form errors
     else:
         form = LoginForm()
+
     return render(request, 'Spotify_Wrapped/login.html', {'form': form})
 
 def index(request):

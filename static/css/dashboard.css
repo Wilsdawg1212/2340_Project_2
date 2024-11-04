@@ -9,7 +9,7 @@
     background-color: #2D3748;
     color: #fff;
     width: 350px; /* Fixed width for sidebar */
-    min-height: 96vh;
+    min-height: 100vh;
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
