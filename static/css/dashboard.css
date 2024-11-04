@@ -133,3 +133,12 @@ body.neon .content {
     background-color: #0f0f0f;
     color: #0fdfd9;
 }
+
+.logout-link {
+    margin-top: auto; /* Pushes logout link to the bottom */
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%; /* Ensures full-width for centering */
+    display: flex;
+    justify-content: center; /* Centers the text horizontally */
+}
