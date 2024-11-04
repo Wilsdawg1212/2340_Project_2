@@ -53,5 +53,11 @@
     </div>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+        themeSwitcher.addEventListener('change', function() {
+            document.body.className = this.value;
+        });
+    </script>
 </body>
 </html>
