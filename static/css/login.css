@@ -18,6 +18,7 @@
         .goog-te-gadget {
             font-family: Arial, sans-serif; /* Change font */
             color: #7513f3; /* Text color */
+            margin-left: 20px;
         }
 
         /* Optional: Style the Google Translate icon */
@@ -65,6 +66,7 @@
             text-decoration: none;
             margin-left: 20px;
             font-size: 14px;
+            margin-right: 20px;
         }
 
         .form-container {

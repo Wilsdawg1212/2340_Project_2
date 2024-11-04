@@ -1,232 +1,231 @@
+/* Default styling for the dropdown */
+#theme, #google_translate_element select {
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
 
-        /* Default styling for the dropdown */
-        #theme, #google_translate_element select {
-            border-radius: 5px;
-            padding: 5px;
-            font-family: Arial, sans-serif;
-            cursor: pointer;
-        }
+/* Light theme dropdown styling */
+body.light #theme,
+body.light #google_translate_element select {
+    background-color: #f0f0f0; /* Light background */
+    color: #333;               /* Dark text */
+    border: 1px solid #333;     /* Border color */
+}
 
-        /* Light theme dropdown styling */
-        body.light #theme,
-        body.light #google_translate_element select {
-            background-color: #f0f0f0; /* Light background */
-            color: #333;               /* Dark text */
-            border: 1px solid #333;     /* Border color */
-        }
+/* Neon theme dropdown styling */
+body.neon #theme,
+body.neon #google_translate_element select {
+    background-color: #0f0f0f; /* Dark background */
+    color: #0fdfd9;            /* Neon text */
+    border: 1px solid #0fdfd9; /* Neon border */
+}
 
-        /* Neon theme dropdown styling */
-        body.neon #theme,
-        body.neon #google_translate_element select {
-            background-color: #0f0f0f; /* Dark background */
-            color: #0fdfd9;            /* Neon text */
-            border: 1px solid #0fdfd9; /* Neon border */
-        }
+/* Dark theme dropdown styling */
+body.dark #theme,
+body.dark #google_translate_element select {
+    background-color: #170a42; /* Dark background */
+    color: white;              /* Light text */
+    border: 1px solid white;    /* Light border */
+}
 
-        /* Dark theme dropdown styling */
-        body.dark #theme,
-        body.dark #google_translate_element select {
-            background-color: #170a42; /* Dark background */
-            color: white;              /* Light text */
-            border: 1px solid white;    /* Light border */
-        }
+/* Remove unwanted Google branding and text */
+.goog-logo-link {
+    display: none !important;
+}
 
-        /* Remove unwanted Google branding and text */
-        .goog-logo-link {
-            display: none !important;
-        }
+.goog-te-gadget {
+    font-family: Arial, sans-serif; /* Change font */
+    color: #7513f3; /* Text color */
+}
 
-        .goog-te-gadget {
-            font-family: Arial, sans-serif; /* Change font */
-            color: #7513f3; /* Text color */
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #170a42;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #170a42;
-            color: white;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px;
+    background-color: transparent; /* Always transparent */
+    transition: color 0.3s ease;
+}
 
-        /* Header Styling */
-        header {
-            display: flex;
-            justify-content: flex-end;
-            padding: 0px;
-            background-color: transparent; /* Always transparent */
-            transition: color 0.3s ease;
-        }
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
 
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 14px;
-        }
+/* Positioning the Theme Switcher next to Google Translate */
+#theme-switcher {
+    position: absolute;
+    top: 10px;
+    left: 250px; /* Adjust position relative to the Google Translate element */
+}
 
-        /* Positioning the Theme Switcher next to Google Translate */
-        #theme-switcher {
-            position: absolute;
-            top: 10px;
-            left: 250px; /* Adjust position relative to the Google Translate element */
-        }
+label {
+    margin-left: 5px;
+    margin-right: 10px;
+}
 
-        label {
-            margin-left: 5px;
-            margin-right: 10px;
-        }
+/* Light theme */
+body.light {
+    background-color: #f0f0f0;
+    color: #333;
+}
 
-        /* Light theme */
-        body.light {
-            background-color: #f0f0f0;
-            color: #333;
-        }
+.light .nav a {
+    color: #333;
+}
 
-        .light .nav a {
-            color: #333;
-        }
+.light .btn {
+    border-color: #333;
+    color: #333;
+}
 
-        .light .btn {
-            border-color: #333;
-            color: #333;
-        }
+.light .btn:hover {
+    background-color: #333;
+    color: #f0f0f0;
+}
 
-        .light .btn:hover {
-            background-color: #333;
-            color: #f0f0f0;
-        }
+.light .signup {
+    background-color: transparent;
+    border-color: #333;
+}
 
-        .light .signup {
-            background-color: transparent;
-            border-color: #333;
-        }
+/* Neon theme */
+body.neon {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
 
-        /* Neon theme */
-        body.neon {
-            background-color: #0f0f0f;
-            color: #0fdfd9;
-        }
+.neon .nav a {
+    color: #0fdfd9;
+}
 
-        .neon .nav a {
-            color: #0fdfd9;
-        }
+.neon .btn {
+    border-color: #0fdfd9;
+    color: #0fdfd9;
+}
 
-        .neon .btn {
-            border-color: #0fdfd9;
-            color: #0fdfd9;
-        }
+.neon .btn:hover {
+    background-color: #0fdfd9;
+    color: #0f0f0f;
+}
 
-        .neon .btn:hover {
-            background-color: #0fdfd9;
-            color: #0f0f0f;
-        }
+.neon .signup {
+    border-color: #0fdfd9;
+    background-color: transparent;
+    color: #0fdfd9;
+}
 
-        .neon .signup {
-            border-color: #0fdfd9;
-            background-color: transparent;
-            color: #0fdfd9;
-        }
+/* Dark theme (default) */
+.dark .nav a {
+    color: white;
+}
 
-        /* Dark theme (default) */
-        .dark .nav a {
-            color: white;
-        }
+.dark .btn {
+    border-color: white;
+    color: white;
+}
 
-        .dark .btn {
-            border-color: white;
-            color: white;
-        }
+.dark .btn:hover {
+    background-color: white;
+    color: #170a42;
+}
 
-        .dark .btn:hover {
-            background-color: white;
-            color: #170a42;
-        }
+.dark .signup {
+    background-color: #7513f3;
+    border-color: #7513f3;
+}
 
-        .dark .signup {
-            background-color: #7513f3;
-            border-color: #7513f3;
-        }
+.dark .signup:hover {
+    background-color: #e5e5e5;
+}
 
-        .dark .signup:hover {
-            background-color: #e5e5e5;
-        }
+/* Other elements */
+.hero {
+    text-align: center;
+    margin-top: 50px;
+}
 
-        /* Other elements */
-        .hero {
-            text-align: center;
-            margin-top: 50px;
-        }
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-        }
+.hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .hero p {
-            margin-top: 20px;
-            font-size: 18px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.btn {
+    padding: 10px 30px;
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+}
 
-        .btn {
-            padding: 10px 30px;
-            border: 2px solid white;
-            color: white;
-            background-color: transparent;
-            cursor: pointer;
-            margin: 0 10px;
-            border-radius: 20px;
-            font-size: 16px;
-            transition: 0.3s ease-in-out;
-        }
+.signup {
+    background-color: #7513f3;
+    border-color: #7513f3;
+}
 
-        .signup {
-            background-color: #7513f3;
-            border-color: #7513f3;
-        }
+.spotify-logo {
+    width: 100px;
+    height: 100px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
+    background-size: contain;
+    margin: 40px auto 0;
+}
 
-        .spotify-logo {
-            width: 100px;
-            height: 100px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
-            background-size: contain;
-            margin: 40px auto 0;
-        }
+.features {
+    margin-top: 80px;
+}
 
-        .features {
-            margin-top: 80px;
-        }
+.features h2 {
+    font-size: 36px;
+    text-align: center;
+}
 
-        .features h2 {
-            font-size: 36px;
-            text-align: center;
-        }
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
 
-        .features-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
-        }
+.feature-item {
+    max-width: 300px;
+    text-align: center;
+}
 
-        .feature-item {
-            max-width: 300px;
-            text-align: center;
-        }
+.feature-item h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
 
-        .feature-item h3 {
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .feature-item p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
+.feature-item p {
+    font-size: 16px;
+    line-height: 1.6;
+}

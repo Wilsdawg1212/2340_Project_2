@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wrap Creation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Wrapped</title>
 </head>
 <body>
+    <h2>Your Spotify Wrapped</h2>
 
+    <h3>Top Tracks</h3>
+    <ul>
+        {% for track in top_tracks %}
+            <li>
+                <strong>{{ track.track_name }}</strong> by {{ track.artist_name }}
+                <br> Album: {{ track.album_name }}
+                <br> <img src="{{ track.album_image_url }}" alt="Album Art" width="100">
+                <br> <a href="{{ track.track_url }}" target="_blank">Listen on Spotify</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Top Artists</h3>
+    <ul>
+        {% for artist in top_artists %}
+            <li>
+                <strong>{{ artist.artist_name }}</strong>
+                <br> Genres: {{ artist.genres|join:", " }}
+                <br> Followers: {{ artist.followers }}
+                <br> <img src="{{ artist.artist_image_url }}" alt="Artist Image" width="100">
+                <br> <a href="{{ artist.artist_url }}" target="_blank">View on Spotify</a>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

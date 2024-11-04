@@ -13,5 +13,5 @@ urlpatterns = [
     path('link_error/', views.error_page, name='error_page'),
     path('logout/', views.logout_view, name='logout'),
     path('contact_dev/', views.contact_dev, name='contact_dev'),
-    path('generate_wrap/', views.generate_wrap, name='generate_wrap'),
+    path('generate_wrap/', views.create_wrap, name='generate_wrap'),
 ]

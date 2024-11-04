@@ -6,7 +6,7 @@
 
 /* Sidebar styling */
 .sidebar {
-    background-color: #2D3748;
+    background-color: #170a42;
     color: #fff;
     width: 350px; /* Fixed width for sidebar */
     min-height: 100vh;
@@ -25,6 +25,7 @@
     color: #fff;
     font-weight: 600;
     margin-bottom: 1.5rem;
+    margin-top: 27px;
     text-align: center; /* Center-aligns the top heading */
     width: 100%; /* Ensures it spans the full width for consistent centering */
 }
@@ -54,6 +55,7 @@
     flex: 1;
     padding: 2rem;
     background-color: #f8f9fa;
+
 }
 
 .welcome-text {

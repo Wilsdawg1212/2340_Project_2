@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.contrib.auth import get_user_model
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
@@ -47,3 +48,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+User = get_user_model()
+
+class Wrap(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the wrap was created
+
+    # Fields for Top Tracks
+    top_tracks = models.JSONField()  # Use a JSONField to store track data as a list of dictionaries
+
+    # Fields for Top Artists
+    top_artists = models.JSONField()  # Use a JSONField to store artist data as a list of dictionaries
+
+    def __str__(self):
+        return f"Wrap for {self.user.email} on {self.created_at}"
