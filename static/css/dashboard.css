@@ -5,6 +5,21 @@ body {
     margin: 0;
 }
 
+#google_translate_element {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+#theme-switcher {
+    position: absolute;
+    top: 10px;
+    left: 300px; /* Adjusted position to avoid overlap */
+    z-index: 1000; /* Ensures it stays on top */
+    color: white; /* Default color for label */
+}
+
 /* Container for sidebar and main content */
 .dashboard-container {
     display: flex;
@@ -102,7 +117,7 @@ body.light {
 }
 
 body.light .sidebar {
-    background-color: #ffffff;
+    background-color: #d7c9c9;
     color: #333;
 }
 
@@ -115,6 +130,10 @@ body.light .content {
     color: #333;
 }
 
+body.light #theme-switcher {
+    color: #333;
+}
+
 /* Neon Theme */
 body.neon {
     background-color: #0f0f0f;
@@ -122,11 +141,12 @@ body.neon {
 }
 
 body.neon .sidebar {
-    background-color: #111111;
+    background-color: #0fdfd9;
+    color: #0f0f0f;
 }
 
 body.neon .sidebar-link {
-    color: #0fdfd9;
+    color: #0f0f0f;
 }
 
 body.neon .content {
@@ -134,11 +154,20 @@ body.neon .content {
     color: #0fdfd9;
 }
 
+body.neon #theme-switcher {
+    color: #0fdfd9;
+}
+
+/* Dark Theme */
+body.dark #theme-switcher {
+    color: white;
+}
+
 .logout-link {
-    margin-top: auto; /* Pushes logout link to the bottom */
+    margin-top: auto;
     padding-bottom: 1rem;
     text-align: center;
-    width: 100%; /* Ensures full-width for centering */
+    width: 100%;
     display: flex;
-    justify-content: center; /* Centers the text horizontally */
+    justify-content: center;
 }
