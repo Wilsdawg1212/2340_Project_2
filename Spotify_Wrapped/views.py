@@ -155,3 +155,6 @@ def error_page(request):
 def contact_dev(request):
     return render(request, 'Spotify_Wrapped/contact_dev.html')
 
+def generate_wrap(request):
+    return render(request, 'Spotify_Wrapped/generate.html')
+
