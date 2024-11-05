@@ -10,6 +10,7 @@ from datetime import timedelta
 from django.utils import timezone
 from .utils import refresh_spotify_token
 from django.contrib.auth import logout
+from django import forms
 
 # all the view functions
 
@@ -45,6 +46,10 @@ def signup(request):
         form = SignupForm()
     return render(request, 'Spotify_Wrapped/signup.html', {'form': form})
 
+class LogInForm(forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -57,6 +62,8 @@ def login_view(request):
                 return redirect('dashboard')  # Redirect directly to the dashboard
             else:
                 form.add_error(None, 'Invalid email or password.')
+        else:
+            print("Form errors:", form.errors)
     else:
         form = LoginForm()
     return render(request, 'Spotify_Wrapped/login.html', {'form': form})
