@@ -1,24 +1,280 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Wrappify Login</title>
+
+    <!-- Inline CSS -->
+    <style>
+        /* Default styling for the dropdown */
+        #theme, #google_translate_element select {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        /* Light theme dropdown styling */
+        body.light #theme,
+        body.light #google_translate_element select {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #333;
+        }
+
+        /* Neon theme dropdown styling */
+        body.neon #theme,
+        body.neon #google_translate_element select {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+            border: 1px solid #0fdfd9;
+        }
+
+        /* Dark theme dropdown styling */
+        body.dark #theme,
+        body.dark #google_translate_element select {
+            background-color: #170a42;
+            color: white;
+            border: 1px solid white;
+        }
+
+        /* Remove unwanted Google branding and text */
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            font-family: Arial, sans-serif;
+            color: #7513f3;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #170a42;
+            color: white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: right;
+            padding: 0px;
+            background-color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 50%;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Positioning the Theme Switcher next to Google Translate */
+        #theme-switcher {
+            position: absolute;
+            top: 10px;
+            left: 250px;
+        }
+
+        label {
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+
+        /* Light theme */
+        body.light {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .light .nav a {
+            color: #333;
+        }
+
+        .light .btn {
+            border-color: #333;
+            color: #333;
+        }
+
+        .light .btn:hover {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .light .signup {
+            background-color: transparent;
+            border-color: #333;
+        }
+
+        /* Neon theme */
+        body.neon {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+        }
+
+        .neon .nav a {
+            color: #0fdfd9;
+        }
+
+        .neon .btn {
+            border-color: #0fdfd9;
+            color: #0fdfd9;
+        }
+
+        .neon .btn:hover {
+            background-color: #0fdfd9;
+            color: #0f0f0f;
+        }
+
+        .neon .signup {
+            border-color: #0fdfd9;
+            background-color: transparent;
+            color: #0fdfd9;
+        }
+
+        /* Dark theme (default) */
+        .dark .nav a {
+            color: white;
+        }
+
+        .dark .btn {
+            border-color: white;
+            color: white;
+        }
+
+        .dark .btn:hover {
+            background-color: white;
+            color: #170a42;
+        }
+
+        .dark .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .dark .signup:hover {
+            background-color: #e5e5e5;
+        }
+
+        /* Other elements */
+        .hero {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .spotify-logo {
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
+            background-size: contain;
+            margin: 40px auto 0;
+        }
+
+        .features {
+            margin-top: 80px;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Login form styling */
+        .form-container form .form-input {
+            height: 50px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            padding: 0 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
-<!-- Google Translate Element -->
-<div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+<body class="dark">
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
-  }
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<body>
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Choose Theme:</label>
+        <select id="theme" onchange="document.body.className = this.value;">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
     <header>
         <div class="nav">
             <a href="/contact_dev/">contact the developers</a>
@@ -29,28 +285,30 @@
     </header>
 
     <div class="container">
-        <div class="form-container">
-            <h1>Log In</h1>
-            <form>
+        <!-- Add margin-top to move the form down -->
+        <div class="form-container" style="display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: 50px auto;">
+            <h1 style="text-align: center;">Log In</h1>
+            <form method="POST" action="{% url 'login' %}" style="display: flex; flex-direction: column; width: 100%;">
+                {% csrf_token %}
                 <label for="username">USERNAME:</label>
-                <input type="text" id="username">
+                <input type="text" id="username" name="username" class="form-input" required>
 
                 <label for="email">EMAIL:</label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email" class="form-input" required>
 
                 <label for="password">PASSWORD:</label>
-                <input type="password" id="password">
+                <input type="password" id="password" name="password" class="form-input" required>
 
-                <button type="submit" class="login-button">LOG IN</button>
+                <button type="submit" class="btn login-button" style="margin-top: 10px;">LOG IN</button>
             </form>
 
-            <div class="divider">
+            <div class="divider" style="text-align: center; margin: 10px 0;">
                 <span>OR</span>
             </div>
 
-            <div class="signup-container">
+            <div class="signup-container" style="text-align: center;">
                 <a href="/signup/">
-                    <button class="signup-button">SIGN UP</button>
+                    <button class="btn signup">SIGN UP</button>
                 </a>
             </div>
         </div>
