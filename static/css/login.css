@@ -1,13 +1,33 @@
-/* Style the Google Translate dropdown */
-        #google_translate_element select {
-            background-color: #7513f3; /* Button background color */
-            color: white; /* Button text color */
-            border: 1px solid #7513f3; /* Border color */
-            border-radius: 5px; /* Rounded corners */
-            padding: 5px 10px; /* Padding inside the button */
-            font-family: Arial, sans-serif; /* Change font */
-            font-size: 14px; /* Font size */
+/* Default styling for the dropdown */
+        #theme, #google_translate_element select {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: Arial, sans-serif;
             cursor: pointer;
+        }
+
+        /* Light theme dropdown styling */
+        body.light #theme,
+        body.light #google_translate_element select {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #333;
+        }
+
+        /* Neon theme dropdown styling */
+        body.neon #theme,
+        body.neon #google_translate_element select {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+            border: 1px solid #0fdfd9;
+        }
+
+        /* Dark theme dropdown styling */
+        body.dark #theme,
+        body.dark #google_translate_element select {
+            background-color: #170a42;
+            color: white;
+            border: 1px solid white;
         }
 
         /* Remove unwanted Google branding and text */
@@ -16,122 +36,212 @@
         }
 
         .goog-te-gadget {
-            font-family: Arial, sans-serif; /* Change font */
-            color: #7513f3; /* Text color */
-        }
-
-        /* Optional: Style the Google Translate icon */
-        .goog-te-banner-frame.skiptranslate {
-            display: none !important; /* Hide Google Translate banner */
-        }
-
-        body {
-            top: 50px !important; /* Remove any extra margin added by Google */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            color: #7513f3;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #170a42;
             color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            width: 400px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
+        /* Header Styling */
         header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: right;
             padding: 0px;
-            position: absolute;
-            top: 0;
-            width: 100%;
+            background-color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 50%;
         }
 
         .nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
             font-size: 14px;
         }
 
-        .form-container {
-            margin-top: 120px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        /* Positioning the Theme Switcher next to Google Translate */
+        #theme-switcher {
+            position: absolute;
+            top: 10px;
+            left: 250px;
         }
 
         label {
-            font-size: 14px;
-            text-align: left;
-            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 10px;
         }
 
-        input {
-            padding: 12px;
-            font-size: 14px;
-            border: none;
-            border-radius: 6px;
-            background: #E0E0E0;
+        /* Light theme */
+        body.light {
+            background-color: #f0f0f0;
             color: #333;
         }
 
-        .login-button {
-            padding: 12px;
+        .light .nav a {
+            color: #333;
+        }
+
+        .light .btn {
+            border-color: #333;
+            color: #333;
+        }
+
+        .light .btn:hover {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .light .signup {
             background-color: transparent;
+            border-color: #333;
+        }
+
+        /* Neon theme */
+        body.neon {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+        }
+
+        .neon .nav a {
+            color: #0fdfd9;
+        }
+
+        .neon .btn {
+            border-color: #0fdfd9;
+            color: #0fdfd9;
+        }
+
+        .neon .btn:hover {
+            background-color: #0fdfd9;
+            color: #0f0f0f;
+        }
+
+        .neon .signup {
+            border-color: #0fdfd9;
+            background-color: transparent;
+            color: #0fdfd9;
+        }
+
+        /* Dark theme (default) */
+        .dark .nav a {
             color: white;
-            border: 2px solid #7513f3;
+        }
+
+        .dark .btn {
+            border-color: white;
+            color: white;
+        }
+
+        .dark .btn:hover {
+            background-color: white;
+            color: #170a42;
+        }
+
+        .dark .signup {
+            background-color: #7513f3;
+            border-color: #7513f3;
+        }
+
+        .dark .signup:hover {
+            background-color: #e5e5e5;
+        }
+
+        /* Other elements */
+        .hero {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 10px;
             border-radius: 20px;
-            cursor: pointer;
             font-size: 16px;
-            transition: all 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
         }
 
-        .login-button:hover {
+        .signup {
             background-color: #7513f3;
-            color: white;
+            border-color: #7513f3;
         }
 
-        .divider {
-            margin: 20px 0;
-            font-size: 12px;
-            color: #A0A0A0;
+        .spotify-logo {
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg') no-repeat center center;
+            background-size: contain;
+            margin: 40px auto 0;
         }
 
-        .signup-container {
+        .features {
+            margin-top: 80px;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .features-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-around;
+            margin-top: 40px;
         }
 
-        .signup-button {
-            padding: 10px 20px;
-            border: 2px solid #7513f3;
-            color: #7513f3;
-            background: transparent;
-            border-radius: 6px;
+        .feature-item {
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item p {
             font-size: 16px;
-            cursor: pointer;
-            margin-left: 10px;
+            line-height: 1.6;
         }
 
-        .signup-button:hover {
-            background-color: #7513f3;
-            color: white;
+        /* Login form styling */
+        .form-container form .form-input {
+            height: 50px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            padding: 0 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
         }

@@ -4,21 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Wrappify Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 </head>
-<!-- Google Translate Element -->
-<div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+<body class="dark">
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
-  }
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<body>
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Choose Theme:</label>
+        <select id="theme" onchange="document.body.className = this.value;">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
     <header>
         <div class="nav">
             <a href="/contact_dev/">contact the developers</a>
@@ -29,29 +37,30 @@
     </header>
 
     <div class="container">
-        <div class="form-container">
-            <h1>Log In</h1>
-            <form method="POST" action="{% url 'login' %}">
+        <!-- Add margin-top to move the form down -->
+        <div class="form-container" style="display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: 50px auto;">
+            <h1 style="text-align: center;">Log In</h1>
+            <form method="POST" action="{% url 'login' %}" style="display: flex; flex-direction: column; width: 100%;">
                 {% csrf_token %}
                 <label for="username">USERNAME:</label>
-                <input type="text" id="username" name="username"> <!-- Added name attribute -->
+                <input type="text" id="username" name="username" class="form-input" required>
 
                 <label for="email">EMAIL:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" class="form-input" required>
 
                 <label for="password">PASSWORD:</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" class="form-input" required>
 
-                <button type="submit" class="login-button">LOG IN</button>
+                <button type="submit" class="btn login-button" style="margin-top: 10px;">LOG IN</button>
             </form>
 
-            <div class="divider">
+            <div class="divider" style="text-align: center; margin: 10px 0;">
                 <span>OR</span>
             </div>
 
-            <div class="signup-container">
+            <div class="signup-container" style="text-align: center;">
                 <a href="/signup/">
-                    <button class="signup-button">SIGN UP</button>
+                    <button class="btn signup">SIGN UP</button>
                 </a>
             </div>
         </div>
