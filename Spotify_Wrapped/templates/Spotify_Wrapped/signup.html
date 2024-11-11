@@ -41,7 +41,7 @@
             <h1>Sign Up</h1>
             <form method="POST" action="{% url 'signup' %}">
                 {% csrf_token %}
-                
+
                 <label for="username" class="label">USERNAME:</label>
                 <input type="text" id="username" name="username" class="form-input" required>
 
