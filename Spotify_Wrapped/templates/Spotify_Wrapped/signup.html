@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <title>Sign Up</title>
 </head>
-<!-- Google Translate Element -->
-<div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+<body class="dark">
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
-  }
-</script>
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme" class="label">Choose Theme:</label>
+        <select id="theme" onchange="document.body.className = this.value;">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<body>
     <header>
         <div class="nav">
             <a href="/contact_dev/">contact the developers</a>
@@ -34,30 +42,204 @@
             <form method="POST" action="{% url 'signup' %}">
                 {% csrf_token %}
                 
-                <label for="username">USERNAME:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username" class="label">USERNAME:</label>
+                <input type="text" id="username" name="username" class="form-input" required>
 
-                <label for="email">EMAIL:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email" class="label">EMAIL:</label>
+                <input type="email" id="email" name="email" class="form-input" required>
 
-                <label for="password">PASSWORD:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password" class="label">PASSWORD:</label>
+                <input type="password" id="password" name="password" class="form-input" required>
 
-                <label for="confirm_password">CONFIRM PASSWORD:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
+                <label for="confirm_password" class="label">CONFIRM PASSWORD:</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-input" required>
 
-                <button type="submit" class="signup-button">SIGN UP</button>
+                <button type="submit" class="btn login-button">SIGN UP</button>
             </form>
             <div class="divider">
                 <span>OR</span>
             </div>
 
-            <div class="login-container-container">
+            <div class="login-container">
                 <a href="/login/">
-                    <button class="login-button">LOG IN</button>
+                    <button class="btn signup-button">LOG IN</button>
                 </a>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<style>
+    /* Google Translate dropdown styling */
+    #google_translate_element select {
+        border-radius: 5px;
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    /* Theme Switcher styling */
+    #theme-switcher {
+        position: absolute;
+        top: 10px;
+        left: 250px;
+    }
+
+    /* Theme dropdown styling */
+    #theme {
+        border-radius: 5px;
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    /* Light theme */
+    body.light {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    .light .nav a {
+        color: #333;
+    }
+    .light #theme,
+    .light #google_translate_element select {
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #333;
+    }
+    .light .btn {
+        border-color: #333;
+        color: #333;
+    }
+    .light .btn:hover {
+        background-color: #333;
+        color: #f0f0f0;
+    }
+    .light .signup-button {
+        background-color: transparent;
+        border-color: #333;
+    }
+
+    /* Neon theme */
+    body.neon {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+    }
+    .neon .nav a {
+        color: #0fdfd9;
+    }
+    .neon #theme,
+    .neon #google_translate_element select {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+        border: 1px solid #0fdfd9;
+    }
+    .neon .btn {
+        border-color: #0fdfd9;
+        color: #0fdfd9;
+    }
+    .neon .btn:hover {
+        background-color: #0fdfd9;
+        color: #0f0f0f;
+    }
+    .neon .signup-button {
+        border-color: #0fdfd9;
+        background-color: transparent;
+        color: #0fdfd9;
+    }
+
+    /* Dark theme */
+    body.dark {
+        background-color: #170a42;
+        color: white;
+    }
+    .dark .nav a {
+        color: white;
+    }
+    .dark #theme,
+    .dark #google_translate_element select {
+        background-color: #170a42;
+        color: white;
+        border: 1px solid white;
+    }
+    .dark .btn {
+        border-color: white;
+        color: white;
+    }
+    .dark .btn:hover {
+        background-color: white;
+        color: #170a42;
+    }
+    .dark .signup-button {
+        background-color: #7513f3;
+        border-color: #7513f3;
+    }
+    .dark .signup-button:hover {
+        background-color: #e5e5e5;
+    }
+
+    /* Styling for form input fields */
+    .form-input {
+        height: 50px;
+        border-radius: 20px;
+        padding: 0 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px; /* Adjusted for less space between fields */
+        color: #333;
+        background-color: #E0E0E0;
+    }
+
+    .container {
+        width: 400px;
+        text-align: center;
+    }
+
+    .form-container {
+        margin-top: 120px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Reduced gap between form elements */
+    }
+
+    /* Label styling to match login.html */
+    .label {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+        margin-bottom: 0px;
+        font-family: Arial, sans-serif; /* Font consistency */
+    }
+
+    /* Button Styling */
+    .btn {
+        padding: 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .signup-button {
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .divider {
+        margin: 20px 0;
+        font-size: 12px;
+        color: #A0A0A0;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
