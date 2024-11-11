@@ -47,6 +47,7 @@
             <li data-target="#carouselExample" data-slide-to="5"></li>
             <li data-target="#carouselExample" data-slide-to="6"></li>
             <li data-target="#carouselExample" data-slide-to="7"></li>
+            <li data-target="#carouselExample" data-slide-to="8"></li>
         </ol>
 
         <div class="carousel-inner">
@@ -61,58 +62,138 @@
             </div>
             <!-- Slide 2 -->
             <div class="carousel-item">
-                <div class="slide-content">
-                    <div class="centered-rectangle">
-                        <h1>Slide 2 Title</h1>
-                        <p>Description for Slide 2</p>
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    My Listening Favorites
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-2">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section-2">
+                        <h2>Number 1 Song</h2>
+                        <div class="album-cover-placeholder-2">
+                            <p>Album Cover</p>
+                        </div>
+                        <p class="song-name">Song Name</p>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section-2">
+                        <h2>Number 1 Album</h2>
+                        <div class="album-cover-placeholder-2">
+                            <p>Album Cover</p>
+                        </div>
+                        <p class="song-name">Album Name</p>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section-2">
+                        <h2>Number 1 Artist</h2>
+                        <div class="album-cover-placeholder-2">
+                            <p>Artist Image</p>
+                        </div>
+                        <p class="song-name">Artist Name</p>
                     </div>
                 </div>
             </div>
             <!-- Slide 3 -->
             <div class="carousel-item">
-                <div class="slide-content">
-                    <div class="centered-rectangle">
-                        <h1>Slide 3 Title</h1>
-                        <p>Description for Slide 3</p>
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Most Listened to Playlists
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2>Playlist 1</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Playlist Cover</p>
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2>Playlist 2</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Playlist Cover</p>
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2>Playlist 3</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Playlist Cover</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2>Playlist 4</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Playlist Cover</p>
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2>Playlist 5</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Playlist Cover</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Slide 4 -->
             <div class="carousel-item">
-                <div class="slide-content">
-                    <h3> <em> You've listened jammed, and probably danced. </em>
-                            <br> <strong> Now, see what 2024 really sounded like! </strong> </h3>
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    My Top Genres
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-4">
+                    
+                    <div class="sun-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    
+                    <ul class="genre-list">
+                        <li>
+                            <i class="fas fa-star genre-icon1"></i>
+                            <span class="genre-text">Warehouse Techno</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon2"></i>
+                            <span class="genre-text">Pop</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon3"></i>
+                            <span class="genre-text">Anime Soundtrack</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon4"></i>
+                            <span class="genre-text">Float House</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon5"></i>
+                            <span class="genre-text">Indie</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <!-- Slide 5 -->
             <div class="carousel-item">
-               <h1 class="top-title">Your Top Artists</h1>
-                   <div class="top-5-list">
-                       <ol class="staggered-list">
-                           {% for artist, artist_image in artist_image_pairs %}
-                               <li>
-                                   <img src="{{ artist_image }}" alt="{{ artist }} Image" class="top-artist-image">
-                                   {{ artist }}
-                               </li>
-                           {% endfor %}
-                       </ol>
-                   </div>
-            </div>
-            <!-- Slide 6: Your Top Tracks -->
-            <div class="carousel-item">
-                <h1 class="top-title">Your Top Tracks</h1>
-                <div class="top-5-list">
-                    <ol class="staggered-list">
-                        {% for track, track_image in track_image_pairs %}
-                            <li>
-                                <img src="{{ track_image }}" alt="{{ track }} Album Image" class="top-artist-image">
-                                {{ track }}
-                            </li>
-                        {% endfor %}
-                    </ol>
+                <div class="slide-content">
+                    <div class="centered-rectangle">
+                        <h1>Slide 5 Title</h1>
+                        <p>Description for Slide 5</p>
+                    </div>
                 </div>
             </div>
-
+            <!-- Slide 6 -->
+            <div class="carousel-item">
+                <div class="slide-content">
+                    <div class="centered-rectangle">
+                        <h1>Slide 6 Title</h1>
+                        <p>Description for Slide 6</p>
+                    </div>
+                </div>
+            </div>
             <!-- Slide 7 -->
             <div class="carousel-item">
                 <div class="slide-content">
@@ -123,11 +204,56 @@
                 </div>
             </div>
             <!-- Slide 8 -->
-            <div class="carousel-item">
+            <div class="carousel-item transition-slide8">
                 <div class="slide-content">
-                    <div class="centered-rectangle">
-                        <h1>Slide 8 Title</h1>
-                        <p>Description for Slide 8</p>
+                    <div class="centered-rectangle-8">
+                        <h1>Now that we know you...</h1>
+                        <p>Here's a few recommendations you may like</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 9 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Song Recommendations
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2>Song 1</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Song Cover</p>
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2>Song 2</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Song Cover</p>
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2>Song 3</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Song Cover</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2>Song 4</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Song Cover</p>
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2>Song 5</h2>
+                        <div class="album-cover-placeholder-3">
+                            <p>Song Cover</p>
+                        </div>
                     </div>
                 </div>
             </div>
