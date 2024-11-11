@@ -160,6 +160,7 @@ from .models import Wrap
 def title_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres
 @login_required
 def create_wrap(request):
     if request.method == 'POST':
@@ -168,61 +169,25 @@ def create_wrap(request):
         time_range = request.POST.get('time_range', 'medium_term')
         theme = request.POST.get('theme', 'dark')
 
-        # Get the user's Spotify access token from their session or database
+        # Get the user's Spotify access token
         access_token = refresh_spotify_token(request.user)
 
-        headers = {
-            'Authorization': f'Bearer {access_token}'
-        }
+        # Retrieve data using helper functions
+        top_tracks = get_top_tracks(access_token, time_range)
+        top_artists = get_top_artists(access_token, time_range)
+        top_album = get_top_album(top_tracks)
+        top_genres = get_top_genres(top_artists)
 
-        # Fetch top tracks with the specified time range
-        top_tracks_response = requests.get(
-            'https://api.spotify.com/v1/me/top/tracks',
-            headers=headers,
-            params={'limit': 10, 'time_range': time_range}
-        )
-        top_tracks_data = top_tracks_response.json().get('items', [])
-
-        # Fetch top artists with the specified time range
-        top_artists_response = requests.get(
-            'https://api.spotify.com/v1/me/top/artists',
-            headers=headers,
-            params={'limit': 10, 'time_range': time_range}
-        )
-        top_artists_data = top_artists_response.json().get('items', [])
-
-        # Structure the data
-        top_tracks = [
-            {
-                'track_name': track['name'],
-                'artist_name': track['artists'][0]['name'],
-                'album_name': track['album']['name'],
-                'album_image_url': track['album']['images'][0]['url'],
-                'track_url': track['external_urls']['spotify'],
-                'duration_ms': track['duration_ms']
-            }
-            for track in top_tracks_data
-        ]
-
-        top_artists = [
-            {
-                'artist_name': artist['name'],
-                'genres': artist['genres'],
-                'followers': artist['followers']['total'],
-                'artist_image_url': artist['images'][0]['url'],
-                'artist_url': artist['external_urls']['spotify']
-            }
-            for artist in top_artists_data
-        ]
-
-        # Create a new Wrap entry with the new fields
+        # Create a new Wrap entry
         Wrap.objects.create(
             user=request.user,
             title=title,
             theme=theme,
             time_range=time_range,
             top_tracks=top_tracks,
-            top_artists=top_artists
+            top_artists=top_artists,
+            top_genres=top_genres,
+            top_album=top_album
         )
 
         return render(request, 'Spotify_Wrapped/generate.html', {
@@ -230,7 +195,9 @@ def create_wrap(request):
             'theme': theme,
             'time_range': time_range,
             'top_tracks': top_tracks,
-            'top_artists': top_artists
+            'top_artists': top_artists,
+            'top_genres': top_genres,
+            'top_album': top_album
         })
 
     # If the request method is not POST, render the form

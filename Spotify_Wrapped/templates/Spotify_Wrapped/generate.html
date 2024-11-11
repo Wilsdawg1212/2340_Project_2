@@ -32,5 +32,28 @@
             </li>
         {% endfor %}
     </ul>
+    
+    {% if top_genres %}
+    <h2>Your Top Genres:</h2>
+    <ul>
+        {% for genre in top_genres %}
+            <li>{{ genre }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if top_album %}
+    <div class="top-album">
+        <h2>Your Top Album</h2>
+        <div class="album-details">
+            <img src="{{ top_album.album_image_url }}" alt="Album Cover" width="300" height="300">
+            <h3>{{ top_album.album_name }}</h3>
+            <p>by {{ top_album.artist_name }}</p>
+            <a href="{{ top_album.album_url }}" target="_blank">Listen on Spotify</a>
+        </div>
+    </div>
+    {% else %}
+        <p>No top album data available.</p>
+    {% endif %}
 </body>
 </html>
