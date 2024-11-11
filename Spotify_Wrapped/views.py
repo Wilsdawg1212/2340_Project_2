@@ -51,14 +51,23 @@ def login_view(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
+            print(f"Email: {email}")  # Debugging print statement
+            print(f"Password: {password}")  # Debugging print statement
+
             user = authenticate(request, email=email, password=password)
             if user is not None:
+                print("Authentication successful")  # Debugging print statement
                 login(request, user)
-                return redirect('dashboard')  # Redirect directly to the dashboard
+                return redirect('dashboard')  # Redirect to the dashboard
             else:
+                print("Authentication failed")  # Debugging print statement
                 form.add_error(None, 'Invalid email or password.')
+        else:
+            print("Form is not valid")  # Debugging print statement
+            print(form.errors)  # Print form errors
     else:
         form = LoginForm()
+
     return render(request, 'Spotify_Wrapped/login.html', {'form': form})
 
 def index(request):
@@ -143,107 +152,55 @@ def exchange_code_for_tokens(code):
 def error_page(request):
     return render(request, 'Spotify_Wrapped/link_error.html')
 
-def top_tracks(request):
-    user = request.user
-    access_token = refresh_spotify_token(user)
+def contact_dev(request):
+    return render(request, 'Spotify_Wrapped/contact_dev.html')
 
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
+from .models import Wrap
 
-    try:
-        response = requests.get(
-            'https://api.spotify.com/v1/me/top/tracks',
-            headers=headers,
-            params={
-                'limit': 5,
-                'time_range': 'long_term'
-            }
+def title_wrap(request):
+    return render(request, 'Spotify_Wrapped/title-wrap.html')
+
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres
+@login_required
+def create_wrap(request):
+    if request.method == 'POST':
+        # Get form data
+        title = request.POST.get('title')
+        time_range = request.POST.get('time_range', 'medium_term')
+        theme = request.POST.get('theme', 'dark')
+
+        # Get the user's Spotify access token
+        access_token = refresh_spotify_token(request.user)
+
+        # Retrieve data using helper functions
+        top_tracks = get_top_tracks(access_token, time_range)
+        top_artists = get_top_artists(access_token, time_range)
+        top_album = get_top_album(top_tracks)
+        top_genres = get_top_genres(top_artists)
+
+        # Create a new Wrap entry
+        Wrap.objects.create(
+            user=request.user,
+            title=title,
+            theme=theme,
+            time_range=time_range,
+            top_tracks=top_tracks,
+            top_artists=top_artists,
+            top_genres=top_genres,
+            top_album=top_album
         )
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching top tracks from Spotify: {e}")
-        return [{"name": "Error fetching top tracks from Spotify.", "image": None}]
 
-    if response.status_code == 200:
-        try:
-            top_tracks = response.json().get('items', [])
-            track_data = [
-                {
-                    "name": track.get('name'),
-                    "album_image": track.get('album', {}).get('images', [{}])[0].get('url')
-                }
-                for track in top_tracks[:5]
-            ]
-            while len(track_data) < 5:
-                track_data.append({"name": "No additional track data found.", "album_image": None})
-        except (ValueError, KeyError):
-            track_data = [{"name": "Error processing top track data.", "album_image": None}]
-    else:
-        track_data = [{"name": f"Spotify API error: {response.status_code}", "album_image": None}]
-    return track_data
+        return render(request, 'Spotify_Wrapped/generate.html', {
+            'title': title,
+            'theme': theme,
+            'time_range': time_range,
+            'top_tracks': top_tracks,
+            'top_artists': top_artists,
+            'top_genres': top_genres,
+            'top_album': top_album
+        })
+
+    # If the request method is not POST, render the form
+    return render(request, 'Spotify_Wrapped/generate.html')
 
 
-# Create your views here.
-def top_artists(request):
-    user = request.user
-    access_token = refresh_spotify_token(user)
-
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
-
-    try:
-        response = requests.get(
-            'https://api.spotify.com/v1/me/top/artists',
-            headers=headers,
-            params={
-                'limit': 5,
-                'time_range': 'long_term'
-            }
-        )
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching top artist from Spotify: {e}")
-        return [{"name": "Error fetching top artist from Spotify.", "image": None}]
-
-    if response.status_code == 200:
-        try:
-            top_artists = response.json().get('items', [])
-            artist_data = [
-                {"name": artist.get('name'), "image": artist.get('images', [{}])[0].get('url')}
-                for artist in top_artists[:5]
-            ]
-            while len(artist_data) < 5:
-                artist_data.append({"name": "No additional artist data found.", "image": None})
-        except (ValueError, KeyError):
-            artist_data = [{"name": "Error processing top artist data.", "image": None}]
-    else:
-        artist_data = [{"name": f"Spotify API error: {response.status_code}", "image": None}]
-
-    return artist_data
-
-
-@login_required(login_url='index')
-def wrapped(request):
-        top_5_artist_dic = top_artists(request)
-        top_5_artist_list = []
-        top_5_artist_image = []
-        for artist in top_5_artist_dic:
-            top_5_artist_list.append(artist['name'])
-        for artist_image in top_5_artist_dic:
-            top_5_artist_image.append(artist_image['image'])
-        artist_image_pairs = list(zip(top_5_artist_list, top_5_artist_image))
-
-        top_5_tracks_dic = top_tracks(request)
-        top_5_tracks_list = []
-        top_5_tracks_image = []
-        for track in top_5_tracks_dic:
-            top_5_tracks_list.append(track['name'])
-        for track_image in top_5_tracks_dic:
-            top_5_tracks_image.append(track_image['album_image'])
-        track_image_pairs = list(zip(top_5_tracks_list, top_5_tracks_image))
-        print(artist_image_pairs)
-        print(track_image_pairs)
-        return render(request, 'Spotify_Wrapped/wrapped.html', {
-         'artist_image_pairs': artist_image_pairs,
-         'track_image_pairs': track_image_pairs,
-    })

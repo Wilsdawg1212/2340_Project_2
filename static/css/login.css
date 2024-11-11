@@ -1,0 +1,139 @@
+/* Style the Google Translate dropdown */
+        #google_translate_element select {
+            background-color: #7513f3; /* Button background color */
+            color: white; /* Button text color */
+            border: 1px solid #7513f3; /* Border color */
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px 10px; /* Padding inside the button */
+            font-family: Arial, sans-serif; /* Change font */
+            font-size: 14px; /* Font size */
+            cursor: pointer;
+        }
+
+        /* Remove unwanted Google branding and text */
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            font-family: Arial, sans-serif; /* Change font */
+            color: #7513f3; /* Text color */
+            margin-left: 20px;
+        }
+
+        /* Optional: Style the Google Translate icon */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important; /* Hide Google Translate banner */
+        }
+
+        body {
+            top: 50px !important; /* Remove any extra margin added by Google */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #170a42;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 400px;
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+
+        .form-container {
+            margin-top: 120px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #E0E0E0;
+            color: #333;
+        }
+
+        .login-button {
+            padding: 12px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid #7513f3;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .login-button:hover {
+            background-color: #7513f3;
+            color: white;
+        }
+
+        .divider {
+            margin: 20px 0;
+            font-size: 12px;
+            color: #A0A0A0;
+        }
+
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-button {
+            padding: 10px 20px;
+            border: 2px solid #7513f3;
+            color: #7513f3;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .signup-button:hover {
+            background-color: #7513f3;
+            color: white;
+        }

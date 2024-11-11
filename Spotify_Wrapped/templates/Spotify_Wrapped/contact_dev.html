@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/contact_dev.css' %}">
+    <title>Send Feedback</title>
+</head>
+<body>
+    <!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <!-- Go Back Button -->
+    <a href="javascript:history.back()" class="go-back">Go Back</a>
+
+    <div class="container">
+        <h1>Send Feedback</h1>
+        <p>Your feedback helps us improve our website. Let us know how we're doing!</p>
+        <p>If you’d like us to follow up, please include your email address in the feedback section.</p>
+        
+        <form>
+            <label for="feedback">Feedback</label>
+            <textarea id="feedback" name="feedback" placeholder="Enter your feedback here..." required></textarea>
+            <button type="submit" class="submit-button">SEND</button>
+        </form>
+    </div>
+
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

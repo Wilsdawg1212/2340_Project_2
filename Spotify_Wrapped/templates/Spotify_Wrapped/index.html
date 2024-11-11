@@ -1,11 +1,86 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Wrappify</title>
 </head>
-<body>
-    <a href="{% url 'login' %}">Login Here</a>
-    <a href="{% url 'signup' %}">Signup here</a>
+<body class="dark"> <!-- default to dark theme -->
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="container">
+        <header>
+            <div class="nav">
+                <a href="/contact_dev/">contact the developers</a>
+                <a href="#">about</a>
+                <a href="#">contact</a>
+                <a href="/dashboard/">dashboard</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Get Your Spotify Wrapped And More</h1>
+                <p>Sign in or create an account through an existing Spotify in order to get different Wraps, create duo Wraps, etc.</p>
+                <div class="buttons">
+                    <a href="login/" class="index-link">
+                        <button class="btn">LOG IN</button>
+                    </a>
+                    <span>OR</span>
+                    <a href="signup/" class="index-link">
+                        <button class="btn signup">SIGN UP</button>
+                    </a>
+                </div>
+                <div class="spotify-logo"></div>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <h3>Duo-Wrapped</h3>
+                        <p>Create a custom Wrap with a friend by and save it to your Wraps list.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Access To All Wraps</h3>
+                        <p>Wrappify lets you save previous Wraps, as well as make wraps for custom timeframes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Generate Your Own Wraps</h3>
+                        <p>Have the ability to generate your own Spotify wraps whenever you want.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Theme Switcher Script -->
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+        themeSwitcher.addEventListener('change', function() {
+            document.body.className = this.value;
+        });
+    </script>
 </body>
 </html>
