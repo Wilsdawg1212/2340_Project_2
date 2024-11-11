@@ -92,3 +92,67 @@
 .carousel-control-next-icon {
     display: none; /* Hides the icon inside the button */
 }
+
+/* Style for ranked list of top artists */
+.top-5-list {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    max-width: 80%; /* Restrict width to avoid overflow */
+    margin: 0 auto; /* Center the list container */
+}
+
+.top-artists-list ol {
+    list-style-type: decimal;
+    padding-left: 0;
+}
+
+.top-artists-list li {
+    margin: 10px 0;
+}
+
+/* Center the title at the top of the slide */
+.top-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 60px;
+}
+
+/* Staggered list adjustments */
+.staggered-list {
+    position: relative;
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 80%;
+    margin: 0 auto;
+    left: 200px !important; /* Shift entire list slightly to the right */
+}
+
+/* Adjust each list item for image and text alignment */
+.staggered-list li {
+    position: relative;
+    display: flex; /* Align image and text horizontally */
+    align-items: center; /* Vertically center the image and text */
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1px; /* Adjust the spacing between items */
+}
+
+/* Image styles for each list item */
+.staggered-list li img {
+    width: 75px; /* Adjust image size */
+    height: 75px;
+    border-radius: 50%; /* Circular images */
+    margin-right: 15px; /* Space between image and text */
+}
+
+/* Staggered positioning adjustments */
+.staggered-list li:nth-child(odd) {
+    transform: translateX(100px) !important; /* Move slightly to the right for odd items */
+}
+
+.staggered-list li:nth-child(even) {
+    transform: translateX(300px) !important; /* Move further to the right for even items */
+}

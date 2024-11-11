@@ -88,22 +88,33 @@
             </div>
             <!-- Slide 5 -->
             <div class="carousel-item">
-                <div class="slide-content">
-                    <div class="centered-rectangle">
-                        <h1>Slide 5 Title</h1>
-                        <p>Description for Slide 5</p>
-                    </div>
-                </div>
+               <h1 class="top-title">Your Top Artists</h1>
+                   <div class="top-5-list">
+                       <ol class="staggered-list">
+                           {% for artist, artist_image in artist_image_pairs %}
+                               <li>
+                                   <img src="{{ artist_image }}" alt="{{ artist }} Image" class="top-artist-image">
+                                   {{ artist }}
+                               </li>
+                           {% endfor %}
+                       </ol>
+                   </div>
             </div>
-            <!-- Slide 6 -->
+            <!-- Slide 6: Your Top Tracks -->
             <div class="carousel-item">
-                <div class="slide-content">
-                    <div class="centered-rectangle">
-                        <h1>Slide 6 Title</h1>
-                        <p>Description for Slide 6</p>
-                    </div>
+                <h1 class="top-title">Your Top Tracks</h1>
+                <div class="top-5-list">
+                    <ol class="staggered-list">
+                        {% for track, track_image in track_image_pairs %}
+                            <li>
+                                <img src="{{ track_image }}" alt="{{ track }} Album Image" class="top-artist-image">
+                                {{ track }}
+                            </li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
+
             <!-- Slide 7 -->
             <div class="carousel-item">
                 <div class="slide-content">

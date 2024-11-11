@@ -143,6 +143,107 @@ def exchange_code_for_tokens(code):
 def error_page(request):
     return render(request, 'Spotify_Wrapped/link_error.html')
 
+def top_tracks(request):
+    user = request.user
+    access_token = refresh_spotify_token(user)
+
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+
+    try:
+        response = requests.get(
+            'https://api.spotify.com/v1/me/top/tracks',
+            headers=headers,
+            params={
+                'limit': 5,
+                'time_range': 'long_term'
+            }
+        )
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching top tracks from Spotify: {e}")
+        return [{"name": "Error fetching top tracks from Spotify.", "image": None}]
+
+    if response.status_code == 200:
+        try:
+            top_tracks = response.json().get('items', [])
+            track_data = [
+                {
+                    "name": track.get('name'),
+                    "album_image": track.get('album', {}).get('images', [{}])[0].get('url')
+                }
+                for track in top_tracks[:5]
+            ]
+            while len(track_data) < 5:
+                track_data.append({"name": "No additional track data found.", "album_image": None})
+        except (ValueError, KeyError):
+            track_data = [{"name": "Error processing top track data.", "album_image": None}]
+    else:
+        track_data = [{"name": f"Spotify API error: {response.status_code}", "album_image": None}]
+    return track_data
+
+
 # Create your views here.
+def top_artists(request):
+    user = request.user
+    access_token = refresh_spotify_token(user)
+
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+
+    try:
+        response = requests.get(
+            'https://api.spotify.com/v1/me/top/artists',
+            headers=headers,
+            params={
+                'limit': 5,
+                'time_range': 'long_term'
+            }
+        )
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching top artist from Spotify: {e}")
+        return [{"name": "Error fetching top artist from Spotify.", "image": None}]
+
+    if response.status_code == 200:
+        try:
+            top_artists = response.json().get('items', [])
+            artist_data = [
+                {"name": artist.get('name'), "image": artist.get('images', [{}])[0].get('url')}
+                for artist in top_artists[:5]
+            ]
+            while len(artist_data) < 5:
+                artist_data.append({"name": "No additional artist data found.", "image": None})
+        except (ValueError, KeyError):
+            artist_data = [{"name": "Error processing top artist data.", "image": None}]
+    else:
+        artist_data = [{"name": f"Spotify API error: {response.status_code}", "image": None}]
+
+    return artist_data
+
+
+@login_required(login_url='index')
 def wrapped(request):
-    return render(request, 'Spotify_Wrapped/wrapped.html')
+        top_5_artist_dic = top_artists(request)
+        top_5_artist_list = []
+        top_5_artist_image = []
+        for artist in top_5_artist_dic:
+            top_5_artist_list.append(artist['name'])
+        for artist_image in top_5_artist_dic:
+            top_5_artist_image.append(artist_image['image'])
+        artist_image_pairs = list(zip(top_5_artist_list, top_5_artist_image))
+
+        top_5_tracks_dic = top_tracks(request)
+        top_5_tracks_list = []
+        top_5_tracks_image = []
+        for track in top_5_tracks_dic:
+            top_5_tracks_list.append(track['name'])
+        for track_image in top_5_tracks_dic:
+            top_5_tracks_image.append(track_image['album_image'])
+        track_image_pairs = list(zip(top_5_tracks_list, top_5_tracks_image))
+        print(artist_image_pairs)
+        print(track_image_pairs)
+        return render(request, 'Spotify_Wrapped/wrapped.html', {
+         'artist_image_pairs': artist_image_pairs,
+         'track_image_pairs': track_image_pairs,
+    })
