@@ -48,12 +48,12 @@
 .centered-rectangle h1 {
     font-size: 4rem;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .centered-rectangle p {
     font-size: 1.8rem;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /* Fade-in Animation */
@@ -95,7 +95,7 @@
 
 /* Style for ranked list of top artists */
 .top-5-list {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Bodoni 72', 'fantasy';
     font-size: 1.5rem;
     color: #fff;
     text-align: center;
@@ -114,6 +114,7 @@
 
 /* Center the title at the top of the slide */
 .top-title {
+    font-family: 'Bodoni 72', 'fantasy';
     text-align: center;
     font-size: 2rem;
     margin-bottom: 60px;
@@ -131,6 +132,7 @@
 
 /* Adjust each list item for image and text alignment */
 .staggered-list li {
+    font-family: 'Bodoni 72', 'fantasy';
     position: relative;
     display: flex; /* Align image and text horizontally */
     align-items: center; /* Vertically center the image and text */
