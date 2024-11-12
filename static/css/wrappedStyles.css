@@ -57,6 +57,16 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.Top_Three {
+    width: 200px; /* Adjust image size */
+    height: 200px;
+}
+
+.Top_Five {
+    width: 150px; /* Adjust image size */
+    height: 150px;
+}
+
 .centered-rectangle-8 {
     background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
     padding: 60px 80px;

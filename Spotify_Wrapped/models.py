@@ -73,5 +73,9 @@ class Wrap(models.Model):
     top_genres = models.JSONField(null=True, blank=True)
     top_album = models.JSONField(null=True, blank=True)
 
-    def __str__(self):
+    top_playlists = models.JSONField(null=True, blank=True)  # Store playlist data as a list of dictionaries
+    top_suggested_songs = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
+
+
+def __str__(self):
         return f"Wrap for {self.user.email} on {self.created_at}"

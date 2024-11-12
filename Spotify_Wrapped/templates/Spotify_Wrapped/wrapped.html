@@ -70,27 +70,27 @@
                 <div class="slide-content-2">
                     <!-- Left-Center Section for Number 1 Song -->
                     <div class="left-center-section-2">
-                        <h2>Number 1 Song</h2>
+                        <h2> Number 1 Song </h2>
                         <div class="album-cover-placeholder-2">
-                            <p>Album Cover</p>
+                            <img src="{{ top_tracks.0.album_image_url }}" alt="First Track Image" class = "Top_Three">
                         </div>
-                        <p class="song-name">Song Name</p>
+                        <p class="song-name">{{ top_tracks.0.track_name }} </p>
                     </div>
                     <!-- Center Section for Number 1 Album -->
                     <div class="center-section-2">
                         <h2>Number 1 Album</h2>
                         <div class="album-cover-placeholder-2">
-                            <p>Album Cover</p>
+                           <img src="{{ top_album.album_image_url }}" alt="First Artist Image" class = "Top_Three">
                         </div>
-                        <p class="song-name">Album Name</p>
+                        <p class="song-name"> {{ top_album.album_name }} </p>
                     </div>
                     <!-- Right Section for Number 1 Album -->
                     <div class="right-center-section-2">
                         <h2>Number 1 Artist</h2>
                         <div class="album-cover-placeholder-2">
-                            <p>Artist Image</p>
+                            <img src="{{ top_artists.0.artist_image_url }}" alt="First Artist Image" class = "Top_Three">
                         </div>
-                        <p class="song-name">Artist Name</p>
+                        <p class="song-name"> {{ top_artists.0.artist_name }}</p>
                     </div>
                 </div>
             </div>
@@ -104,37 +104,37 @@
                 <div class="slide-content-3">
                     <!-- Left-Center Section for Number 1 Song -->
                     <div class="left-center-section">
-                        <h2>Playlist 1</h2>
+                        <h2>{{ top_playlists.0.playlist_name }}</h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Playlist Cover</p>
+                            <img src="{{ top_playlists.0.playlist_image_url }}" alt="First Playlist Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Center Section for Number 1 Album -->
                     <div class="center-section">
-                        <h2>Playlist 2</h2>
+                        <h2>{{ top_playlists.1.playlist_name }}</h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Playlist Cover</p>
+                            <img src="{{ top_playlists.1.playlist_image_url }}" alt="Second Playlist Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Right Section for Number 1 Album -->
                     <div class="right-center-section">
-                        <h2>Playlist 3</h2>
+                        <h2>{{ top_playlists.2.playlist_name }}</h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Playlist Cover</p>
+                            <img src="{{ top_playlists.2.playlist_image_url }}" alt="Third Playlist Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
                 <div class="slide-content-3-2">
                     <div class="left-center-section">
-                        <h2>Playlist 4</h2>
+                        <h2>{{ top_playlists.3.playlist_name }}</h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Playlist Cover</p>
+                            <img src="{{ top_playlists.3.playlist_image_url }}" alt="Fourth Playlist Image" class = "Top_Five">
                         </div>
                     </div>
                     <div class="right-center-section">
-                        <h2>Playlist 5</h2>
+                        <h2>{{ top_playlists.4.playlist_name }}</h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Playlist Cover</p>
+                            <img src="{{ top_playlists.4.playlist_image_url }}" alt="Fifth Playlist Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
@@ -143,8 +143,8 @@
             <div class="carousel-item transition-slide4">
                 <div class="slide-content">
                     <div class="centered-rectangle-8">
-                        <h1>You've listened, jammed, and probably danced.</h1>
-                        <p>Now, see what your music really sounds like.</p>
+                        <h1> <em> You've listened, jammed, and probably danced.</em> </h1>
+                        <p> <strong> Now, see what your music really sounds like. </strong> </p>
                     </div>
                 </div>
             </div>
@@ -158,37 +158,37 @@
                 <div class="slide-content-3">
                     <!-- Left-Center Section for Number 1 Song -->
                     <div class="left-center-section">
-                        <h2>Artist 1</h2>
+                        <h2> <strong> {{ top_artists.0.artist_name }} </strong> </h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Artist Cover</p>
+                            <img src="{{ top_artists.0.artist_image_url }}" alt="First Artist Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Center Section for Number 1 Album -->
                     <div class="center-section">
-                        <h2>Artist 2</h2>
+                        <h2> <strong> {{ top_artists.1.artist_name }} </strong> </h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Artist Cover</p>
+                            <img src="{{ top_artists.1.artist_image_url }}" alt="Second Artist Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Right Section for Number 1 Album -->
                     <div class="right-center-section">
-                        <h2>Artist 3</h2>
+                        <h2> <strong> {{ top_artists.2.artist_name }} </strong> </h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Artist Cover</p>
+                            <img src="{{ top_artists.2.artist_image_url }}" alt="Third Artist Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
                 <div class="slide-content-3-2">
                     <div class="left-center-section">
-                        <h2>Artist 4</h2>
+                        <h2> <strong> {{ top_artists.3.artist_name }} </strong> </h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Artist Cover</p>
+                            <img src="{{ top_artists.3.artist_image_url }}" alt="Fourth Artist Image" class = "Top_Five">
                         </div>
                     </div>
                     <div class="right-center-section">
-                        <h2>Artist 5</h2>
+                        <h2> <strong> {{ top_artists.4.artist_name }} </strong> </h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Artist Cover</p>
+                            <img src="{{ top_artists.4.artist_image_url }}" alt="Fifth Artist Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
@@ -209,23 +209,23 @@
                     <ul class="genre-list">
                         <li>
                             <i class="fas fa-star genre-icon1"></i>
-                            <span class="genre-text">Warehouse Techno</span>
+                            <span class="genre-text"> <strong> {{ top_genres.0 }} </strong> </span>
                         </li>
                         <li>
                             <i class="fas fa-star genre-icon2"></i>
-                            <span class="genre-text">Pop</span>
+                            <span class="genre-text"> <strong> {{ top_genres.1 }} </strong> </span>
                         </li>
                         <li>
                             <i class="fas fa-star genre-icon3"></i>
-                            <span class="genre-text">Anime Soundtrack</span>
+                            <span class="genre-text"> <strong> {{ top_genres.2 }} </strong> </span>
                         </li>
                         <li>
                             <i class="fas fa-star genre-icon4"></i>
-                            <span class="genre-text">Float House</span>
+                            <span class="genre-text"> <strong> {{ top_genres.3 }} </strong> </span>
                         </li>
                         <li>
                             <i class="fas fa-star genre-icon5"></i>
-                            <span class="genre-text">Indie</span>
+                            <span class="genre-text"> <strong> {{ top_genres.4 }} </strong> </span>
                         </li>
                     </ul>
                 </div>
@@ -240,37 +240,37 @@
                 <div class="slide-content-3">
                     <!-- Left-Center Section for Number 1 Song -->
                     <div class="left-center-section">
-                        <h2>Song 1</h2>
+                        <h2><strong> {{ top_tracks.0.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_tracks.0.album_image_url }}" alt="First Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Center Section for Number 1 Album -->
                     <div class="center-section">
-                        <h2>Song 2</h2>
+                        <h2><strong> {{ top_tracks.1.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_tracks.1.album_image_url }}" alt="Second Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Right Section for Number 1 Album -->
                     <div class="right-center-section">
-                        <h2>Song 3</h2>
+                        <h2><strong> {{ top_tracks.2.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_tracks.2.album_image_url }}" alt="Third Track Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
                 <div class="slide-content-3-2">
                     <div class="left-center-section">
-                        <h2>Song 4</h2>
+                        <h2><strong> {{ top_tracks.3.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_tracks.3.album_image_url }}" alt="Fourth Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <div class="right-center-section">
-                        <h2>Song 5</h2>
+                        <h2><strong> {{ top_tracks.4.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_tracks.4.album_image_url }}" alt="Fifth Track Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
@@ -294,37 +294,37 @@
                 <div class="slide-content-3">
                     <!-- Left-Center Section for Number 1 Song -->
                     <div class="left-center-section">
-                        <h2>Song 1</h2>
+                        <h2><strong> {{ top_suggested_songs.0.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_suggested_songs.0.album_image_url }}" alt="First Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Center Section for Number 1 Album -->
                     <div class="center-section">
-                        <h2>Song 2</h2>
+                        <h2><strong> {{ top_suggested_songs.1.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_suggested_songs.1.album_image_url }}" alt="Second Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <!-- Right Section for Number 1 Album -->
                     <div class="right-center-section">
-                        <h2>Song 3</h2>
+                        <h2><strong> {{ top_suggested_songs.2.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_suggested_songs.2.album_image_url }}" alt="Third Track Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
                 <div class="slide-content-3-2">
                     <div class="left-center-section">
-                        <h2>Song 4</h2>
+                        <h2><strong> {{ top_suggested_songs.3.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_suggested_songs.3.album_image_url }}" alt="Fourth Track Image" class = "Top_Five">
                         </div>
                     </div>
                     <div class="right-center-section">
-                        <h2>Song 5</h2>
+                        <h2><strong> {{ top_suggested_songs.4.track_name }} </strong></h2>
                         <div class="album-cover-placeholder-3">
-                            <p>Song Cover</p>
+                            <img src="{{ top_suggested_songs.4.album_image_url }}" alt="Fifth Track Image" class = "Top_Five">
                         </div>
                     </div>
                 </div>
