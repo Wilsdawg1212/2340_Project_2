@@ -157,7 +157,7 @@
 
 .centered-rectangle-8 p {
     font-size: 1.8rem;
-    font-family: 'Chewy', sans-serif;;
+    font-family: 'Chewy', sans-serif;
 }
 
 /* Slide 2 Specific Layout */
@@ -190,6 +190,10 @@
 .left-center-section {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .left-center-section h2 {
@@ -197,12 +201,20 @@
     font-family: 'Chewy', sans-serif;
     color: #ffffff;
     margin-bottom: 15px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .left-center-section-2 {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
     margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .left-center-section-2 h2 {
@@ -211,12 +223,20 @@
     color: #ffffff;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Left-Center Section Styling */
 .center-section {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .center-section h2 {
@@ -225,12 +245,20 @@
     color: #ffffff;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .center-section-2 {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
     margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .center-section-2 h2 {
@@ -239,12 +267,20 @@
     color: #ffffff;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Right-Center Section Styling */
 .right-center-section {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .right-center-section h2 {
@@ -253,12 +289,20 @@
     color: #ffffff;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .right-center-section-2 {
     text-align: center;
     margin-right: 20px; /* Space between left and right sections, if any */
     margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .right-center-section-2 h2 {
@@ -267,6 +311,10 @@
     color: #ffffff;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Album Cover Placeholder */
@@ -309,6 +357,10 @@
     font-family: 'Chewy', sans-serif;
     margin-top: 10px;
     letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Fade-in Animation */
