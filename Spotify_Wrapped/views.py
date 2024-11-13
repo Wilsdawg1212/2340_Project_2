@@ -169,6 +169,7 @@ def create_wrap(request):
         time_range = request.POST.get('time_range', 'medium_term')
         theme = request.POST.get('theme', 'dark')
         print("Hello world 1")
+        print(time_range)
 
         # Get the user's Spotify access token
         access_token = refresh_spotify_token(request.user)
@@ -178,8 +179,8 @@ def create_wrap(request):
         top_artists = get_top_artists(access_token, time_range)
         top_album = get_top_album(top_tracks)
         top_genres = get_top_genres(top_artists)
-        top_playlists = get_top_playlists(access_token)
-        top_suggested_songs = get_suggested_songs(access_token)
+        top_playlists = get_top_playlists(access_token, time_range)
+        top_suggested_songs = get_suggested_songs(access_token, time_range)
         print("Hello world 2")
 
         # Create a new Wrap entry

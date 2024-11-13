@@ -90,12 +90,12 @@ def get_top_genres(top_artists):
     five_sorted_genres.append(top_artists[0]['artist_id'])
     return five_sorted_genres
 
-def get_top_playlists(access_token):
+def get_top_playlists(access_token, time_range='medium_term', limit=5):
     headers = {'Authorization': f'Bearer {access_token}'}
     response = requests.get(
         'https://api.spotify.com/v1/me/playlists',
         headers=headers,
-        params={'limit': 5}
+        params={'limit': limit, 'time_range': time_range}
     )
     data = response.json().get('items', [])
     return [
@@ -109,7 +109,7 @@ def get_top_playlists(access_token):
         for playlist in data
     ]
 
-def get_suggested_songs(access_token):
+def get_suggested_songs(access_token, time_range='medium_term', limit=5):
     """
     This function gets the top tracks, artists, and genres of a user and then
     uses this data to request song recommendations from the Spotify API.
@@ -135,7 +135,7 @@ def get_suggested_songs(access_token):
     response = requests.get(
         'https://api.spotify.com/v1/recommendations',
         headers=headers,
-        params={**seeds, 'limit': 5, 'market': 'US'}  # Customize the number of recommendations and market
+        params={**seeds, 'limit': limit, 'market': 'US', 'time_range': time_range}  # Customize the number of recommendations and market
     )
 
     # Step 5: Check for errors and handle the response
