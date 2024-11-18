@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wrappify</title>
+    
+    <meta property="og:title" content="{{ wrap.title }}">
+    <meta property="og:description" content="Check out {{ user.username }}'s personalized Wrapped Summary! Discover their top artists, tracks, and more.">
+    <meta property="og:image" content="{{ wrap.top_album.album_image_url }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

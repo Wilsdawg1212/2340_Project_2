@@ -125,3 +125,9 @@
     text-decoration: none; /* Ensure underline doesn't appear on hover */
     color: #007bff; /* Change color to indicate hover (customize as needed) */
 }
+
+.wrap-widget.empty-widget {
+    background-color: #efecec; /* Light grey for empty widget */
+    color: #b6b5b5; /* Muted text color */
+    min-height: 250px;
+}

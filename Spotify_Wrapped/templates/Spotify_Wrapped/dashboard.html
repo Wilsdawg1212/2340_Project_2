@@ -52,7 +52,13 @@
                     </a>
                 {% endfor %}
             {% else %}
-                <p>No wraps found. Create your first wrap!</p>
+                <div class="wrap-widget empty-widget">
+                    <div class="wrap-image">
+                        <div class="empty-placeholder"></div>
+                    </div>
+                    <div class="wrap-details">
+                    </div>
+                </div>
             {% endif %}
         </div>
         </main>

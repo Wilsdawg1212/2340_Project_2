@@ -209,6 +209,8 @@ def wrap_detail(request, wrap_id):
 
     # Render the template with the wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {
+        'wrap': wrap,
+        'wrap_id': wrap.wrap_id,
         'title': wrap.title,
         'theme': wrap.theme,
         'time_range': wrap.get_time_range_display(),
@@ -219,3 +221,15 @@ def wrap_detail(request, wrap_id):
         'top_playlists': wrap.top_playlists,
         'top_suggested_songs': wrap.top_suggested_songs,
     })
+
+
+@login_required
+def update_visibility(request, wrap_id):
+    wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+    if request.method == "POST":
+        is_public = request.POST.get("is_public") == "true"
+        wrap.is_public = is_public
+        wrap.save()
+
+    # Render the same page with updated wrap data
+    return render(request, 'Spotify_Wrapped/wrapped.html', {'wrap': wrap})

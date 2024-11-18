@@ -17,4 +17,5 @@ urlpatterns = [
     path('generate_wrap/', views.create_wrap, name='generate_wrap'),
     path('feed/', views.feed_view, name='feed'),
     path('wrap/<uuid:wrap_id>/', views.wrap_detail, name='wrap_detail'),
+    path("wrap/<uuid:wrap_id>/update-visibility/", views.update_visibility, name="update_visibility"),
 ]
