@@ -151,3 +151,9 @@
             background-color: #7513f3;
             color: white;
         }
+        /* Positioning the Theme Switcher next to Google Translate */
+        #theme-switcher {
+            position: absolute !important;
+            top: 10px;
+            left: 250px;
+        }

@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="{% static 'css/contact_dev.css' %}">
     <title>Send Feedback</title>
 </head>
-<body>
+<body class="dark"> <!-- Default theme set to dark -->
     <!-- Google Translate Element -->
-    <div id="google_translate_element"></div>
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
+
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme" class="label">Choose Theme:</label>
+        <select id="theme" onchange="document.body.className = this.value;">
+            <option value="dark" selected>Dark</option> <!-- Default selected value is dark -->
+            <option value="light">Light</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
 
     <!-- Go Back Button -->
     <a href="javascript:history.back()" class="go-back">Go Back</a>
@@ -20,7 +30,7 @@
         <p>If you’d like us to follow up, please include your email address in the feedback section.</p>
         
         <form>
-            <label for="feedback">Feedback</label>
+            <label for="feedback" class="label">Feedback</label>
             <textarea id="feedback" name="feedback" placeholder="Enter your feedback here..." required></textarea>
             <button type="submit" class="submit-button">SEND</button>
         </form>
@@ -33,5 +43,230 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
+
+<style>
+    /* Google Translate dropdown styling */
+    #google_translate_element select {
+        border-radius: 5px;
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    /* Theme Switcher container with flex to align label and dropdown horizontally */
+    #theme-switcher {
+        position: absolute;
+        top: 10px;
+        left: 250px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Theme dropdown styling */
+    #theme {
+        border-radius: 5px;
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    /* Dark theme (Default) */
+    body.dark {
+        background-color: #170a42;
+        color: white;
+    }
+
+    .dark .label {
+        color: white;
+    }
+
+    .dark .container {
+        background-color: #1c1c1c;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .dark .go-back, .dark .submit-button {
+        background-color: #170a42;
+        color: white;
+        border: 1px solid white;
+    }
+
+    .dark .go-back:hover, .dark .submit-button:hover {
+        background-color: white;
+        color: #170a42;
+    }
+
+    .dark #theme, .dark #google_translate_element select {
+        background-color: #170a42;
+        color: white;
+        border: 1px solid white;
+    }
+
+    .dark .form-input {
+        background-color: #2f2f2f;
+        color: white;
+        border: 2px solid #7513f3; /* Purple border for dark mode */
+    }
+
+    .dark .form-input:focus {
+        border-color: #7513f3; /* Purple focus border */
+    }
+
+    /* Light theme */
+    body.light {
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    .light .label {
+        color: #333;
+    }
+
+    .light .container {
+        background-color: #ffffff;
+        color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .light .go-back, .light .submit-button {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #333;
+    }
+
+    .light .go-back:hover, .light .submit-button:hover {
+        background-color: #e0e0e0;
+        color: #333;
+    }
+
+    .light #theme, .light #google_translate_element select {
+        background-color: #f4f4f4;
+        color: #333;
+        border: 1px solid #333;
+    }
+
+    .light .form-input {
+        background-color: #f9f9f9;
+        color: #333;
+        border: 2px solid #ccc;
+    }
+
+    .light .form-input:focus {
+        border-color: #333;
+    }
+
+    /* Neon theme */
+    body.neon {
+        background-color: #1c1c1c;
+        color: #0fdfd9;
+    }
+
+    .neon .label {
+        color: #0fdfd9;
+    }
+
+    .neon .container {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .neon .go-back, .neon .submit-button {
+        background-color: #0fdfd9;
+        color: #0f0f0f;
+        border: 1px solid #0fdfd9;
+    }
+
+    .neon .go-back:hover, .neon .submit-button:hover {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+    }
+
+    .neon #theme, .neon #google_translate_element select {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+        border: 1px solid #0fdfd9;
+    }
+
+    .neon .form-input {
+        background-color: #0f0f0f;
+        color: #0fdfd9;
+        border: 2px solid #0fdfd9;
+    }
+
+    .neon .form-input:focus {
+        border-color: #0fdfd9;
+    }
+
+    /* Styling for form input fields */
+    .form-input {
+        height: 50px;
+        border-radius: 20px;
+        padding: 0 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .container {
+        width: 400px;
+        text-align: center;
+    }
+
+    .form-container {
+        margin-top: 120px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .label {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+        margin-bottom: 0px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Button Styling */
+    .btn {
+        padding: 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .go-back, .submit-button {
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .divider {
+        margin: 20px 0;
+        font-size: 12px;
+        color: #A0A0A0;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
