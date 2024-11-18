@@ -8,7 +8,7 @@
     {% load static %}
     
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
 </head>
 <body>
     <div class="full-container">
@@ -29,6 +29,44 @@
         <main class="content">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="welcome-text">Welcome, {{ user.username }}! Here is the feed</h1>
+            </div>
+            <div class="wraps-container">
+                {% if wraps %}
+                    {% for wrap in wraps %}
+                        <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
+                            <div class="wrap-widget">
+                                <div class="wrap-image">
+                                    {% if wrap.top_album and wrap.top_album.album_image_url %}
+                                        <img src="{{ wrap.top_album.album_image_url }}" alt="Top Album Cover">
+                                    {% else %}
+                                        <img src="{% static 'placeholder.jpg' %}" alt="No Album Cover Available">
+                                    {% endif %}
+                                </div>
+                                <div class="wrap-details">
+                                    <h3>{{ wrap.title }}</h3>
+                                    <p>By: {{ wrap.user.email }}</p>
+                                    <p>Time Range: {{ wrap.get_time_range_display }}</p>
+                                    <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
+                                    <button class="favorite-btn" data-wrap-id="{{ wrap.wrap_id }}">
+                                        {% if wrap in user.favorites.all %}
+                                            ❤️ Favorited ({{ wrap.favorited_by_users.count }})
+                                        {% else %}
+                                            🤍 Favorite ({{ wrap.favorited_by_users.count }})
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <div class="wrap-widget empty-widget">
+                        <div class="wrap-image">
+                            <div class="empty-placeholder"></div>
+                        </div>
+                        <div class="wrap-details">
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </main>
     </div>

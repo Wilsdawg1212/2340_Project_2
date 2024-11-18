@@ -28,6 +28,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)  # For authentication
     username = models.CharField(max_length=50, unique=True)  # Display name
     password = models.CharField(max_length=128)  # Secure password storage
+    favorites = models.ManyToManyField('Wrap', related_name='favorited_by_users', blank=True)
 
     # Spotify-Specific Information
     spotify_id = models.CharField(max_length=50, blank=True, null=True)  # Store user's Spotify ID

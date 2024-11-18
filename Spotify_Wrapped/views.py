@@ -166,7 +166,6 @@ def create_wrap(request):
         top_genres = get_top_genres(top_artists)
         top_playlists = get_top_playlists(access_token, time_range)
         top_suggested_songs = get_suggested_songs(access_token, time_range)
-        print("Hello world 2")
 
         # Create a new Wrap entry
         Wrap.objects.create(
@@ -200,7 +199,8 @@ def create_wrap(request):
 
 
 def feed_view(request):
-    return render(request, 'Spotify_Wrapped/feed.html')
+    wraps = Wrap.objects.filter(is_public=True).order_by('-created_at')
+    return render(request, 'Spotify_Wrapped/feed.html', context={'wraps': wraps})
 
 
 def wrap_detail(request, wrap_id):
