@@ -1,37 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    
-    {% load static %}
-    
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
-<body>
-    <div class="full-container">
+<body class="dark"> <!-- Default to dark theme -->
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Sidebar Container -->
+    <div class="dashboard-container">
         <!-- Sidebar -->
         <nav class="sidebar">
-           <h2 class="text-center">My Wrapped</h2>
-            <div class="nav flex-column">
+            <h2>My Wrapped</h2>
+            <div class="nav-links">
                 <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="sidebar-link" href="#">Generate a Wrapped</a>
                 <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
                 <a class="sidebar-link" href="#">Settings</a>
             </div>
             <a class="sidebar-link logout-link" href="{% url 'logout' %}">Log out</a>
         </nav>
 
-        <!-- Main Content -->
+        <!-- Main Content Area -->
         <main class="content">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
+            <header class="content-header">
+                <h1>Welcome, {{ user.username }}!</h1>
+            </header>
+
+            <!-- Dashboard Features Section -->
+            <div class="features">
+                <h2>Your Dashboard</h2>
+                <p>Explore your music stats, manage playlists, and more.</p>
+                <div class="stats">
+                    <div class="stat-item">Top Artists</div>
+                    <div class="stat-item">Top Tracks</div>
+                    <div class="stat-item">Recent Playlists</div>
+                </div>
             </div>
         </main>
     </div>
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+        themeSwitcher.addEventListener('change', function() {
+            document.body.className = this.value;
+        });
+    </script>
 </body>
 </html>
-
