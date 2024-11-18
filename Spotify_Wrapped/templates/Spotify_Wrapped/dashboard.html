@@ -30,6 +30,30 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
             </div>
+            
+            <div class="wraps-container">
+                {% if wraps %}
+                    {% for wrap in wraps %}
+                        <div class="wrap-widget">
+                            <div class="wrap-image">
+                                {% if wrap.top_album and wrap.top_album.album_image_url %}
+                                    <img src="{{ wrap.top_album.album_image_url }}" alt="Top Album Cover">
+                                {% else %}
+                                    <img src="{% static 'placeholder.jpg' %}" alt="No Album Cover Available">
+                                {% endif %}
+                            </div>
+                            <div class="wrap-details">
+                                <h3>{{ wrap.title }}</h3>
+                                <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
+                                <p>Theme: {{ wrap.theme }}</p>
+                                <p>Time Range: {{ wrap.get_time_range_display }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No wraps found. Create your first wrap!</p>
+                {% endif %}
+            </div>
         </main>
     </div>
 

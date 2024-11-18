@@ -77,26 +77,11 @@ def index(request):
 def dashboard(request):
     user = request.user
 
+    wraps = Wrap.objects.filter(user=request.user)
     return render(request, 'Spotify_Wrapped/dashboard.html', {
         'user': user,
+        'wraps': wraps
     })
-
-# def check_account(request):
-#     user = request.user
-#     # Refresh the token if necessary
-#     access_token = refresh_spotify_token(user)
-#
-#     # Use the access token to make API requests if needed (optional)
-#     headers = {
-#         'Authorization': f'Bearer {access_token}'
-#     }
-#     spotify_response = requests.get('https://api.spotify.com/v1/me', headers=headers)
-#
-#     # Render the dashboard and pass Spotify data to the template
-#     return render(request, 'Spotify_Wrapped/dashboard.html', {
-#         'user': user,
-#         'spotify_data': spotify_response.json()
-#     })
 
 def spotify_callback(request):
     # Check if there's an authorization code in the request (from Spotify OAuth)

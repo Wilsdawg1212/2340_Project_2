@@ -63,3 +63,50 @@
     font-size: 1.5rem;
     color: #333;
 }
+
+.wraps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual widget */
+.wrap-widget {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.wrap-widget:hover {
+    transform: translateY(-5px);
+}
+
+/* Album image styling */
+.wrap-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Details inside the widget */
+.wrap-details {
+    padding: 15px;
+}
+
+.wrap-details h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.wrap-details p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
