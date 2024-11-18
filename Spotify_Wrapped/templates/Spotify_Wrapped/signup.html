@@ -10,6 +10,16 @@
 <!-- Google Translate Element -->
 <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
 
+<!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
