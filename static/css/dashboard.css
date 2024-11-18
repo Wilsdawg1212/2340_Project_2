@@ -67,8 +67,12 @@
 .wraps-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 30px;
+    padding: 30px;
+    max-height: 790px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    background-color: #f9f9f9; /* Optional: Background color for the container */
 }
 
 /* Individual widget */
@@ -109,4 +113,15 @@
     font-size: 14px;
     color: #666;
     margin: 5px 0;
+}
+
+.wraps-container a {
+    text-decoration: none;
+    color: inherit; /* Optional: Inherit text color from parent */
+}
+
+/* Optional: Add hover effects to indicate interactivity */
+.wraps-container a:hover {
+    text-decoration: none; /* Ensure underline doesn't appear on hover */
+    color: #007bff; /* Change color to indicate hover (customize as needed) */
 }

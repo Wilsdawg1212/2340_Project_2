@@ -16,4 +16,5 @@ urlpatterns = [
     path('title_wrap/', views.title_wrap, name='title_wrap'),
     path('generate_wrap/', views.create_wrap, name='generate_wrap'),
     path('feed/', views.feed_view, name='feed'),
+    path('wrap/<uuid:wrap_id>/', views.wrap_detail, name='wrap_detail'),
 ]

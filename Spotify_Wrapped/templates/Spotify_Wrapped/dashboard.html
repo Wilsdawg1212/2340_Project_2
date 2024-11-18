@@ -31,9 +31,10 @@
                 <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
             </div>
             
-            <div class="wraps-container">
-                {% if wraps %}
-                    {% for wrap in wraps %}
+        <div class="wraps-container">
+            {% if wraps %}
+                {% for wrap in wraps %}
+                    <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
                         <div class="wrap-widget">
                             <div class="wrap-image">
                                 {% if wrap.top_album and wrap.top_album.album_image_url %}
@@ -44,16 +45,16 @@
                             </div>
                             <div class="wrap-details">
                                 <h3>{{ wrap.title }}</h3>
-                                <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
-                                <p>Theme: {{ wrap.theme }}</p>
                                 <p>Time Range: {{ wrap.get_time_range_display }}</p>
+                                <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
                             </div>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <p>No wraps found. Create your first wrap!</p>
-                {% endif %}
-            </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>No wraps found. Create your first wrap!</p>
+            {% endif %}
+        </div>
         </main>
     </div>
 

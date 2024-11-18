@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Spotify_Wrapped.forms import SignupForm
 from Spotify_Wrapped.forms import LoginForm
 from django.contrib.auth import authenticate, login
@@ -182,17 +182,6 @@ def create_wrap(request):
             top_suggested_songs=top_suggested_songs,
         )
 
-        print(title)
-        print(theme)
-        print(time_range)
-        print(top_tracks)
-        print(top_artists)
-        print(top_album)
-        print(top_genres)
-        print(top_playlists)
-        print(top_suggested_songs)
-        print("Hello world 3")
-
         return render(request, 'Spotify_Wrapped/wrapped.html', {
             'title': title,
             'theme': theme,
@@ -212,3 +201,21 @@ def create_wrap(request):
 
 def feed_view(request):
     return render(request, 'Spotify_Wrapped/feed.html')
+
+
+def wrap_detail(request, wrap_id):
+    # Get the wrap from the database
+    wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+
+    # Render the template with the wrap data
+    return render(request, 'Spotify_Wrapped/wrapped.html', {
+        'title': wrap.title,
+        'theme': wrap.theme,
+        'time_range': wrap.get_time_range_display(),
+        'top_tracks': wrap.top_tracks,
+        'top_artists': wrap.top_artists,
+        'top_genres': wrap.top_genres,
+        'top_album': wrap.top_album,
+        'top_playlists': wrap.top_playlists,
+        'top_suggested_songs': wrap.top_suggested_songs,
+    })
