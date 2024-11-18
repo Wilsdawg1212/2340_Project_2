@@ -225,3 +225,5 @@ def create_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
 
+def feed_view(request):
+    return render(request, 'Spotify_Wrapped/feed.html')

@@ -15,4 +15,5 @@ urlpatterns = [
     path('contact_dev/', views.contact_dev, name='contact_dev'),
     path('title_wrap/', views.title_wrap, name='title_wrap'),
     path('generate_wrap/', views.create_wrap, name='generate_wrap'),
+    path('feed/', views.feed_view, name='feed'),
 ]

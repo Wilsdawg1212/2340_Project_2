@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Feed</title>
     
     {% load static %}
     
@@ -28,7 +28,7 @@
         <!-- Main Content -->
         <main class="content">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="welcome-text">Welcome, {{ user.username }}!</h1>
+                <h1 class="welcome-text">Welcome, {{ user.username }}! Here is the feed</h1>
             </div>
         </main>
     </div>
@@ -36,4 +36,3 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
-
