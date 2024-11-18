@@ -132,13 +132,29 @@
 }
 
 .Top_Three {
-    width: 200px; /* Adjust image size */
+    width: 200px; /* Square size for album cover */
     height: 200px;
+    background-color: #ffffff; /* Light gray background */
+    border: 2px solid #ffffff; /* Border to define the square */
+    border-radius: 8px; /* Slight rounding to mimic an album cover */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto; /* Center album cover horizontally */
 }
 
 .Top_Five {
-    width: 150px; /* Adjust image size */
-    height: 150px;
+    width: 140px; /* Square size for album cover */
+    height: 140px;
+    background-color: #ffffff; /* Light gray background */
+    border: 2px solid #ffffff; /* Border to define the square */
+    border-radius: 8px; /* Slight rounding to mimic an album cover */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto; /* Center album cover horizontally */
 }
 
 .centered-rectangle-8 {
@@ -317,38 +333,38 @@
     overflow-wrap: break-word;
 }
 
-/* Album Cover Placeholder */
-.album-cover-placeholder-2 {
-    width: 200px; /* Square size for album cover */
-    height: 200px;
-    background-color: #ddd; /* Light gray background */
-    border: 2px solid #aaa; /* Border to define the square */
-    border-radius: 8px; /* Slight rounding to mimic an album cover */
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto; /* Center album cover horizontally */
-    font-family: 'Chewy', sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-}
+/*!* Album Cover Placeholder *!*/
+/*.album-cover-placeholder-2 {*/
+/*    width: 200px; !* Square size for album cover *!*/
+/*    height: 200px;*/
+/*    background-color: #ddd; !* Light gray background *!*/
+/*    border: 2px solid #aaa; !* Border to define the square *!*/
+/*    border-radius: 8px; !* Slight rounding to mimic an album cover *!*/
+/*    color: #333;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 10px auto; !* Center album cover horizontally *!*/
+/*    font-family: 'Chewy', sans-serif;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.album-cover-placeholder-3 {
-    width: 140px; /* Square size for album cover */
-    height: 140px;
-    background-color: #ddd; /* Light gray background */
-    border: 2px solid #aaa; /* Border to define the square */
-    border-radius: 8px; /* Slight rounding to mimic an album cover */
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto; /* Center album cover horizontally */
-    font-family: 'Chewy', sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-}
+/*.album-cover-placeholder-3 {*/
+/*    width: 140px; !* Square size for album cover *!*/
+/*    height: 140px;*/
+/*    background-color: #ddd; !* Light gray background *!*/
+/*    border: 2px solid #aaa; !* Border to define the square *!*/
+/*    border-radius: 8px; !* Slight rounding to mimic an album cover *!*/
+/*    color: #333;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 10px auto; !* Center album cover horizontally *!*/
+/*    font-family: 'Chewy', sans-serif;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*}*/
 
 /* Song Name Styling */
 .song-name {
