@@ -32,6 +32,25 @@
             new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
         }
     </script>
+    
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+
+        // Check localStorage for a saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark theme if no theme is saved
+            document.body.className = savedTheme;
+            themeSwitcher.value = savedTheme; // Set the select dropdown to match the saved theme
+        });
+        
+        // Listen for theme changes and save to localStorage
+        themeSwitcher.addEventListener('change', function() {
+            const selectedTheme = this.value;
+            document.body.className = selectedTheme;
+            localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
+        });
+    </script>
+    
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
