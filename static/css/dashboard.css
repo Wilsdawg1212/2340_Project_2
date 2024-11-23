@@ -113,13 +113,7 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Main content styling */
-.content {
-    flex: 1;
-    padding: 2rem;
-    background-color: #f8f9fa;
 
-}
 
 .welcome-text {
     font-weight: 600;
@@ -198,7 +192,7 @@ body.dark #theme-switcher {
     max-height: 790px; /* Set the maximum height */
     overflow-y: auto; /* Enable vertical scrolling */
     border-radius: 10px; /* Optional: Add rounded corners */
-    background-color: #f9f9f9; /* Optional: Background color for the container */
+    /*background-color: #170a42; !* Optional: Background color for the container *!*/
 }
 
 /* Individual widget */
