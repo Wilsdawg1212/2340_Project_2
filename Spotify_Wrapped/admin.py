@@ -1,6 +1,6 @@
 # your_app/admin.py
 from django.contrib import admin
-from .models import CustomUser
+from .models import CustomUser, Wrap
 from django.contrib.auth.admin import UserAdmin
 
 class CustomUserAdmin(UserAdmin):
@@ -21,3 +21,11 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = ('date_joined', 'last_login')
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+class WrapAdmin(admin.ModelAdmin):
+    model = Wrap
+    list_display = ('user', 'title', 'created_at', 'theme', 'time_range')
+    search_fields = ('user__email', 'title')  # Enable search by user email and title
+    list_filter = ('theme', 'time_range')  # Filter by theme and time range
+
+admin.site.register(Wrap, WrapAdmin)  # Register the Wrap model with its admin class

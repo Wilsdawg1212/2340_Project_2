@@ -1,7 +1,9 @@
 # Create your models here.
+import uuid
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.contrib.auth import get_user_model
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
@@ -26,6 +28,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)  # For authentication
     username = models.CharField(max_length=50, unique=True)  # Display name
     password = models.CharField(max_length=128)  # Secure password storage
+    favorites = models.ManyToManyField('Wrap', related_name='favorited_by_users', blank=True)
 
     # Spotify-Specific Information
     spotify_id = models.CharField(max_length=50, blank=True, null=True)  # Store user's Spotify ID
@@ -47,3 +50,34 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+User = get_user_model()
+
+class Wrap(models.Model):
+    wrap_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the wrap was created
+
+    title = models.CharField(max_length=255, default='Untitled Wrap')  # Title for the wrap
+    theme = models.CharField(max_length=50, default='dark')  # Theme for the wrap
+    time_range = models.CharField(max_length=20, choices=[  # Time range selection
+        ('short_term', 'Last 4 Weeks'),
+        ('medium_term', 'Last 6 Months'),
+        ('long_term', 'All Time')
+    ], default='medium_term')
+
+    # Fields for Top Tracks
+    top_tracks = models.JSONField()  # Use a JSONField to store track data as a list of dictionaries
+
+    # Fields for Top Artists
+    top_artists = models.JSONField()  # Use a JSONField to store artist data as a list of dictionaries
+    top_genres = models.JSONField(null=True, blank=True)
+    top_album = models.JSONField(null=True, blank=True)
+
+    top_playlists = models.JSONField(null=True, blank=True)  # Store playlist data as a list of dictionaries
+    top_suggested_songs = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
+    is_public = models.BooleanField(default=True)
+
+
+def __str__(self):
+        return f"Wrap for {self.user.email} on {self.created_at}"

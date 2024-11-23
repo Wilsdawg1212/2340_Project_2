@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+</head>
+<body>
+    <div class="full-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+           <h2 class="text-center">My Wrapped</h2>
+            <div class="nav flex-column">
+                <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="sidebar-link" href="{% url 'title_wrap' %}">Generate a Wrapped</a>
+                <a class="sidebar-link" href="{% url 'feed' %}"> View Other's Wraps</a>
+                <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
+                <a class="sidebar-link" href="#">Settings</a>
+            </div>
+            <a class="sidebar-link logout-link" href="{% url 'logout' %}">Log out</a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="welcome-text">Welcome, {{ user.username }}! Here is the feed</h1>
+            </div>
+            <div class="wraps-container">
+                {% if wraps %}
+                    {% for wrap in wraps %}
+                        <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
+                            <div class="wrap-widget">
+                                <div class="wrap-image">
+                                    {% if wrap.top_album and wrap.top_album.album_image_url %}
+                                        <img src="{{ wrap.top_album.album_image_url }}" alt="Top Album Cover">
+                                    {% else %}
+                                        <img src="{% static 'placeholder.jpg' %}" alt="No Album Cover Available">
+                                    {% endif %}
+                                </div>
+                                <div class="wrap-details">
+                                    <h3>{{ wrap.title }}</h3>
+                                    <p>By: {{ wrap.user.email }}</p>
+                                    <p>Time Range: {{ wrap.get_time_range_display }}</p>
+                                    <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
+                                    <button class="favorite-btn" data-wrap-id="{{ wrap.wrap_id }}">
+                                        {% if wrap in user.favorites.all %}
+                                            ❤️ Favorited ({{ wrap.favorited_by_users.count }})
+                                        {% else %}
+                                            🤍 Favorite ({{ wrap.favorited_by_users.count }})
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <div class="wrap-widget empty-widget">
+                        <div class="wrap-image">
+                            <div class="empty-placeholder"></div>
+                        </div>
+                        <div class="wrap-details">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

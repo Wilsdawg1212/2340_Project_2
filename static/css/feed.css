@@ -1,0 +1,156 @@
+.full-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #170a42;
+    color: #fff;
+    width: 350px; /* Fixed width for sidebar */
+    min-height: 100vh;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Align content to the left */
+    text-align: center; /* Center the entire block horizontally */
+}
+
+.nav {
+    width: 100%;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    margin-top: 27px;
+    text-align: center; /* Center-aligns the top heading */
+    width: 100%; /* Ensures it spans the full width for consistent centering */
+}
+
+.sidebar-link {
+    color: #a0aec0;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.sidebar-link:hover {
+    color: white;
+}
+
+.logout-link {
+    margin-top: auto; /* Pushes logout link to the bottom */
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%; /* Ensures full-width for centering */
+    display: flex;
+    justify-content: center; /* Centers the text horizontally */
+}
+
+/* Main content styling */
+.content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f8f9fa;
+
+}
+
+.welcome-text {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.wraps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 30px;
+    max-height: 790px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    background-color: #f9f9f9; /* Optional: Background color for the container */
+}
+
+/* Individual widget */
+.wrap-widget {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.wrap-widget:hover {
+    transform: translateY(-5px);
+}
+
+/* Album image styling */
+.wrap-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Details inside the widget */
+.wrap-details {
+    padding: 15px;
+}
+
+.wrap-details h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.wrap-details p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.wraps-container a {
+    text-decoration: none;
+    color: inherit; /* Optional: Inherit text color from parent */
+}
+
+/* Optional: Add hover effects to indicate interactivity */
+.wraps-container a:hover {
+    text-decoration: none; /* Ensure underline doesn't appear on hover */
+    color: #007bff; /* Change color to indicate hover (customize as needed) */
+}
+
+.wrap-widget.empty-widget {
+    background-color: #efecec; /* Light grey for empty widget */
+    color: #b6b5b5; /* Muted text color */
+    min-height: 250px;
+}
+.feed-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.wraps-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.wrap-widget {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}

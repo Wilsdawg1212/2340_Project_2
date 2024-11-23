@@ -38,7 +38,8 @@
             <h2>My Wrapped</h2>
             <div class="nav-links">
                 <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
-                <a class="sidebar-link" href="#">Generate a Wrapped</a>
+                <a class="sidebar-link" href="{% url 'title_wrap' %}">Generate a Wrapped</a>
+                <a class="sidebar-link" href="{% url 'feed' %}"> View Other's Wraps</a>
                 <a class="sidebar-link" href="{% url 'link_account' %}">Link to Spotify Here</a>
                 <a class="sidebar-link" href="#">Settings</a>
             </div>
@@ -51,7 +52,36 @@
                 <h1>Welcome, {{ user.username }}!</h1>
             </header>
 
-            <!-- Dashboard Features Section -->
+        <div class="wraps-container">
+            {% if wraps %}
+                {% for wrap in wraps %}
+                    <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
+                        <div class="wrap-widget">
+                            <div class="wrap-image">
+                                {% if wrap.top_album and wrap.top_album.album_image_url %}
+                                    <img src="{{ wrap.top_album.album_image_url }}" alt="Top Album Cover">
+                                {% else %}
+                                    <img src="{% static 'placeholder.jpg' %}" alt="No Album Cover Available">
+                                {% endif %}
+                            </div>
+                            <div class="wrap-details">
+                                <h3>{{ wrap.title }}</h3>
+                                <p>Time Range: {{ wrap.get_time_range_display }}</p>
+                                <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div class="wrap-widget empty-widget">
+                    <div class="wrap-image">
+                        <div class="empty-placeholder"></div>
+                    </div>
+                    <div class="wrap-details">
+                    </div>
+                </div>
+            {% endif %}
+        </div>
         </main>
     </div>
 
@@ -65,7 +95,7 @@
             document.body.className = savedTheme;
             themeSwitcher.value = savedTheme; // Set the select dropdown to match the saved theme
         });
-        
+
         // Listen for theme changes and save to localStorage
         themeSwitcher.addEventListener('change', function() {
             const selectedTheme = this.value;
@@ -75,3 +105,4 @@
     </script>
 </body>
 </html>
+

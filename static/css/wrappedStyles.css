@@ -1,0 +1,518 @@
+/* Custom styles for Wrappify */
+
+/* Navbar styles */
+.navbar {
+    font-family: Arial, sans-serif;
+    background-color: #23d14b;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    margin-right: 15px;
+}
+
+.nav-link:last-child {
+    margin-right: 0;
+}
+
+/* Slide 1 Styles */
+.carousel-item {
+    height: 80vh; /* Fixed height to avoid layout issues */
+    background: linear-gradient(135deg, #0c52ae, #0bda3b);
+    color: #fff;
+    animation: fadeIn .5s ease-in-out;
+}
+
+.carousel-item:nth-child(1) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExamtyem02c211NDUyam95dmt1ZGliNjF0b2k3YndrajZuaWtneHh3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kiWlpxD6hXmvTL8dio/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(2) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZmNTR1YTA2eXpuZHpkOWtoM2FmYnFibm5xYTNrZTFhdTM2dTZnMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6EhNwxVvOYkfwhyg/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: 50%;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(3) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3d2N2RiNDF6cGY2dTdzcGRyZzZ2ZmtycjdpaHNlZDVuNTE2dnJiMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEduRygZtVxloohws/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(4) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdhZG9jMDhqNHJvaW1kY3RhY290Znc4NjlvMDl2N29hdm1pNGgwaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Fbox1ygIqnga5dLinz/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(5) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHR2Zjhua2dvZ3FrZG5zbGdiMm44d2oyOTBwN3N6ZDlpZ3l3c2ZpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPtjElfqwMOTbH2/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: 68%;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(6) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzhrOGR1dHR5Mjc4NnF1azA2bTJhbmRtdjBoMGVoaW94N2hxYmdtdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jXuOAS4Bv7LX10xYyc/giphy-downsized-large.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(7) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTg2cDFwc2VyMXV4eXZiMHE1Y3Fia2Nuc2Z5cW8xcGtsOHc0YjdidiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT8qBhrlNooHBYR9f2/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(8) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExejVoY2p3bTlzYW11ZW16bDZpeG50dWxlN2J4em50c213Y3VlcTJqNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YqhIK6Gbor6CLeloBq/giphy-downsized-large.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+.carousel-item:nth-child(9) {
+    background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHp4ejZhY25obzdlMmQydjU5ZG5ndnY3ZGN3M2RvMTgxN3dvY2syZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7buijTqhjxjbEqjK/giphy.gif);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start hidden */
+    animation: fadeInBackground 1s ease forwards; /* Fade-in animation */
+}
+
+.slide-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%; /* Ensure full height for centering */
+}
+
+.centered-rectangle {
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+    padding: 60px 80px;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+}
+
+.centered-rectangle h1 {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    font-family: 'Chewy', sans-serif;
+    letter-spacing: 3px;
+}
+
+.centered-rectangle p {
+    font-size: 2.3rem;font-family: 'Chewy', sans-serif;
+    letter-spacing: 3px;
+}
+
+.Top_Three {
+    width: 200px; /* Square size for album cover */
+    height: 200px;
+    background-color: #ffffff; /* Light gray background */
+    border: 2px solid #ffffff; /* Border to define the square */
+    border-radius: 8px; /* Slight rounding to mimic an album cover */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto; /* Center album cover horizontally */
+}
+
+.Top_Five {
+    width: 140px; /* Square size for album cover */
+    height: 140px;
+    background-color: #ffffff; /* Light gray background */
+    border: 2px solid #ffffff; /* Border to define the square */
+    border-radius: 8px; /* Slight rounding to mimic an album cover */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto; /* Center album cover horizontally */
+}
+
+.centered-rectangle-8 {
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+    padding: 60px 80px;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+    text-align: center;
+}
+
+.centered-rectangle-8 h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-family: 'Chewy', sans-serif;
+}
+
+.centered-rectangle-8 p {
+    font-size: 1.8rem;
+    font-family: 'Chewy', sans-serif;
+}
+
+/* Slide 2 Specific Layout */
+.slide-content-2 {
+    display: flex;
+    justify-content: space-around; /* Evenly space the items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 90%;
+    padding: 0 5%; /* Add some horizontal padding for spacing */
+}
+
+.slide-header {
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-family: 'Chewy', sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    letter-spacing: 3px;
+}
+
+.note-icon1 {
+    padding-right: 20px;
+}
+
+.note-icon2 {
+    padding-left: 20px;
+}
+
+/* Left-Center Section Styling */
+.left-center-section {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.left-center-section h2 {
+    font-size: 1.1rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.left-center-section-2 {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.left-center-section-2 h2 {
+    font-size: 1.1rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Left-Center Section Styling */
+.center-section {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.center-section h2 {
+    font-size: 1.2rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.center-section-2 {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.center-section-2 h2 {
+    font-size: 1.2rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Right-Center Section Styling */
+.right-center-section {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.right-center-section h2 {
+    font-size: 1.1rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.right-center-section-2 {
+    text-align: center;
+    margin-right: 20px; /* Space between left and right sections, if any */
+    margin-bottom: 8%;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.right-center-section-2 h2 {
+    font-size: 1.1rem;
+    font-family: 'Chewy', sans-serif;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/*!* Album Cover Placeholder *!*/
+/*.album-cover-placeholder-2 {*/
+/*    width: 200px; !* Square size for album cover *!*/
+/*    height: 200px;*/
+/*    background-color: #ddd; !* Light gray background *!*/
+/*    border: 2px solid #aaa; !* Border to define the square *!*/
+/*    border-radius: 8px; !* Slight rounding to mimic an album cover *!*/
+/*    color: #333;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 10px auto; !* Center album cover horizontally *!*/
+/*    font-family: 'Chewy', sans-serif;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.album-cover-placeholder-3 {*/
+/*    width: 140px; !* Square size for album cover *!*/
+/*    height: 140px;*/
+/*    background-color: #ddd; !* Light gray background *!*/
+/*    border: 2px solid #aaa; !* Border to define the square *!*/
+/*    border-radius: 8px; !* Slight rounding to mimic an album cover *!*/
+/*    color: #333;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 10px auto; !* Center album cover horizontally *!*/
+/*    font-family: 'Chewy', sans-serif;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/* Song Name Styling */
+.song-name {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-family: 'Chewy', sans-serif;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    max-width: 200px; /* Adjust based on your design */
+    word-wrap: break-word; /* Ensures long words break and wrap to the next line */
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Carousel Indicators */
+.carousel-indicators li {
+    background-color: #33bc12; /* Green color for indicators */
+    width: 30px;
+    height: 2px;
+}
+
+.carousel-indicators .active {
+    background-color: #03f80e; /* Darker green for active indicator */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .centered-rectangle {
+        padding: 40px 20px;
+    }
+
+    .centered-rectangle h1 {
+        font-size: 2.5rem;
+    }
+
+    .centered-rectangle p {
+        font-size: 1.2rem;
+    }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none; /* Hides the icon inside the button */
+}
+
+/* Slide 4 Specific Layout */
+.slide-content-6 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5%;
+    color: #fff;
+    height: 70%;
+}
+
+.slide-content-6 h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Chewy', sans-serif;
+    letter-spacing: 2px;
+}
+
+.sun-icon {
+    font-size: 12rem; /* Large size for the sun */
+    color: #10d919; /* Bright yellow color for the sun */
+    margin-right: 60px; /* Space between sun and genre list */
+}
+
+/* Genre List Styling */
+.genre-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #ffffff; /* Bright color for text */
+    font-family: 'Chewy', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.genre-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.genre-list li .genre-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Unique Icon Styles */
+.genre-icon1 {
+    color: #ffdd00; /* Yellow */
+    padding-right: 5px;
+}
+
+.genre-icon2 {
+    color: #32cd32; /* Lime Green */
+    padding-left: 30px;
+}
+
+.genre-icon3 {
+    color: #ffa500; /* Orange */
+    padding-left: 55px;
+}
+
+.genre-icon4 {
+    color: #ff74fd; /* Purple */
+    padding-left: 30px;
+}
+
+.genre-icon5 {
+    color: #ff001e; /* Red */
+    padding-left: 5px;
+}
+
+.genre-text {
+    margin-left: 10px;
+}
+
+/* Slide 4 Styles */
+.slide-content-3 {
+    display: flex;
+    justify-content: space-around; /* Evenly space the items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 40%;
+    padding: 0 5%; /* Add some horizontal padding for spacing */
+}
+
+.slide-content-3-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

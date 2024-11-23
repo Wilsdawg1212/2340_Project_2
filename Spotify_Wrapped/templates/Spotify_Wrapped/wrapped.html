@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrappify</title>
+    
+    <meta property="og:title" content="{{ wrap.title }}">
+    <meta property="og:description" content="Check out {{ user.username }}'s personalized Wrapped Summary! Discover their top artists, tracks, and more.">
+    <meta property="og:image" content="{{ wrap.top_album.album_image_url }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/wrappedStyles.css' %}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Wrappify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExample" class="carousel slide mt-4" data-ride="carousel">
+        
+        <!-- Progress Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExample" data-slide-to="1"></li>
+            <li data-target="#carouselExample" data-slide-to="2"></li>
+            <li data-target="#carouselExample" data-slide-to="3"></li>
+            <li data-target="#carouselExample" data-slide-to="4"></li>
+            <li data-target="#carouselExample" data-slide-to="5"></li>
+            <li data-target="#carouselExample" data-slide-to="6"></li>
+            <li data-target="#carouselExample" data-slide-to="7"></li>
+            <li data-target="#carouselExample" data-slide-to="8"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="slide-content">
+                    <div class="centered-rectangle">
+                        <h1><i class="fas fa-music"></i> Wrapped</h1>
+                        <p>Your Personalized Music Journey</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    My Listening Favorites
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-2">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section-2">
+                        <h2> Number 1 Song </h2>
+                        <div class="album-cover-placeholder-2">
+                            <img src="{{ top_tracks.0.album_image_url }}" alt="First Track Image" class = "Top_Three">
+                        </div>
+                        <p class="song-name">{{ top_tracks.0.track_name }} </p>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section-2">
+                        <h2>Number 1 Album</h2>
+                        <div class="album-cover-placeholder-2">
+                           <img src="{{ top_album.album_image_url }}" alt="First Artist Image" class = "Top_Three">
+                        </div>
+                        <p class="song-name"> {{ top_album.album_name }} </p>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section-2">
+                        <h2>Number 1 Artist</h2>
+                        <div class="album-cover-placeholder-2">
+                            <img src="{{ top_artists.0.artist_image_url }}" alt="First Artist Image" class = "Top_Three">
+                        </div>
+                        <p class="song-name"> {{ top_artists.0.artist_name }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Most Listened to Playlists
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2>{{ top_playlists.0.playlist_name }}</h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_playlists.0.playlist_image_url }}" alt="First Playlist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2>{{ top_playlists.1.playlist_name }}</h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_playlists.1.playlist_image_url }}" alt="Second Playlist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2>{{ top_playlists.2.playlist_name }}</h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_playlists.2.playlist_image_url }}" alt="Third Playlist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2>{{ top_playlists.3.playlist_name }}</h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_playlists.3.playlist_image_url }}" alt="Fourth Playlist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2>{{ top_playlists.4.playlist_name }}</h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_playlists.4.playlist_image_url }}" alt="Fifth Playlist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+                <div class="slide-content">
+                    <div class="centered-rectangle-8">
+                        <h1> <em> You've listened, jammed, and probably danced.</em> </h1>
+                        <p> <strong> Now, see what your music really sounds like. </strong> </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 5 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Most Listened to Artists
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2> <strong> {{ top_artists.0.artist_name }} </strong> </h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_artists.0.artist_image_url }}" alt="First Artist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2> <strong> {{ top_artists.1.artist_name }} </strong> </h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_artists.1.artist_image_url }}" alt="Second Artist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2> <strong> {{ top_artists.2.artist_name }} </strong> </h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_artists.2.artist_image_url }}" alt="Third Artist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2> <strong> {{ top_artists.3.artist_name }} </strong> </h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_artists.3.artist_image_url }}" alt="Fourth Artist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2> <strong> {{ top_artists.4.artist_name }} </strong> </h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_artists.4.artist_image_url }}" alt="Fifth Artist Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 6 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    My Top Genres
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-6">
+                    
+                    <div class="sun-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    
+                    <ul class="genre-list">
+                        <li>
+                            <i class="fas fa-star genre-icon1"></i>
+                            <span class="genre-text"> <strong> {{ top_genres.0 }} </strong> </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon2"></i>
+                            <span class="genre-text"> <strong> {{ top_genres.1 }} </strong> </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon3"></i>
+                            <span class="genre-text"> <strong> {{ top_genres.2 }} </strong> </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon4"></i>
+                            <span class="genre-text"> <strong> {{ top_genres.3 }} </strong> </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star genre-icon5"></i>
+                            <span class="genre-text"> <strong> {{ top_genres.4 }} </strong> </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Slide 7 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Most Listened to Songs
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2><strong> {{ top_tracks.0.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_tracks.0.album_image_url }}" alt="First Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2><strong> {{ top_tracks.1.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_tracks.1.album_image_url }}" alt="Second Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2><strong> {{ top_tracks.2.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_tracks.2.album_image_url }}" alt="Third Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2><strong> {{ top_tracks.3.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_tracks.3.album_image_url }}" alt="Fourth Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2><strong> {{ top_tracks.4.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_tracks.4.album_image_url }}" alt="Fifth Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 8 -->
+            <div class="carousel-item">
+                <div class="slide-content">
+                    <div class="centered-rectangle-8">
+                        <h1>Now that we know you...</h1>
+                        <p>Here's a few recommendations you may like</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 9 -->
+            <div class="carousel-item">
+                <div class="slide-header">
+                    <i class="fas fa-music note-icon1"></i>
+                    Song Recommendations
+                    <i class="fas fa-music note-icon2"></i>
+                </div>
+                <div class="slide-content-3">
+                    <!-- Left-Center Section for Number 1 Song -->
+                    <div class="left-center-section">
+                        <h2><strong> {{ top_suggested_songs.0.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_suggested_songs.0.album_image_url }}" alt="First Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Center Section for Number 1 Album -->
+                    <div class="center-section">
+                        <h2><strong> {{ top_suggested_songs.1.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_suggested_songs.1.album_image_url }}" alt="Second Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <!-- Right Section for Number 1 Album -->
+                    <div class="right-center-section">
+                        <h2><strong> {{ top_suggested_songs.2.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_suggested_songs.2.album_image_url }}" alt="Third Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-content-3-2">
+                    <div class="left-center-section">
+                        <h2><strong> {{ top_suggested_songs.3.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_suggested_songs.3.album_image_url }}" alt="Fourth Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                    <div class="right-center-section">
+                        <h2><strong> {{ top_suggested_songs.4.track_name }} </strong></h2>
+                        <div class="album-cover-placeholder-3">
+                            <img src="{{ top_suggested_songs.4.album_image_url }}" alt="Fifth Track Image" class = "Top_Five">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
