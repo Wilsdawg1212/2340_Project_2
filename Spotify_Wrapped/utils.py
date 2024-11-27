@@ -119,13 +119,12 @@ def get_suggested_songs(access_token, time_range='medium_term', limit=5):
     top_tracks = get_top_tracks(access_token)
     top_artists = get_top_artists(access_token)
     top_genres = get_top_genres(top_artists)
+    print(top_genres)
 
     # Step 3: Build seed parameters using the top tracks, artists, and genres
     seeds = {}
     if top_artists:
         seeds['seed_artists'] = ','.join([artist['artist_id'] for artist in top_artists[:2]])  # Limit to top 5 artists
-    if top_genres:
-        seeds['seed_genres'] = top_genres[5]  # Limit to top 5 genres
     if top_tracks:
         seeds['seed_tracks'] = ','.join([track['track_id'] for track in top_tracks[:2]])  # Limit to top 5 tracks
 

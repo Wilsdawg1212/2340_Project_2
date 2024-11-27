@@ -52,7 +52,7 @@
                 <h1>Welcome, {{ user.username }}!</h1>
             </header>
 
-        <div class="wraps-container">
+        <div class="wraps-container" style="height: 80%">
             {% if wraps %}
                 {% for wrap in wraps %}
                     <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
