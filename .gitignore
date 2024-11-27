@@ -1,6 +1,6 @@
 # Virtual environments
 .venv/
-env/
+.env/
 venv/
 
 # Byte-compiled / optimized / compiled Python files
