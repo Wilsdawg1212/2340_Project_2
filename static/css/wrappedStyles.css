@@ -3,12 +3,24 @@
 /* Navbar styles */
 .navbar {
     font-family: Arial, sans-serif;
-    background-color: #23d14b;
+    background-color: #170a42;
     height: 70px;
     display: flex;
     align-items: center;
+    color: white !important;
 }
 
+.navbar-light .navbar-brand {
+    color: white !important; /* Override default color */
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(255, 255, 255);
+    border-color: white;
+}
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
