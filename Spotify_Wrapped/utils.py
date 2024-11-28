@@ -156,3 +156,32 @@ def get_suggested_songs(access_token, time_range='medium_term', limit=5):
         }
         for track in data
     ]
+
+
+import openai
+from django.conf import settings
+
+openai.api_key = settings.OPENAI_API_KEY
+
+
+def get_insight_from_llm(wrap_data, question):
+    # Prepare the conversation messages
+    messages = [
+        {"role": "system", "content": "You are an assistant that provides creative insights about music data."},
+        {"role": "user", "content": f"User's Spotify data: {wrap_data}\n{question}"}
+    ]
+
+    try:
+        # Use the v1/chat/completions endpoint
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Use gpt-4 if needed
+            messages=messages,
+            max_tokens=100  # Adjust max tokens based on expected response length
+        )
+
+        # Extract the assistant's reply
+        return response['choices'][0]['message']['content'].strip()
+
+    except openai.error.OpenAIError as e:
+        # Handle any API errors gracefully
+        return f"Error: {e}"

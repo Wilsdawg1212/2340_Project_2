@@ -144,7 +144,7 @@ from .models import Wrap
 def title_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
-from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs, get_insight_from_llm
 @login_required
 def create_wrap(request):
     if request.method == 'POST':
@@ -166,6 +166,18 @@ def create_wrap(request):
         top_playlists = get_top_playlists(access_token, time_range)
         top_suggested_songs = get_suggested_songs(access_token, time_range)
 
+        # Prepare data for the LLM prompt
+        wrap_data = {
+            "top_tracks": top_tracks,
+            "top_artists": top_artists,
+            "top_genres": top_genres,
+            "top_album": top_album,
+        }
+        question = "Based on this user's Spotify data, what is their spirit animal?"
+
+        # Call the LLM for the spirit animal
+        spirit_animal = get_insight_from_llm(wrap_data, question)
+
         # Create a new Wrap entry
         Wrap.objects.create(
             user=request.user,
@@ -178,6 +190,7 @@ def create_wrap(request):
             top_album=top_album,
             top_playlists=top_playlists,
             top_suggested_songs=top_suggested_songs,
+            spirit_animal=spirit_animal,
         )
 
         return render(request, 'Spotify_Wrapped/wrapped.html', {
@@ -190,6 +203,7 @@ def create_wrap(request):
             'top_album': top_album,
             'top_playlists': top_playlists,
             'top_suggested_songs': top_suggested_songs,
+            'spirit_animal': spirit_animal,
         })
 
     # If the request method is not POST, render the form
