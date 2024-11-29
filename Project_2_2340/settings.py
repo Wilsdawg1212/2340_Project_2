@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'myapp.coolify.io',
+    'l8ogcss8ccswo0sk8ok4s08g.5.161.235.180.sslip.io',
 ]
 
 
