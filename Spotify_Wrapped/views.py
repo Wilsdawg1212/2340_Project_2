@@ -177,6 +177,7 @@ def create_wrap(request):
 
         # Call the LLM for the spirit animal
         spirit_animal = get_insight_from_llm(wrap_data, question)
+        print(f"Generated spirit animal: {spirit_animal}")
 
         # Create a new Wrap entry
         Wrap.objects.create(
