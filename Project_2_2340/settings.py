@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-05u+4blho-(xy4q=z)#y)a*r=6l5w^m+f2vlw6nn@0n!032zg%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'myapp.coolify.io',
+]
 
 
 # Application definition
