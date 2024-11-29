@@ -246,3 +246,50 @@ def update_visibility(request, wrap_id):
 
     # Render the same page with updated wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {'wrap': wrap})
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+import json
+
+@login_required
+@csrf_exempt
+def toggle_favorite(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            wrap_id = data.get("wrap_id")
+
+            # Fetch the wrap object
+            wrap = Wrap.objects.get(wrap_id=wrap_id)
+            user = request.user
+
+            # Debugging: Print data
+            print(f"User: {user.email}, Wrap: {wrap.title}")
+
+            # Toggle the like status
+            if user in wrap.liked_by_users.all():
+                wrap.liked_by_users.remove(user)
+                is_liked = False
+            else:
+                wrap.liked_by_users.add(user)
+                is_liked = True
+
+            # Debugging: Print the result
+            print(f"Is Liked: {is_liked}, Likes Count: {wrap.liked_by_users.count()}")
+
+            # Return the updated count and status
+            return JsonResponse({
+                "success": True,
+                "is_liked": is_liked,
+                "likes_count": wrap.liked_by_users.count()
+            })
+        except Wrap.DoesNotExist:
+            print("Wrap not found.")
+            return JsonResponse({"success": False, "message": "Wrap not found."}, status=404)
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            return JsonResponse({"success": False, "message": str(e)}, status=400)
+
+    print("Invalid request method.")
+    return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)

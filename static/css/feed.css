@@ -67,12 +67,12 @@
 .wraps-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 50px; /* Increased from 30px to 40px */
     padding: 30px;
-    max-height: 790px; /* Set the maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    background-color: #f9f9f9; /* Optional: Background color for the container */
+    max-height: 790px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #f9f9f9;
 }
 
 /* Individual widget */
@@ -145,12 +145,66 @@
     justify-content: center;
 }
 
+/*.wrap-widget {*/
+/*    width: 300px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 8px;*/
+/*    overflow: hidden;*/
+/*    background-color: #fff;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    text-align: left;*/
+/*    position: relative; !* Add this for positioning the favorite button *!*/
+/*}*/
+
 .wrap-widget {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #fff;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: visible;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative; /* Add this for positioning the favorite button */
+
+}
+
+.wrap-widget:hover {
+    transform: translateY(-5px);
+}
+
+.favorite-btn {
+    position: absolute; /* Position the button relative to the widget */
+    bottom: -10px; /* Move slightly below the widget */
+    right: -10px; /* Move slightly to the right of the widget */
+    width: 40px; /* Set the size of the circle */
+    height: 40px; /* Make it a circle */
+    display: flex; /* Center the heart inside the circle */
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%; /* Makes the button a circle */
+    background-color: #f8f9fa; /* Light background color */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+.favorite-btn:hover {
+    background-color: #ffeded; /* Light red on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.favorite-btn:focus {
+    outline: none; /* Remove default outline on focus */
+}
+
+.favorite-btn svg {
+    fill: #e74c3c; /* Red heart color */
+    width: 20px; /* Adjust heart size */
+    height: 20px;
+}
+
+.wrap-details p:last-child {
+    margin-bottom: 20px; /* Increase padding below the last paragraph */
 }

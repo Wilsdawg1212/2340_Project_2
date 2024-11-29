@@ -18,4 +18,5 @@ urlpatterns = [
     path('feed/', views.feed_view, name='feed'),
     path('wrap/<uuid:wrap_id>/', views.wrap_detail, name='wrap_detail'),
     path("wrap/<uuid:wrap_id>/update-visibility/", views.update_visibility, name="update_visibility"),
+    path('toggle-favorite/', views.toggle_favorite, name='toggle_favorite'),
 ]

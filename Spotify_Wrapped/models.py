@@ -79,6 +79,8 @@ class Wrap(models.Model):
     is_public = models.BooleanField(default=True)
     spirit_animal = models.CharField(max_length=255, null=True, blank=True)
 
+    liked_by_users = models.ManyToManyField(User, related_name='liked_wraps', blank=True)
+
 
 def __str__(self):
         return f"Wrap for {self.user.email} on {self.created_at}"
