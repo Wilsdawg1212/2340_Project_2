@@ -42,6 +42,7 @@ body {
     margin-bottom: 1.5rem;
     text-align: center; /* Center-aligns the top heading */
     width: 100%; /* Ensures it spans the full width for consistent centering */
+    padding-top: 10px;
 }
 
 .nav-links {

@@ -1,85 +1,362 @@
-.full-container {
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
+/*.full-container {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    display: flex;*/
+/*}*/
 
-/* Sidebar styling */
-.sidebar {
-    background-color: #170a42;
-    color: #fff;
-    width: 350px; /* Fixed width for sidebar */
-    min-height: 100vh;
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: start; /* Align content to the left */
-    text-align: center; /* Center the entire block horizontally */
-}
+/*form {*/
+/*    color: white;*/
+/*}*/
 
-.nav {
-    width: 100%;
-}
+/*!* Sidebar styling *!*/
+/*.sidebar {*/
+/*    background-color: #2D3748;*/
+/*    color: white;*/
+/*    width: 307px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 1.8rem;*/
+/*    align-items: start;*/
+/*}*/
 
-.sidebar h2 {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    margin-top: 27px;
-    text-align: center; /* Center-aligns the top heading */
-    width: 100%; /* Ensures it spans the full width for consistent centering */
-}
+/*.sidebar h2 {*/
+/*    font-size: 1.5rem;*/
+/*    margin-bottom: 1.5rem;*/
+/*    text-align: center; !* Center-aligns the top heading *!*/
+/*    width: 100%; !* Ensures it spans the full width for consistent centering *!*/
+/*    padding-top: 10px;*/
+/*}*/
 
-.sidebar-link {
-    color: #a0aec0;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-}
+/*.nav {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 10px;*/
+/*}*/
 
-.sidebar-link:hover {
-    color: white;
-}
+/*.sidebar h2 {*/
+/*    color: #fff;*/
+/*    font-weight: 600;*/
+/*    margin-bottom: 1.5rem;*/
+/*    margin-top: 27px;*/
+/*    text-align: center; !* Center-aligns the top heading *!*/
+/*    width: 100%; !* Ensures it spans the full width for consistent centering *!*/
+/*}*/
 
-.logout-link {
-    margin-top: auto; /* Pushes logout link to the bottom */
-    padding-bottom: 1rem;
-    text-align: center;
-    width: 100%; /* Ensures full-width for centering */
-    display: flex;
-    justify-content: center; /* Centers the text horizontally */
-}
+/*.sidebar-link {*/
+/*    color: #a0aec0;*/
+/*    text-decoration: none;*/
+/*    padding: 8px;*/
+/*    display: block;*/
+/*    border-radius: 5px;*/
+/*    transition: color 0.3s ease;*/
+/*}*/
 
-/* Main content styling */
-.content {
-    flex: 1;
-    padding: 2rem;
-    background-color: #f8f9fa;
+/*.sidebar-link:hover,*/
+/*.sidebar-link.logout-link {*/
+/*    color: #ffffff;*/
+/*}*/
 
-}
+/*.logout-link {*/
+/*    margin-top: auto; !* Pushes logout link to the bottom *!*/
+/*    padding-bottom: 1rem;*/
+/*    text-align: center;*/
+/*    width: 100%; !* Ensures full-width for centering *!*/
+/*    display: flex;*/
+/*    justify-content: center; !* Centers the text horizontally *!*/
+/*}*/
 
-.welcome-text {
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #333;
-}
+/*!* Main content styling *!*/
+/*.content {*/
+/*    flex: 1;*/
+/*    padding: 2rem;*/
+/*    background-color: #170a42; !* Dark background *!*/
+/*    color: white;*/
+/*}*/
 
-.wraps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 50px; /* Increased from 30px to 40px */
-    padding: 30px;
-    max-height: 790px;
-    overflow-y: auto;
+/*.content-header {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    border-bottom: 2px solid #7513f3;*/
+/*    padding-bottom: 1rem;*/
+/*}*/
+
+/*.wraps-container {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));*/
+/*    gap: 50px;*/
+/*    padding: 30px;*/
+/*    max-height: 790px; !* Set the maximum height *!*/
+/*    min-height: 790px;*/
+/*    overflow-y: auto; !* Enable vertical scrolling *!*/
+/*    border-radius: 10px; !* Optional: Add rounded corners *!*/
+/*    !*background-color: #170a42; !* Optional: Background color for the container *!*!*/
+/*}*/
+
+/*.wrap-widget {*/
+/*    background: #fff;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 10px;*/
+/*    overflow: hidden;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    text-align: center;*/
+/*    transition: transform 0.2s;*/
+/*    max-height: 350px;*/
+/*}*/
+
+/*.wrap-widget:hover {*/
+/*    transform: translateY(-5px);*/
+/*}*/
+
+/*!* Album image styling *!*/
+/*.wrap-image img {*/
+/*    width: 100%;*/
+/*    height: 200px;*/
+/*    object-fit: cover;*/
+/*    border-bottom: 1px solid #ddd;*/
+/*}*/
+
+/*!* Details inside the widget *!*/
+/*.wrap-details {*/
+/*    padding: 15px;*/
+/*}*/
+
+/*.wrap-details h3 {*/
+/*    font-size: 18px;*/
+/*    color: #333;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.wrap-details p {*/
+/*    font-size: 14px;*/
+/*    color: #666;*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*.wraps-container a {*/
+/*    text-decoration: none;*/
+/*    color: inherit; !* Optional: Inherit text color from parent *!*/
+/*}*/
+
+/*!* Optional: Add hover effects to indicate interactivity *!*/
+/*.wraps-container a:hover {*/
+/*    text-decoration: none; !* Ensure underline doesn't appear on hover *!*/
+/*    color: #007bff; !* Change color to indicate hover (customize as needed) *!*/
+/*}*/
+
+/*.wrap-widget.empty-widget {*/
+/*    background-color: #efecec; !* Light grey for empty widget *!*/
+/*    color: #b6b5b5; !* Muted text color *!*/
+/*    min-height: 250px;*/
+/*}*/
+/*.feed-container {*/
+/*    width: 80%;*/
+/*    margin: auto;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.wraps-list {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 20px;*/
+/*    justify-content: center;*/
+/*}*/
+
+.wrap-widget {
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    overflow: visible;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative; /* Add this for positioning the favorite button */
+
 }
 
 .wrap-widget:hover {
     transform: translateY(-5px);
 }
 
-/* Album image styling */
+/*.favorite-btn {*/
+/*    position: absolute; !* Position the button relative to the widget *!*/
+/*    bottom: -10px; !* Move slightly below the widget *!*/
+/*    right: -10px; !* Move slightly to the right of the widget *!*/
+/*    width: 40px; !* Set the size of the circle *!*/
+/*    height: 40px; !* Make it a circle *!*/
+/*    display: flex; !* Center the heart inside the circle *!*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    border: none;*/
+/*    border-radius: 50%; !* Makes the button a circle *!*/
+/*    background-color: #f8f9fa; !* Light background color *!*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); !* Optional: Add a shadow for depth *!*/
+/*    transition: background-color 0.3s ease, transform 0.2s ease;*/
+/*    z-index: 10; !* Ensure it appears above other elements *!*/
+/*}*/
+
+/*.favorite-btn:hover {*/
+/*    background-color: #ffeded; !* Light red on hover *!*/
+/*    transform: scale(1.1); !* Slightly enlarge on hover *!*/
+/*}*/
+
+/*.favorite-btn:focus {*/
+/*    outline: none; !* Remove default outline on focus *!*/
+/*}*/
+
+/*.favorite-btn svg {*/
+/*    fill: #e74c3c; !* Red heart color *!*/
+/*    width: 20px; !* Adjust heart size *!*/
+/*    height: 20px;*/
+/*}*/
+
+/*.wrap-details p:last-child {*/
+/*    margin-bottom: 20px; !* Increase padding below the last paragraph *!*/
+/*}*/
+
+/*!* Align the checkbox and label *!*/
+/*#showFavorites {*/
+/*    margin-right: 10px; !* Add spacing between the checkbox and label *!*/
+/*    cursor: pointer; !* Change cursor to pointer for interactivity *!*/
+/*}*/
+
+/*label[for="showFavorites"] {*/
+/*    font-size: 16px; !* Adjust the font size for the label *!*/
+/*    color: #333; !* Match the text color with the theme *!*/
+/*    cursor: pointer; !* Ensure the label is clickable *!*/
+/*}*/
+
+/*.welcome-text {*/
+/*    font-weight: 600;*/
+/*    font-size: 1.5rem;*/
+/*    color: #333;*/
+/*    margin-left: auto; !* Push the title to the right *!*/
+/*    text-align: center;*/
+/*}*/
+
+/* General styling */
+.full-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+}
+
+#google_translate_element {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+#theme-switcher {
+    position: absolute;
+    top: 10px;
+    left: 340px;
+    z-index: 1000;
+    color: white;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #2D3748;
+    color: white;
+    width: 307px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem;
+    align-items: start;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center-aligns the top heading */
+    width: 100%; /* Ensures it spans the full width for consistent centering */
+    padding-top: 40px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-link {
+    color: #a0aec0;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.sidebar-link:hover,
+.sidebar-link.logout-link {
+    color: #ffffff;
+}
+
+.logout-link {
+    margin-top: auto;
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Content styling */
+.content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #170a42;
+    color: white;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #7513f3;
+    padding-bottom: 1rem;
+}
+
+/* Wraps container */
+.wraps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 50px;
+    padding: 30px;
+    max-height: 790px;
+    min-height: 790px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.wrap-widget {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: visible;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative; /* Add this for positioning the favorite button */
+    max-height: 350px;
+
+}
+
+.wrap-widget:hover {
+    transform: translateY(-5px);
+}
+
 .wrap-image img {
     width: 100%;
     height: 200px;
@@ -87,7 +364,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-/* Details inside the widget */
 .wrap-details {
     padding: 15px;
 }
@@ -106,103 +382,86 @@
 
 .wraps-container a {
     text-decoration: none;
-    color: inherit; /* Optional: Inherit text color from parent */
-}
-
-/* Optional: Add hover effects to indicate interactivity */
-.wraps-container a:hover {
-    text-decoration: none; /* Ensure underline doesn't appear on hover */
-    color: #007bff; /* Change color to indicate hover (customize as needed) */
-}
-
-.wrap-widget.empty-widget {
-    background-color: #efecec; /* Light grey for empty widget */
-    color: #b6b5b5; /* Muted text color */
-    min-height: 250px;
-}
-.feed-container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.wraps-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.wrap-widget {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: visible;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s;
-    position: relative; /* Add this for positioning the favorite button */
-
-}
-
-.wrap-widget:hover {
-    transform: translateY(-5px);
+    color: inherit;
 }
 
 .favorite-btn {
-    position: absolute; /* Position the button relative to the widget */
-    bottom: -10px; /* Move slightly below the widget */
-    right: -10px; /* Move slightly to the right of the widget */
-    width: 40px; /* Set the size of the circle */
-    height: 40px; /* Make it a circle */
-    display: flex; /* Center the heart inside the circle */
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    border-radius: 50%; /* Makes the button a circle */
-    background-color: #f8f9fa; /* Light background color */
+    border-radius: 50%;
+    background-color: #f8f9fa;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    z-index: 10; /* Ensure it appears above other elements */
 }
 
 .favorite-btn:hover {
-    background-color: #ffeded; /* Light red on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-.favorite-btn:focus {
-    outline: none; /* Remove default outline on focus */
+    background-color: #ffeded;
+    transform: scale(1.1);
 }
 
 .favorite-btn svg {
-    fill: #e74c3c; /* Red heart color */
-    width: 20px; /* Adjust heart size */
+    fill: #e74c3c;
+    width: 20px;
     height: 20px;
 }
 
-.wrap-details p:last-child {
-    margin-bottom: 20px; /* Increase padding below the last paragraph */
-}
-
-/* Align the checkbox and label */
-#showFavorites {
-    margin-right: 10px; /* Add spacing between the checkbox and label */
-    cursor: pointer; /* Change cursor to pointer for interactivity */
-}
-
-label[for="showFavorites"] {
-    font-size: 16px; /* Adjust the font size for the label */
-    color: #333; /* Match the text color with the theme */
-    cursor: pointer; /* Ensure the label is clickable */
-}
-
-.welcome-text {
-    font-weight: 600;
-    font-size: 1.5rem;
+body.light #theme-switcher {
     color: #333;
-    margin-left: auto; /* Push the title to the right */
-    text-align: center;
+}
+
+/* Light Theme */
+body.light {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.light .sidebar {
+    background-color: #d7c9c9;
+    color: #333;
+}
+
+body.light .sidebar-link {
+    color: #333;
+}
+
+body.light .content {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Neon Theme */
+body.neon {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
+
+body.neon .sidebar {
+    background-color: #0fdfd9;
+    color: #0f0f0f;
+}
+
+body.neon .sidebar-link {
+    color: #0f0f0f;
+}
+
+body.neon .content {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
+
+body.neon #theme-switcher {
+    color: #0fdfd9;
+}
+
+/* Dark Theme */
+body.dark #theme-switcher {
+    color: white;
 }
