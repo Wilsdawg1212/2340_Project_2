@@ -248,7 +248,7 @@ def update_visibility(request, wrap_id):
     # Render the same page with updated wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {'wrap': wrap})
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import json
@@ -294,3 +294,21 @@ def toggle_favorite(request):
 
     print("Invalid request method.")
     return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
+
+
+@login_required
+def feed_filtered(request):
+    print("feed view called")
+    wraps = Wrap.objects.all()  # Default: show all wraps
+
+    if request.method == "POST":
+        # Get the checkbox value (will be 'on' if checked)
+        show_favorites = request.POST.get('show_favorites') == 'on'
+
+        if show_favorites:
+            # Filter wraps that the user has liked
+            wraps = Wrap.objects.filter(liked_by_users=request.user)
+            print("Filtered favorites")
+
+    print(wraps)
+    return render(request, 'Spotify_Wrapped/feed.html', {'wraps': wraps})

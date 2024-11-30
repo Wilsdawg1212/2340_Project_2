@@ -27,8 +27,22 @@
 
         <!-- Main Content -->
         <main class="content">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="welcome-text">Welcome, {{ user.username }}! Here is the feed</h1>
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <form id="filterForm" method="POST" action="{% url 'feed_filtered' %}" class="d-flex align-items-center">
+                {% csrf_token %}
+                <div class="form-check form-switch me-2">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input"
+                        id="showFavorites"
+                        name="show_favorites" 
+                        {% if request.POST.show_favorites == 'on' %}checked{% endif %}
+                        onchange="this.form.submit()"
+                    >
+                    <label class="form-check-label" for="showFavorites">Show Only Favorites</label>
+                </div>
+            </form>
+                <h1 class="welcome-text">Explore the Feed</h1>
             </div>
             <div class="wraps-container">
                 {% if wraps %}
@@ -74,15 +88,26 @@
             </div>
         </main>
     </div>
-
+    
+    <!-- Load jQuery (required by Bootstrap 4) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Load Popper.js (required by Bootstrap 4) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Load Bootstrap's JavaScript (after jQuery and Popper.js) -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    
     <script>
+        console.log("JavaScript loaded")
         // JavaScript for toggling favorites
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".favorite-btn").forEach(button => {
+                console.log("button found")
                 button.addEventListener("click", event => {
                     event.preventDefault();
                     const wrapId = button.getAttribute("data-wrap-id");
+                    console.log(`Wrap: ${wrapId}`)
                     fetch(`/toggle-favorite/`, {
                         method: "POST",
                         headers: {
