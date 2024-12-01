@@ -1,18 +1,204 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/contact_dev.css' %}">
     <title>Link Spotify Account</title>
+    <style>
+        /* Theme Switcher container with flex to align label and dropdown horizontally */
+        #theme-switcher {
+            position: absolute;
+            top: 10px;
+            left: 250px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Theme dropdown styling */
+        #theme {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Dark theme dropdown */
+        .dark #theme {
+            background-color: #170a42;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        body.light #theme-switcher label {
+            color: #333; /* Match the text color for the light theme */
+        }
+        
+
+        /* Light theme dropdown */
+        .light #theme {
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #333;
+        }
+
+        /* Neon theme dropdown */
+        .neon #theme {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+            border: 1px solid #0fdfd9;
+        }
+
+        /* Google Translate dropdown styling */
+        #google_translate_element select {
+            border-radius: 5px;
+            padding: 5px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        /* Dark theme (Default) */
+        body.dark {
+            background-color: #170a42;
+            color: white;
+        }
+
+        .dark .container {
+            background-color: #1c1c1c;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .dark .submit-button {
+            background-color: #170a42;
+            color: white;
+            border: none;
+        }
+
+        .dark .submit-button:hover {
+            background-color: white;
+            color: #170a42;
+        }
+
+        /* Light theme */
+        body.light {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        body.light #theme-switcher {
+            color: #333;
+        }
+
+        .light .container {
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .light .submit-button {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .light .submit-button:hover {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        /* Neon theme */
+        body.neon {
+            background-color: #1c1c1c;
+            color: #0fdfd9;
+        }
+
+        .neon .container {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .neon .submit-button {
+            background-color: #0fdfd9;
+            color: #0f0f0f;
+            border: 1px solid #0fdfd9;
+        }
+
+        .neon .submit-button:hover {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+        }
+
+        .container {
+            width: 400px;
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Link Your Spotify Account</h1>
+<body class="dark"> <!-- Default theme set to dark -->
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="position: absolute; top: 10px; left: 10px;"></div>
 
-    <p>To proceed, please link your Spotify account to personalize your experience.</p>
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit">Link Spotify Account</button>
-    </form>
+    <div class="container">
+        <h1>Link Your Spotify Account</h1>
+        <p>To proceed, please link your Spotify account to personalize your experience.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="submit-button">Link Spotify Account</button>
+        </form>
+    </div>
+
+<!-- Theme Switcher Script -->
+    <script>
+        const themeSwitcher = document.getElementById('theme');
+
+        // Check localStorage for a saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark theme if no theme is saved
+            document.body.className = savedTheme;
+            themeSwitcher.value = savedTheme; // Set the select dropdown to match the saved theme
+        });
+        
+        // Listen for theme changes and save to localStorage
+        themeSwitcher.addEventListener('change', function() {
+            const selectedTheme = this.value;
+            document.body.className = selectedTheme;
+            localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
+        });
+    </script>
+
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
