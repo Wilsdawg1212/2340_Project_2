@@ -66,6 +66,14 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'https://wilsonide.com',
+    'https://jskw4488c40wssk4488gkwcs.wilsonide.com',
+    'https://wrappify.wilsonide.com',
+    'http://localhost',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://wrappify.wilsonide.com',
+    'https://jskw4488c40wssk4488gkwcs.wilsonide.com',
     'http://localhost',
 ]
 
