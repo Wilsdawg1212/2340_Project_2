@@ -85,6 +85,24 @@
         </main>
     </div>
 
+    {% if messages %}
+        <div id="custom-alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #f8d7da; color: #721c24; padding: 10px 20px; border: 1px solid #f5c6cb; border-radius: 5px; display: none;">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    
+        <script type="text/javascript">
+            window.onload = function() {
+                let alertBox = document.getElementById("custom-alert");
+                alertBox.style.display = "block"; // Display the custom alert box
+                setTimeout(function() {
+                    alertBox.style.display = "none"; // Hide it after 5 seconds
+                }, 2000);
+            }
+        </script>
+    {% endif %}
+
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script>
         const themeSwitcher = document.getElementById('theme');

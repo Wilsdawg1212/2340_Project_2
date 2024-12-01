@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from Spotify_Wrapped.forms import SignupForm
 from Spotify_Wrapped.forms import LoginForm
 from django.contrib.auth import authenticate, login
@@ -13,6 +13,7 @@ from django.utils import timezone
 from .utils import refresh_spotify_token
 from django.contrib.auth import logout
 from django import forms
+from django.contrib import messages
 
 # all the view functions
 
@@ -144,6 +145,10 @@ def contact_dev(request):
 from .models import Wrap
 
 def title_wrap(request):
+    user = request.user
+    if not user.spotify_id:
+        messages.error(request, "You need to link your Spotify account to create a wrap.")
+        return redirect('dashboard')
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
 THEME_GIFS = {
