@@ -9,7 +9,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Create the productionfiles directory
-RUN mkdir -p /app/productionfiles
 
 # Step 4: Copy the rest of the Django project files
 COPY . .
