@@ -247,8 +247,24 @@ body.dark #theme-switcher {
     color: #007bff; /* Change color to indicate hover (customize as needed) */
 }
 
-.wrap-widget.empty-widget {
-    background-color: #595757; /* Light grey for empty widget */
+body.dark .wrap-widget.empty-widget {
+    background-color: #2D3748; /* Light grey for empty widget */
+    color: #b6b5b5; /* Muted text color */
+    min-height: 250px;
+    max-height: 250px;
+    border: none;
+}
+
+body.neon .wrap-widget.empty-widget {
+    background-color: #0fdfd9; /* Light grey for empty widget */
+    color: #b6b5b5; /* Muted text color */
+    min-height: 250px;
+    max-height: 250px;
+    border: none;
+}
+
+body.light .wrap-widget.empty-widget {
+    background-color: #d7c9c9; /* Light grey for empty widget */
     color: #b6b5b5; /* Muted text color */
     min-height: 250px;
     max-height: 250px;

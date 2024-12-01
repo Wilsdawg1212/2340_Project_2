@@ -148,7 +148,7 @@ def title_wrap(request):
     user = request.user
     if not user.spotify_id:
         messages.error(request, "You need to link your Spotify account to create a wrap.")
-        return redirect('dashboard')
+        return redirect(request.META.get('HTTP_REFERER', '/default-url/'))
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
 THEME_GIFS = {
