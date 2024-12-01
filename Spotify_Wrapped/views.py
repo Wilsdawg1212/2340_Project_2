@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, redirect, get_object_or_404
 from Spotify_Wrapped.forms import SignupForm
 from Spotify_Wrapped.forms import LoginForm
@@ -165,6 +167,7 @@ def create_wrap(request):
         top_genres = get_top_genres(top_artists)
         top_playlists = get_top_playlists(access_token, time_range)
         top_suggested_songs = get_suggested_songs(access_token, time_range)
+        track_uris = [track['track_uri'] for track in top_tracks]
 
         # Prepare data for the LLM prompt
         wrap_data = {
@@ -193,6 +196,20 @@ def create_wrap(request):
             top_suggested_songs=top_suggested_songs,
             spirit_animal=spirit_animal,
         )
+        print('_____________________TOP TRACKS _________________________')
+        print(top_tracks)
+        print('_____________________TOP ARTISTS _________________________')
+        print(top_artists)
+        print('_____________________TOP ALBUM _________________________')
+        print(top_album)
+        print('_____________________TOP SUGGESTED _________________________')
+        print(top_suggested_songs)
+        print('_____________________TOP TRACKS URIs _________________________')
+        print(track_uris)
+        for i in range(len(track_uris)):
+            track_uris[i] = track_uris[i][14:]
+        print(track_uris)
+
 
         return render(request, 'Spotify_Wrapped/wrapped.html', {
             'title': title,
@@ -204,6 +221,8 @@ def create_wrap(request):
             'top_album': top_album,
             'top_playlists': top_playlists,
             'top_suggested_songs': top_suggested_songs,
+            'spotify_access_token': access_token,
+            'track_uris': track_uris,
             'spirit_animal': spirit_animal,
         })
 

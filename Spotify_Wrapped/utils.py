@@ -44,7 +44,8 @@ def get_top_tracks(access_token, time_range='medium_term', limit=10):
             'album_image_url': track['album']['images'][0]['url'],
             'track_url': track['external_urls']['spotify'],
             'duration_ms': track['duration_ms'],
-            'track_id': track['id']
+            'track_id': track['id'],
+            'track_uri': track['uri']
         }
         for track in data
     ]
@@ -130,7 +131,6 @@ def get_suggested_songs(access_token, time_range='medium_term', limit=5):
         seeds['seed_tracks'] = ','.join([track['track_id'] for track in top_tracks[:2]])  # Limit to top 5 tracks
 
     # Step 4: Request song recommendations from Spotify API
-    print(seeds)
     headers = {'Authorization': f'Bearer {access_token}'}
     response = requests.get(
         'https://api.spotify.com/v1/recommendations',
