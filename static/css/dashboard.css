@@ -248,7 +248,9 @@ body.dark #theme-switcher {
 }
 
 .wrap-widget.empty-widget {
-    background-color: #efecec; /* Light grey for empty widget */
+    background-color: #595757; /* Light grey for empty widget */
     color: #b6b5b5; /* Muted text color */
     min-height: 250px;
+    max-height: 250px;
+    border: none;
 }
