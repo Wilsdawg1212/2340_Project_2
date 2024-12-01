@@ -516,3 +516,24 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+.iframe-container {
+    width: 50px; /* Width of the play button area */
+    height: 50px; /* Height of the play button area */
+    overflow: hidden; /* Hide the rest of the iframe */
+    position: relative; /* Makes it a positioned container for the iframe */
+    margin-left: 200px;  /* Moves iframe to the left */
+    margin-top: -115px;   /* Moves iframe up */
+    background-color: transparent;
+}
+
+.cropped-iframe {
+    position: absolute; /* Allows precise positioning */
+    top: -260px; /* Adjust this value to bring the play button into view */
+    left: -710px; /* Adjust this value to center horizontally */
+    width: 800px; /* Full width of the iframe content */
+    height: 600px; /* Full height of the iframe content */
+    border: none; /* Optional: removes iframe border */
+    background-color: transparent;
+}
+
