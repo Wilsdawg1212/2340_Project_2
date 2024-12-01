@@ -144,7 +144,7 @@ from .models import Wrap
 def title_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
-from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs, get_insight_from_llm
 @login_required
 def create_wrap(request):
     if request.method == 'POST':
@@ -166,6 +166,19 @@ def create_wrap(request):
         top_playlists = get_top_playlists(access_token, time_range)
         top_suggested_songs = get_suggested_songs(access_token, time_range)
 
+        # Prepare data for the LLM prompt
+        wrap_data = {
+            "top_tracks": top_tracks,
+            "top_artists": top_artists,
+            "top_genres": top_genres,
+            "top_album": top_album,
+        }
+        question = "Based on this user's Spotify data, what is their spirit animal?"
+
+        # Call the LLM for the spirit animal
+        spirit_animal = get_insight_from_llm(wrap_data, question)
+        print(f"Generated spirit animal: {spirit_animal}")
+
         # Create a new Wrap entry
         Wrap.objects.create(
             user=request.user,
@@ -178,6 +191,7 @@ def create_wrap(request):
             top_album=top_album,
             top_playlists=top_playlists,
             top_suggested_songs=top_suggested_songs,
+            spirit_animal=spirit_animal,
         )
 
         return render(request, 'Spotify_Wrapped/wrapped.html', {
@@ -190,6 +204,7 @@ def create_wrap(request):
             'top_album': top_album,
             'top_playlists': top_playlists,
             'top_suggested_songs': top_suggested_songs,
+            'spirit_animal': spirit_animal,
         })
 
     # If the request method is not POST, render the form
@@ -232,3 +247,68 @@ def update_visibility(request, wrap_id):
 
     # Render the same page with updated wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {'wrap': wrap})
+
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+import json
+
+@login_required
+@csrf_exempt
+def toggle_favorite(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            wrap_id = data.get("wrap_id")
+
+            # Fetch the wrap object
+            wrap = Wrap.objects.get(wrap_id=wrap_id)
+            user = request.user
+
+            # Debugging: Print data
+            print(f"User: {user.email}, Wrap: {wrap.title}")
+
+            # Toggle the like status
+            if user in wrap.liked_by_users.all():
+                wrap.liked_by_users.remove(user)
+                is_liked = False
+            else:
+                wrap.liked_by_users.add(user)
+                is_liked = True
+
+            # Debugging: Print the result
+            print(f"Is Liked: {is_liked}, Likes Count: {wrap.liked_by_users.count()}")
+
+            # Return the updated count and status
+            return JsonResponse({
+                "success": True,
+                "is_liked": is_liked,
+                "likes_count": wrap.liked_by_users.count()
+            })
+        except Wrap.DoesNotExist:
+            print("Wrap not found.")
+            return JsonResponse({"success": False, "message": "Wrap not found."}, status=404)
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            return JsonResponse({"success": False, "message": str(e)}, status=400)
+
+    print("Invalid request method.")
+    return JsonResponse({"success": False, "message": "Invalid request method."}, status=405)
+
+
+@login_required
+def feed_filtered(request):
+    print("feed view called")
+    wraps = Wrap.objects.all()  # Default: show all wraps
+
+    if request.method == "POST":
+        # Get the checkbox value (will be 'on' if checked)
+        show_favorites = request.POST.get('show_favorites') == 'on'
+
+        if show_favorites:
+            # Filter wraps that the user has liked
+            wraps = Wrap.objects.filter(liked_by_users=request.user)
+            print("Filtered favorites")
+
+    print(wraps)
+    return render(request, 'Spotify_Wrapped/feed.html', {'wraps': wraps})

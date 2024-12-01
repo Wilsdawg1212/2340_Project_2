@@ -10,12 +10,33 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/feed.css' %}">
 </head>
-<body>
+<body class="dark">
+<!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <!-- Theme Switcher -->
+    <div id="theme-switcher">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+            <option value="light">Light</option>
+            <option value="dark" selected>Dark</option>
+            <option value="neon">Neon</option>
+        </select>
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <div class="full-container">
         <!-- Sidebar -->
         <nav class="sidebar">
            <h2 class="text-center">My Wrapped</h2>
-            <div class="nav flex-column">
+            <div class="nav">
                 <a class="sidebar-link" href="{% url 'dashboard' %}">Dashboard</a>
                 <a class="sidebar-link" href="{% url 'title_wrap' %}">Generate a Wrapped</a>
                 <a class="sidebar-link" href="{% url 'feed' %}"> View Other's Wraps</a>
@@ -27,14 +48,28 @@
 
         <!-- Main Content -->
         <main class="content">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="welcome-text">Welcome, {{ user.username }}! Here is the feed</h1>
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <form id="filterForm" method="POST" action="{% url 'feed_filtered' %}" class="d-flex align-items-center">
+                {% csrf_token %}
+                <div class="form-check form-switch me-2">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input"
+                        id="showFavorites"
+                        name="show_favorites" 
+                        {% if request.POST.show_favorites == 'on' %}checked{% endif %}
+                        onchange="this.form.submit()"
+                    >
+                    <label class="form-check-label" for="showFavorites">Show Only Favorites</label>
+                </div>
+            </form>
+                <h1 class="content-header">Explore the Feed</h1>
             </div>
             <div class="wraps-container">
                 {% if wraps %}
                     {% for wrap in wraps %}
-                        <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
-                            <div class="wrap-widget">
+                        <div class="wrap-widget">
+                            <a href="{% url 'wrap_detail' wrap.wrap_id %}" class="wrap-link">
                                 <div class="wrap-image">
                                     {% if wrap.top_album and wrap.top_album.album_image_url %}
                                         <img src="{{ wrap.top_album.album_image_url }}" alt="Top Album Cover">
@@ -47,16 +82,20 @@
                                     <p>By: {{ wrap.user.email }}</p>
                                     <p>Time Range: {{ wrap.get_time_range_display }}</p>
                                     <p>Created on: {{ wrap.created_at|date:"F j, Y" }}</p>
-                                    <button class="favorite-btn" data-wrap-id="{{ wrap.wrap_id }}">
-                                        {% if wrap in user.favorites.all %}
-                                            ❤️ Favorited ({{ wrap.favorited_by_users.count }})
-                                        {% else %}
-                                            🤍 Favorite ({{ wrap.favorited_by_users.count }})
-                                        {% endif %}
-                                    </button>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                            <button class="favorite-btn" data-wrap-id="{{ wrap.wrap_id }}">
+                                {% if user in wrap.liked_by_users.all %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    </svg>
+                                {% else %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="#000" />
+                                    </svg>
+                                {% endif %}
+                            </button>
+                        </div>
                     {% endfor %}
                 {% else %}
                     <div class="wrap-widget empty-widget">
@@ -70,7 +109,67 @@
             </div>
         </main>
     </div>
-
+    
+    <!-- Load jQuery (required by Bootstrap 4) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Load Popper.js (required by Bootstrap 4) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Load Bootstrap's JavaScript (after jQuery and Popper.js) -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    
+    <script>
+        console.log("JavaScript loaded")
+        // JavaScript for toggling favorites
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".favorite-btn").forEach(button => {
+                console.log("button found")
+                button.addEventListener("click", event => {
+                    event.preventDefault();
+                    const wrapId = button.getAttribute("data-wrap-id");
+                    console.log(`Wrap: ${wrapId}`)
+                    fetch(`/toggle-favorite/`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": "{{ csrf_token }}"
+                        },
+                        body: JSON.stringify({ wrap_id: wrapId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const heartIcon = button.querySelector("svg path"); // Select the heart icon's path
+                            if (data.is_liked) {
+                                heartIcon.setAttribute("fill", "#e74c3c"); // Set heart to red
+                            } else {
+                                heartIcon.setAttribute("fill", "white"); // Reset to unfilled heart
+                            }
+                        } else {
+                            console.error(data.message || "An error occurred.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+                });
+            });
+        });
+        
+        const themeSwitcher = document.getElementById('theme');
+
+        // Check localStorage for a saved theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark theme if no theme is saved
+            document.body.className = savedTheme;
+            themeSwitcher.value = savedTheme; // Set the select dropdown to match the saved theme
+        });
+
+        // Listen for theme changes and save to localStorage
+        themeSwitcher.addEventListener('change', function() {
+            const selectedTheme = this.value;
+            document.body.className = selectedTheme;
+            localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
+        });
+    </script>
 </body>
 </html>
