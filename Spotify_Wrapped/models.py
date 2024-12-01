@@ -59,7 +59,8 @@ class Wrap(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the wrap was created
 
     title = models.CharField(max_length=255, default='Untitled Wrap')  # Title for the wrap
-    theme = models.CharField(max_length=50, default='dark')  # Theme for the wrap
+    theme = models.CharField(max_length=50, default='space')  # Theme for the wrap
+    theme_gifs = models.JSONField()
     time_range = models.CharField(max_length=20, choices=[  # Time range selection
         ('short_term', 'Last 4 Weeks'),
         ('medium_term', 'Last 6 Months'),

@@ -146,6 +146,54 @@ from .models import Wrap
 def title_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
+THEME_GIFS = {
+    'space': [
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExamtyem02c211NDUyam95dmt1ZGliNjF0b2k3YndrajZuaWtneHh3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kiWlpxD6hXmvTL8dio/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZmNTR1YTA2eXpuZHpkOWtoM2FmYnFibm5xYTNrZTFhdTM2dTZnMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6EhNwxVvOYkfwhyg/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3d2N2RiNDF6cGY2dTdzcGRyZzZ2ZmtycjdpaHNlZDVuNTE2dnJiMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEduRygZtVxloohws/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdhZG9jMDhqNHJvaW1kY3RhY290Znc4NjlvMDl2N29hdm1pNGgwaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Fbox1ygIqnga5dLinz/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHR2Zjhua2dvZ3FrZG5zbGdiMm44d2oyOTBwN3N6ZDlpZ3l3c2ZpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPtjElfqwMOTbH2/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzhrOGR1dHR5Mjc4NnF1azA2bTJhbmRtdjBoMGVoaW94N2hxYmdtdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jXuOAS4Bv7LX10xYyc/giphy-downsized-large.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTg2cDFwc2VyMXV4eXZiMHE1Y3Fia2Nuc2Z5cW8xcGtsOHc0YjdidiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT8qBhrlNooHBYR9f2/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExejVoY2p3bTlzYW11ZW16bDZpeG50dWxlN2J4em50c213Y3VlcTJqNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YqhIK6Gbor6CLeloBq/giphy-downsized-large.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHp4ejZhY25obzdlMmQydjU5ZG5ndnY3ZGN3M2RvMTgxN3dvY2syZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7buijTqhjxjbEqjK/giphy.gif',
+    ],
+    'christmas': [
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzV0d3NtbnhsdTI4cHN2ZjA2b2FkbzV3NWg2bXllcDNnMmhyajFsZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xRF8doADfuvCvu/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWd4Y3J1M2Yzc3Jsa2VyY2NvYXpxbm1zZnBudnd3NW11a25oYzlmeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11BEQyXROgnLTG/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHFjamhxMmplaGZmZWJnbzN3czVwenBkdWd1Yjl1cWo0OWFiZDR1aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XXvnnrJJnOVl6/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjM3MXF3dGltYWJvc3pobG55Y25lYzRhajBoNGpzcXZobTgzM2ttMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/K90ckojkohXfW/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTdmZndhNWR4eXJ4Z2pxcmNyM2MycWg1ejMyMDN1YTNrdWQ5djB4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pxIEIhFkA4htatDUaj/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYW54ZWZ0NWl2cDdqMmV2aDY3N2RhbTU2OHI4NWg5dDJtZGVvYTE1bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wPn31WOCzkvKg/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHB2NnpraWlud21ibG41cDZycmUxbHo1Z3k4cGJpdDQxNXhncWlrdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/24Io5qtKoonPa/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJ1ZWJ1YmFvdGNhY203Y3M0Ymx4OXZ1ZmVpYzZmdDMyOW8yN2RzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2yNwWQMv6YHABi/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExczR0dWlpN2NpMnF4MG90ZWM1MnVmNnRwYThhbWplc24wZGdzY3JtbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nJ0kvaGWPwtl6/giphy.gif',
+    ],
+    'valentine': [
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmZvanZmb3VkOWN5cWwzZ3BoN2kwaDJ5cHhkMmZveXo5aThvNWc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKoWXm3okO1kgHC/giphy-downsized-large.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDRhcDhjbTJwc3dmMHhmY3MxcTA0OGNkejR4NHpubzNta3hlbXNuaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26BRv0ThflsHCqDrG/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmNiODJqZ3Z6MDVrbHl0eDVja2Iyc3Z6NTBsNW55a21sdGRqN2g1diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ySHDW1uSwYMeqPd2gX/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3dramw5a3Ixdm9vemZ4YnRtcXJnNWtvaWtwaGdkcG5rcmF3NGNuaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TmngSmlDjzJfO/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExajN4N3F1ZDkwbTZ2eG83cHh0eXFoN3FmbDR3bHdwcTFkMWltcXUyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xGRXaIHGqts3hC/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExODAxZnJjNWc5ZGtieTg1NmpyNXJ1YTV6ZjV1cWN5eDF1eTlxZTdzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11fIOE3vkIPdIY/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXF1YXpncGtpMjZraWtjeGd3ZzBocjNpc2gzZGZibmsxc3EyNXB3ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EUgI9BSalN3mo/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXpkcHVpbG9qYWlhbHB0aWVteGwyeXN4OTE1c2ZweXhpNDZ3ZDJpMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/2FxwhwSseOqrxqYKfM/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDI1MHM3Y2tja3VuM2hybHIyYjVvZm9xejlmNGRuNHRwYTl6NXFtOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h1P26E2bQuE80/giphy.gif',
+    ],
+    'halloween': [
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW80ZWlpMmYzYXFya3NoZ3NlbDBrNGx6Mm8yMWt3amlvZDhocDU3NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lOhiLU8aYsRxyE/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmV4NGRlamtwNHE1dHRwc3VpeHBvMzhrcnJrbXNmMnJyYThlNnlmMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26n7bmOQtVVPXxc7m/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDBmbjdmaHJncGR4MXZ6N3U1Y3B2MGw2c2pjdXcwd28wOG02M3ZyNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/46rC1DxQPSDFTg07n8/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExa29uMTdjbm5sYnNwbXFlOGptdnRqNXE0eGJvYWVnanduMDF3OWFzdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c1IChgTRCPRs5sOLEb/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3dndjkxZXhlbzk4Yndvb2w4M2NmZHl0M25xdjAyOTVrejJyaWM1YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UYGS53pznEblK/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGdiejRqNnVyOTA4Z2M4aWNwcDJvN2wxejRqaGphZ3RvaTdwczk0YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cImkU4DZjyUqm6fBMq/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExenhmeW0zMG9rdmtkbjFhdm81anRtYnRzd3BkaTQ4ZjAxdm9zb25zZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fdPrj2ik6DYjL3gOv4/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXo1MndvbjZqZW5rNGg2YXR5ZzNoanVkbnhneWVhNG9weHp0Y2pyOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rAbKGNGM99DBC/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzNpdDFlNWlhdDF6MDQ4c25xdXh3NHh4bGQ0bmVpN2pvcGxjOHI4aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1veHAi4orHzSMMFPBt/giphy.gif',
+    ]
+}
+
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs
 from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs, get_insight_from_llm
 @login_required
 def create_wrap(request):
@@ -153,7 +201,8 @@ def create_wrap(request):
         # Get form data
         title = request.POST.get('title')
         time_range = request.POST.get('time_range', 'medium_term')
-        theme = request.POST.get('theme', 'dark')
+        theme = request.POST.get('theme', 'space')
+        theme_gifs = THEME_GIFS.get(theme, THEME_GIFS['space'])
         print("Hello world 1")
         print(time_range)
 
@@ -187,6 +236,7 @@ def create_wrap(request):
             user=request.user,
             title=title,
             theme=theme,
+            theme_gifs=theme_gifs,
             time_range=time_range,
             top_tracks=top_tracks,
             top_artists=top_artists,
@@ -214,6 +264,7 @@ def create_wrap(request):
         return render(request, 'Spotify_Wrapped/wrapped.html', {
             'title': title,
             'theme': theme,
+            'theme_gifs': theme_gifs,
             'time_range': time_range,
             'top_tracks': top_tracks,
             'top_artists': top_artists,
@@ -239,6 +290,8 @@ def feed_view(request):
 def wrap_detail(request, wrap_id):
     # Get the wrap from the database
     wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+    print("Theme gifs test below")
+    print(wrap.theme_gifs)
 
     # Render the template with the wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {
@@ -246,6 +299,7 @@ def wrap_detail(request, wrap_id):
         'wrap_id': wrap.wrap_id,
         'title': wrap.title,
         'theme': wrap.theme,
+        'theme_gifs': wrap.theme_gifs,
         'time_range': wrap.get_time_range_display(),
         'top_tracks': wrap.top_tracks,
         'top_artists': wrap.top_artists,
