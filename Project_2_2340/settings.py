@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import dj_database_url
 from decouple import config
+import corsheaders
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,9 @@ ALLOWED_HOSTS = [
     'myapp.coolify.io',
     'l8ogcss8ccswo0sk8ok4s08g.5.161.235.180.sslip.io',
     'wrappify.wilsonide.com',
+    'https://wilsonide.com',
+    'wilsonide.com',
+    'www.wilsonide.com',
 ]
 
 
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Spotify_Wrapped.apps.SpotifyWrappedConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://wilsonide.com',
+    'http://localhost',
+]
+
 
 ROOT_URLCONF = 'Project_2_2340.urls'
 
