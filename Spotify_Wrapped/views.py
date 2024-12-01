@@ -390,3 +390,18 @@ def feed_filtered(request):
 
     print(wraps)
     return render(request, 'Spotify_Wrapped/feed.html', {'wraps': wraps})
+
+
+@login_required
+def delete_wrap(request, wrap_id):
+    """Deletes a user's wrap."""
+    wrap = get_object_or_404(Wrap, wrap_id=wrap_id)
+
+    # Ensure that the current user is the one who created the wrap
+    if wrap.user == request.user:
+        wrap.delete()
+        messages.success(request, "Your wrap has been successfully deleted.")
+    else:
+        messages.error(request, "You can only delete your own wraps.")
+
+    return redirect('dashboard')  # Redirect back to the dashboard

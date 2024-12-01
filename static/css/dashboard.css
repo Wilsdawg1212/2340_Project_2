@@ -201,7 +201,6 @@ body.dark #theme-switcher {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
@@ -269,4 +268,39 @@ body.light .wrap-widget.empty-widget {
     min-height: 250px;
     max-height: 250px;
     border: none;
+}
+
+.trash-can-btn {
+    position: absolute;
+    bottom: -15px;  /* Moves it 15px below the widget */
+    right: -15px;   /* Moves it 15px to the right of the widget */
+    border: none;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);  /* Optional shadow for better visibility */
+}
+
+body.light .trash-can-btn {
+    background-color: #d7c9c9;
+}
+
+body.dark .trash-can-btn {
+    background-color: #2D3748;
+}
+
+body.neon .trash-can-btn {
+    background-color: #0fdfd9;
+}
+
+.trash-can-btn:hover {
+    background-color: darkred;
+}
+
+/* Ensure wrap widget has relative positioning for the trash can button to appear correctly */
+.wrap-widget {
+    position: relative;
+    margin-bottom: 20px; /* Adjust as needed */
 }
