@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
     'https://wilsonide.com',
     'wilsonide.com',
     'www.wilsonide.com',
+    'https://wrappify.wilsonide.com',
 ]
 
 
