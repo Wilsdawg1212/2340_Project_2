@@ -405,3 +405,15 @@ def delete_wrap(request, wrap_id):
         messages.error(request, "You can only delete your own wraps.")
 
     return redirect('dashboard')  # Redirect back to the dashboard
+
+@login_required
+def settings(request):
+    return render(request, 'Spotify_Wrapped/settings.html')
+
+def delete_account(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        user = request.user
+        user.delete()  # Deletes the user from the database
+        logout(request)  # Logs the user out
+        return JsonResponse({'success': True, 'message': 'Account deleted successfully.'})
+    return JsonResponse({'success': False, 'message': 'Unauthorized request.'}, status=403)

@@ -1,0 +1,246 @@
+/* General styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+}
+
+#google_translate_element {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+#theme-switcher {
+    position: absolute;
+    top: 10px;
+    left: 340px; /* Adjusted position to avoid overlap */
+    z-index: 1000; /* Ensures it stays on top */
+    color: white; /* Default color for label */
+}
+
+/* Container for sidebar and main content */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #2D3748;
+    color: white;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem;
+    align-items: start;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center; /* Center-aligns the top heading */
+    width: 100%; /* Ensures it spans the full width for consistent centering */
+    padding-top: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.sidebar-link {
+    color: #a0aec0;
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.sidebar-link:hover,
+.sidebar-link.logout-link {
+    color: #ffffff;
+}
+
+/* Content Area Styling */
+.content {
+    flex: 1;
+    padding: 2rem;
+    background-color: #170a42; /* Dark background */
+    color: white;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #7513f3;
+    padding-bottom: 1rem;
+}
+
+.logout-link {
+    margin-top: auto; /* Pushes logout link to the bottom */
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%; /* Ensures full-width for centering */
+    display: flex;
+    justify-content: center; /* Centers the text horizontally */
+}
+
+.stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.theme-switcher select {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+    border: 1px solid #0fdfd9;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Features Section */
+.features {
+    margin-top: 2rem;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.welcome-text {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+body.light #theme-switcher {
+    color: #333;
+}
+
+/* Light Theme */
+body.light {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.light .sidebar {
+    background-color: #d7c9c9;
+    color: #333;
+}
+
+body.light .sidebar-link {
+    color: #333;
+}
+
+body.light .content {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Neon Theme */
+body.neon {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
+
+body.neon .sidebar {
+    background-color: #0fdfd9;
+    color: #0f0f0f;
+}
+
+body.neon .sidebar-link {
+    color: #0f0f0f;
+}
+
+body.neon .content {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
+
+body.neon #theme-switcher {
+    color: #0fdfd9;
+}
+
+/* Dark Theme */
+body.dark #theme-switcher {
+    color: white;
+}
+
+.logout-link {
+    margin-top: auto;
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-account-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #170a42; /* Dark background */
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+body.light .delete-account-section {
+    background-color: white;
+    color: #333;
+}
+
+body.neon .delete-account-section {
+    background-color: #0f0f0f;
+    color: #0fdfd9;
+}
+
+.delete-account-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.delete-account-section p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.delete-account-btn {
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+
+body.dark .delete-account-btn {
+    background-color: #2D3748;
+    color: white;
+
+}
+
+body.neon .delete-account-btn {
+    background-color: #0fdfd9;
+    color: #0f0f0f;
+
+}
+
+body.light .delete-account-btn {
+    background-color: #d7c9c9;
+    color: #333;
+
+}
