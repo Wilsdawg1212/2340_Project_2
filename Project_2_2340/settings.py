@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+import dj_database_url
+from decouple import config
+import corsheaders
+import whitenoise
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +33,11 @@ ALLOWED_HOSTS = [
     'localhost',
     'myapp.coolify.io',
     'l8ogcss8ccswo0sk8ok4s08g.5.161.235.180.sslip.io',
+    'wrappify.wilsonide.com',
+    'https://wilsonide.com',
+    'wilsonide.com',
+    'www.wilsonide.com',
+    'https://wrappify.wilsonide.com',
 ]
 
 
@@ -42,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Spotify_Wrapped.apps.SpotifyWrappedConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +62,26 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CORS_ALLOWED_ORIGINS = [
+    'https://wilsonide.com',
+    'https://jskw4488c40wssk4488gkwcs.wilsonide.com',
+    'https://wrappify.wilsonide.com',
+    'http://localhost',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://wrappify.wilsonide.com',
+    'https://jskw4488c40wssk4488gkwcs.wilsonide.com',
+    'http://localhost',
+]
+
 
 ROOT_URLCONF = 'Project_2_2340.urls'
 
@@ -79,12 +108,25 @@ WSGI_APPLICATION = 'Project_2_2340.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_ENGINE = config('DATABASE_ENGINE', default='sqlite')  # Default to SQLite
+
+if DATABASE_ENGINE == 'postgresql':
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config(
+                'DATABASE_URL',
+                default='postgresql://postgres:postgres@localhost:5432/mysite'
+            ),
+            conn_max_age=600
+        )
     }
-}
+else:  # Default to SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -121,8 +163,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [str(BASE_DIR / "static")]
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+print(STATIC_ROOT)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
