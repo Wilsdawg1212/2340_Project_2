@@ -22,7 +22,7 @@ def logout_view(request):
     return redirect('index')
 def spotify_auth(request):
     scope = 'user-top-read user-library-read'  # or any scopes you need for your app
-
+    print(type(settings.SPOTIFY_CLIENT_ID))
     auth_url = (
         f"https://accounts.spotify.com/authorize?"
         f"client_id={settings.SPOTIFY_CLIENT_ID}&response_type=code"
@@ -300,7 +300,7 @@ def feed_view(request):
 
 def wrap_detail(request, wrap_id):
     # Get the wrap from the database
-    wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+    wrap = get_object_or_404(Wrap, wrap_id=wrap_id)
     print("Theme gifs test below")
     print(wrap.theme_gifs)
 
@@ -318,6 +318,7 @@ def wrap_detail(request, wrap_id):
         'top_album': wrap.top_album,
         'top_playlists': wrap.top_playlists,
         'top_suggested_songs': wrap.top_suggested_songs,
+        'spirit_animal': wrap.spirit_animal,
     })
 
 
@@ -413,10 +414,10 @@ def delete_wrap(request, wrap_id):
     return redirect('dashboard')  # Redirect back to the dashboard
 
 @login_required
-def settings(request):
+def delete_account(request):
     return render(request, 'Spotify_Wrapped/settings.html')
 
-def delete_account(request):
+def delete_account_page(request):
     if request.method == 'POST' and request.user.is_authenticated:
         user = request.user
         user.delete()  # Deletes the user from the database
