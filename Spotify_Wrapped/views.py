@@ -207,6 +207,8 @@ def create_wrap(request):
         title = request.POST.get('title')
         time_range = request.POST.get('time_range', 'medium_term')
         theme = request.POST.get('theme', 'space')
+        is_public = request.POST.get('is_public') == 'true'  # Convert string to boolean
+
         theme_gifs = THEME_GIFS.get(theme, THEME_GIFS['space'])
         print("Hello world 1")
         print(time_range)
@@ -243,6 +245,7 @@ def create_wrap(request):
             theme=theme,
             theme_gifs=theme_gifs,
             time_range=time_range,
+            is_public=is_public,  # Save the visibility (public/private)
             top_tracks=top_tracks,
             top_artists=top_artists,
             top_genres=top_genres,
@@ -264,6 +267,7 @@ def create_wrap(request):
         for i in range(len(track_uris)):
             track_uris[i] = track_uris[i][14:]
         print(track_uris)
+
 
 
         return render(request, 'Spotify_Wrapped/wrapped.html', {
