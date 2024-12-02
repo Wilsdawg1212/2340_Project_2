@@ -168,6 +168,8 @@ def create_wrap(request):
         top_playlists = get_top_playlists(access_token, time_range)
         top_suggested_songs = get_suggested_songs(access_token, time_range)
         track_uris = [track['track_uri'] for track in top_tracks]
+        for i in range(len(track_uris)):
+            track_uris[i] = track_uris[i][14:]
 
         # Create a new Wrap entry
         Wrap.objects.create(
@@ -181,6 +183,8 @@ def create_wrap(request):
             top_album=top_album,
             top_playlists=top_playlists,
             top_suggested_songs=top_suggested_songs,
+            track_uris=track_uris,
+            access_token=access_token
         )
         print('_____________________TOP TRACKS _________________________')
         print(top_tracks)
@@ -192,8 +196,6 @@ def create_wrap(request):
         print(top_suggested_songs)
         print('_____________________TOP TRACKS URIs _________________________')
         print(track_uris)
-        for i in range(len(track_uris)):
-            track_uris[i] = track_uris[i][14:]
         print(track_uris)
 
 
@@ -224,6 +226,9 @@ def feed_view(request):
 def wrap_detail(request, wrap_id):
     # Get the wrap from the database
     wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+    print(wrap.access_token)
+    print(wrap.track_uris)
+
 
     # Render the template with the wrap data
     return render(request, 'Spotify_Wrapped/wrapped.html', {
@@ -238,6 +243,8 @@ def wrap_detail(request, wrap_id):
         'top_album': wrap.top_album,
         'top_playlists': wrap.top_playlists,
         'top_suggested_songs': wrap.top_suggested_songs,
+        'spotify_access_token': wrap.access_token,
+        'track_uris': wrap.track_uris,
     })
 
 

@@ -76,6 +76,9 @@ class Wrap(models.Model):
 
     top_playlists = models.JSONField(null=True, blank=True)  # Store playlist data as a list of dictionaries
     top_suggested_songs = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
+    access_token = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
+    track_uris = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
+
     is_public = models.BooleanField(default=True)
 
 
