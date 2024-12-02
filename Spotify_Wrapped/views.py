@@ -144,6 +144,7 @@ def contact_dev(request):
 
 from .models import Wrap
 
+@login_required()
 def title_wrap(request):
     user = request.user
     if not user.spotify_id:
@@ -291,6 +292,7 @@ def create_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
 
+@login_required
 def feed_view(request):
     wraps = Wrap.objects.filter(is_public=True).order_by('-created_at')
     return render(request, 'Spotify_Wrapped/feed.html', context={'wraps': wraps})
