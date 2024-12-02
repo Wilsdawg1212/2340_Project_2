@@ -31,6 +31,7 @@ def spotify_auth(request):
     )
     return redirect(auth_url)
 
+
 def link_spotify(request):
     if request.method == 'POST':
         return redirect('spotify_auth')  # When the user clicks the button, start the OAuth flow
@@ -411,7 +412,7 @@ def delete_wrap(request, wrap_id):
     return redirect('dashboard')  # Redirect back to the dashboard
 
 @login_required
-def settings(request):
+def settings2(request):
     return render(request, 'Spotify_Wrapped/settings.html')
 
 def delete_account(request):
