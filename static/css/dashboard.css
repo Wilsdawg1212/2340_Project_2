@@ -204,6 +204,8 @@ body.dark #theme-switcher {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
+    min-height: 350px;
+    max-height: 350px;
 }
 
 .wrap-widget:hover {
@@ -249,8 +251,6 @@ body.dark #theme-switcher {
 body.dark .wrap-widget.empty-widget {
     background-color: #2D3748; /* Light grey for empty widget */
     color: #b6b5b5; /* Muted text color */
-    min-height: 250px;
-    max-height: 250px;
     border: none;
 }
 
@@ -265,8 +265,6 @@ body.neon .wrap-widget.empty-widget {
 body.light .wrap-widget.empty-widget {
     background-color: #d7c9c9; /* Light grey for empty widget */
     color: #b6b5b5; /* Muted text color */
-    min-height: 250px;
-    max-height: 250px;
     border: none;
 }
 

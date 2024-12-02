@@ -78,7 +78,7 @@ class Wrap(models.Model):
     top_playlists = models.JSONField(null=True, blank=True)  # Store playlist data as a list of dictionaries
     top_suggested_songs = models.JSONField(null=True, blank=True)  # Store suggested songs data as a list of dictionaries
     is_public = models.BooleanField(default=True)
-    spirit_animal = models.CharField(max_length=255, null=True, blank=True)
+    spirit_animal = models.CharField(max_length=555, null=True, blank=True)
 
     liked_by_users = models.ManyToManyField(User, related_name='liked_wraps', blank=True)
 
