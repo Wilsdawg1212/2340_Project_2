@@ -47,7 +47,7 @@
     </script>
 
     <!-- Carousel -->
-    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="8000">
         
         <!-- Progress Indicators -->
         <ol class="carousel-indicators">
@@ -60,7 +60,6 @@
             <li data-target="#carouselExample" data-slide-to="6"></li>
             <li data-target="#carouselExample" data-slide-to="7"></li>
             <li data-target="#carouselExample" data-slide-to="8"></li>
-            <li data-target="#carouselExample" data-slide-to="9"></li>
         </ol>
 
         <div class="carousel-inner">
@@ -313,53 +312,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Slide 9 -->
-            <div class="carousel-item" style="background-image: url('{{ theme_gifs.8 }}'); color: #ffffff">
-                <div class="slide-header">
-                    <i class="fas fa-music note-icon1"></i>
-                    Song Recommendations
-                    <i class="fas fa-music note-icon2"></i>
-                </div>
-                <div class="slide-content-3">
-                    <!-- Left-Center Section for Number 1 Song -->
-                    <div class="left-center-section">
-                        <h2><strong> {{ top_suggested_songs.0.track_name }} </strong></h2>
-                        <div class="album-cover-placeholder-3">
-                            <img src="{{ top_suggested_songs.0.album_image_url }}" alt="First Track Image" class = "Top_Five">
-                        </div>
-                    </div>
-                    <!-- Center Section for Number 1 Album -->
-                    <div class="center-section">
-                        <h2><strong> {{ top_suggested_songs.1.track_name }} </strong></h2>
-                        <div class="album-cover-placeholder-3">
-                            <img src="{{ top_suggested_songs.1.album_image_url }}" alt="Second Track Image" class = "Top_Five">
-                        </div>
-                    </div>
-                    <!-- Right Section for Number 1 Album -->
-                    <div class="right-center-section">
-                        <h2><strong> {{ top_suggested_songs.2.track_name }} </strong></h2>
-                        <div class="album-cover-placeholder-3">
-                            <img src="{{ top_suggested_songs.2.album_image_url }}" alt="Third Track Image" class = "Top_Five">
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-content-3-2">
-                    <div class="left-center-section">
-                        <h2><strong> {{ top_suggested_songs.3.track_name }} </strong></h2>
-                        <div class="album-cover-placeholder-3">
-                            <img src="{{ top_suggested_songs.3.album_image_url }}" alt="Fourth Track Image" class = "Top_Five">
-                        </div>
-                    </div>
-                    <div class="right-center-section">
-                        <h2><strong> {{ top_suggested_songs.4.track_name }} </strong></h2>
-                        <div class="album-cover-placeholder-3">
-                            <img src="{{ top_suggested_songs.4.album_image_url }}" alt="Fifth Track Image" class = "Top_Five">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Slide for Spirit Animal -->
-            <div class="carousel-item">
+            <div class="carousel-item" style="background-image: url('{{ theme_gifs.8 }}'); color: #ffffff">
                 <div class="slide-content">
                     <div class="centered-rectangle-8">
                         <h1><i class="fas fa-paw"></i> Your Spirit Animal</h1>
