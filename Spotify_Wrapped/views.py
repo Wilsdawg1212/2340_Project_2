@@ -171,8 +171,8 @@ THEME_GIFS = {
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTdmZndhNWR4eXJ4Z2pxcmNyM2MycWg1ejMyMDN1YTNrdWQ5djB4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pxIEIhFkA4htatDUaj/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYW54ZWZ0NWl2cDdqMmV2aDY3N2RhbTU2OHI4NWg5dDJtZGVvYTE1bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wPn31WOCzkvKg/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHB2NnpraWlud21ibG41cDZycmUxbHo1Z3k4cGJpdDQxNXhncWlrdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/24Io5qtKoonPa/giphy.gif',
-        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJ1ZWJ1YmFvdGNhY203Y3M0Ymx4OXZ1ZmVpYzZmdDMyOW8yN2RzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2yNwWQMv6YHABi/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExczR0dWlpN2NpMnF4MG90ZWM1MnVmNnRwYThhbWplc24wZGdzY3JtbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nJ0kvaGWPwtl6/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJ1ZWJ1YmFvdGNhY203Y3M0Ymx4OXZ1ZmVpYzZmdDMyOW8yN2RzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2yNwWQMv6YHABi/giphy.gif',
     ],
     'valentine': [
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmZvanZmb3VkOWN5cWwzZ3BoN2kwaDJ5cHhkMmZveXo5aThvNWc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKoWXm3okO1kgHC/giphy-downsized-large.gif',
