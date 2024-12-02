@@ -235,7 +235,7 @@ def create_wrap(request):
         question = "Based on this user's Spotify data, what is their spirit animal?"
 
         # Call the LLM for the spirit animal
-        spirit_animal = get_insight_from_llm(wrap_data, question)
+        spirit_animal = get_insight_from_llm(wrap_data, question)[:255]
         print(f"Generated spirit animal: {spirit_animal}")
 
         # Create a new Wrap entry
