@@ -22,7 +22,7 @@ def logout_view(request):
     return redirect('index')
 def spotify_auth(request):
     scope = 'user-top-read user-library-read'  # or any scopes you need for your app
-
+    print(type(settings.SPOTIFY_CLIENT_ID))
     auth_url = (
         f"https://accounts.spotify.com/authorize?"
         f"client_id={settings.SPOTIFY_CLIENT_ID}&response_type=code"
@@ -30,7 +30,6 @@ def spotify_auth(request):
         f"&show_dialog=true"
     )
     return redirect(auth_url)
-
 
 def link_spotify(request):
     if request.method == 'POST':
@@ -145,6 +144,7 @@ def contact_dev(request):
 
 from .models import Wrap
 
+@login_required()
 def title_wrap(request):
     user = request.user
     if not user.spotify_id:
@@ -172,8 +172,8 @@ THEME_GIFS = {
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTdmZndhNWR4eXJ4Z2pxcmNyM2MycWg1ejMyMDN1YTNrdWQ5djB4byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pxIEIhFkA4htatDUaj/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYW54ZWZ0NWl2cDdqMmV2aDY3N2RhbTU2OHI4NWg5dDJtZGVvYTE1bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wPn31WOCzkvKg/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHB2NnpraWlud21ibG41cDZycmUxbHo1Z3k4cGJpdDQxNXhncWlrdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/24Io5qtKoonPa/giphy.gif',
-        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExczR0dWlpN2NpMnF4MG90ZWM1MnVmNnRwYThhbWplc24wZGdzY3JtbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nJ0kvaGWPwtl6/giphy.gif',
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJ1ZWJ1YmFvdGNhY203Y3M0Ymx4OXZ1ZmVpYzZmdDMyOW8yN2RzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2yNwWQMv6YHABi/giphy.gif',
+        'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExczR0dWlpN2NpMnF4MG90ZWM1MnVmNnRwYThhbWplc24wZGdzY3JtbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nJ0kvaGWPwtl6/giphy.gif',
     ],
     'valentine': [
         'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmZvanZmb3VkOWN5cWwzZ3BoN2kwaDJ5cHhkMmZveXo5aThvNWc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKoWXm3okO1kgHC/giphy-downsized-large.gif',
@@ -236,7 +236,7 @@ def create_wrap(request):
         question = "Based on this user's Spotify data, what is their spirit animal?"
 
         # Call the LLM for the spirit animal
-        spirit_animal = get_insight_from_llm(wrap_data, question)[:255]
+        spirit_animal = get_insight_from_llm(wrap_data, question)
         print(f"Generated spirit animal: {spirit_animal}")
 
         # Create a new Wrap entry
@@ -292,6 +292,7 @@ def create_wrap(request):
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
 
+@login_required
 def feed_view(request):
     wraps = Wrap.objects.filter(is_public=True).order_by('-created_at')
     return render(request, 'Spotify_Wrapped/feed.html', context={'wraps': wraps})
@@ -299,7 +300,7 @@ def feed_view(request):
 
 def wrap_detail(request, wrap_id):
     # Get the wrap from the database
-    wrap = get_object_or_404(Wrap, wrap_id=wrap_id, user=request.user)
+    wrap = get_object_or_404(Wrap, wrap_id=wrap_id)
     print("Theme gifs test below")
     print(wrap.theme_gifs)
 
@@ -317,6 +318,7 @@ def wrap_detail(request, wrap_id):
         'top_album': wrap.top_album,
         'top_playlists': wrap.top_playlists,
         'top_suggested_songs': wrap.top_suggested_songs,
+        'spirit_animal': wrap.spirit_animal,
     })
 
 
@@ -412,10 +414,10 @@ def delete_wrap(request, wrap_id):
     return redirect('dashboard')  # Redirect back to the dashboard
 
 @login_required
-def settings2(request):
+def delete_account(request):
     return render(request, 'Spotify_Wrapped/settings.html')
 
-def delete_account(request):
+def delete_account_page(request):
     if request.method == 'POST' and request.user.is_authenticated:
         user = request.user
         user.delete()  # Deletes the user from the database

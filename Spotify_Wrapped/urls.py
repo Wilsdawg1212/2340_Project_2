@@ -21,6 +21,6 @@ urlpatterns = [
     path('toggle-favorite/', views.toggle_favorite, name='toggle_favorite'),
     path("feed_filtered/", views.feed_filtered, name='feed_filtered'),
     path('delete_wrap/<uuid:wrap_id>/', views.delete_wrap, name='delete_wrap'),
-    path('settings/', views.settings2, name='settings'),
+    path('settings/', views.delete_account_page, name='settings'),
     path('delete_account/', views.delete_account, name='delete_account'),
 ]

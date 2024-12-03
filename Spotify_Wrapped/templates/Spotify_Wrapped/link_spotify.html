@@ -148,6 +148,43 @@
             flex-direction: column;
             gap: 10px;
         }
+
+        /* New Back Button */
+        #back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        #back-button:hover {
+            background-color: #0f0f0f;
+            color: #0fdfd9;
+        }
+        
+        body.neon #back-button {
+            background-color: #0fdfd9;
+            color: #0f0f0f;
+            border: 1px solid #0fdfd9;
+        }
+        
+        body.dark #back-button {
+            color: #170a42;
+            background-color: white;
+            border: none;
+        }
+        
+        body.light #back-button {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #333;
+        }
+        
     </style>
 </head>
 <body class="dark"> <!-- Default theme set to dark -->
@@ -163,6 +200,9 @@
             <option value="neon">Neon</option>
         </select>
     </div>
+
+    <!-- Back Button (aligned with theme switcher) -->
+    <button id="back-button" onclick="window.location.href='/dashboard';">Back to Dashboard</button>
 
     <div class="container">
         <h1>Link Your Spotify Account</h1>

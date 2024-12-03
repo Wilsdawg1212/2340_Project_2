@@ -257,8 +257,6 @@ body.dark .wrap-widget.empty-widget {
 body.neon .wrap-widget.empty-widget {
     background-color: #0fdfd9; /* Light grey for empty widget */
     color: #b6b5b5; /* Muted text color */
-    min-height: 250px;
-    max-height: 250px;
     border: none;
 }
 
