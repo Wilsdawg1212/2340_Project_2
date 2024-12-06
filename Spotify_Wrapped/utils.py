@@ -110,51 +110,6 @@ def get_top_playlists(access_token, time_range='medium_term', limit=5):
         for playlist in data
     ]
 
-def get_suggested_songs(access_token, time_range='medium_term', limit=5):
-    """
-    This function gets the top tracks, artists, and genres of a user and then
-    uses this data to request song recommendations from the Spotify API.
-    """
-
-    # Step 2: Get user's top tracks, artists, and genres
-    top_tracks = get_top_tracks(access_token)
-    top_artists = get_top_artists(access_token)
-    top_genres = get_top_genres(top_artists)
-    print(top_genres)
-
-    # Step 3: Build seed parameters using the top tracks, artists, and genres
-    seeds = {}
-    if top_artists:
-        seeds['seed_artists'] = ','.join([artist['artist_id'] for artist in top_artists[:2]])  # Limit to top 5 artists
-    if top_tracks:
-        seeds['seed_tracks'] = ','.join([track['track_id'] for track in top_tracks[:2]])  # Limit to top 5 tracks
-
-    # Step 4: Request song recommendations from Spotify API
-    headers = {'Authorization': f'Bearer {access_token}'}
-    response = requests.get(
-        'https://api.spotify.com/v1/recommendations',
-        headers=headers,
-        params={**seeds, 'limit': limit, 'market': 'US', 'time_range': time_range}  # Customize the number of recommendations and market
-    )
-
-    # Step 5: Check for errors and handle the response
-    if response.status_code != 200:
-        print(f"Error: Received status code {response.status_code}")
-        print("Response:", response.text)  # Print the response content
-        return []
-
-    data = response.json().get('tracks', [])
-    return [
-        {
-            'track_name': track['name'],
-            'artist_name': track['artists'][0]['name'],
-            'album_name': track['album']['name'],
-            'album_image_url': track['album']['images'][0]['url'] if track['album']['images'] else None,
-            'track_url': track['external_urls']['spotify'],
-            'duration_ms': track['duration_ms']
-        }
-        for track in data
-    ]
 
 
 import openai

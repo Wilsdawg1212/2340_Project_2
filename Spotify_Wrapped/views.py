@@ -199,98 +199,90 @@ THEME_GIFS = {
     ]
 }
 
-from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs
-from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_suggested_songs, get_insight_from_llm
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists
+from .utils import get_top_tracks, get_top_artists, get_top_album, get_top_genres, get_top_playlists, get_insight_from_llm
 @login_required
 def create_wrap(request):
     if request.method == 'POST':
-        # Get form data
-        title = request.POST.get('title')
-        time_range = request.POST.get('time_range', 'medium_term')
-        theme = request.POST.get('theme', 'space')
-        is_public = request.POST.get('is_public') == 'true'  # Convert string to boolean
+        # Extract method to handle form data parsing
+        wrap_params = _parse_wrap_request(request)
 
-        theme_gifs = THEME_GIFS.get(theme, THEME_GIFS['space'])
-        print("Hello world 1")
-        print(time_range)
+        # Extract method to fetch Spotify data
+        spotify_data = _fetch_spotify_data(request.user, wrap_params['time_range'])
 
-        # Get the user's Spotify access token
-        access_token = refresh_spotify_token(request.user)
+        # Extract method to generate additional insights
+        spirit_animal = _generate_spirit_animal(spotify_data)
 
-        # Retrieve data using helper functions
-        top_tracks = get_top_tracks(access_token, time_range)
-        top_artists = get_top_artists(access_token, time_range)
-        top_album = get_top_album(top_tracks)
-        top_genres = get_top_genres(top_artists)
-        top_playlists = get_top_playlists(access_token, time_range)
-        top_suggested_songs = get_suggested_songs(access_token, time_range)
-        track_uris = [track['track_uri'] for track in top_tracks]
-
-        # Prepare data for the LLM prompt
-        wrap_data = {
-            "top_tracks": top_tracks,
-            "top_artists": top_artists,
-            "top_genres": top_genres,
-            "top_album": top_album,
-        }
-        question = "Based on this user's Spotify data, what is their spirit animal?"
-
-        # Call the LLM for the spirit animal
-        spirit_animal = get_insight_from_llm(wrap_data, question)
-        print(f"Generated spirit animal: {spirit_animal}")
-
-        # Create a new Wrap entry
-        Wrap.objects.create(
+        # Extract method to create wrap
+        wrap = _create_wrap_entry(
             user=request.user,
-            title=title,
-            theme=theme,
-            theme_gifs=theme_gifs,
-            time_range=time_range,
-            is_public=is_public,  # Save the visibility (public/private)
-            top_tracks=top_tracks,
-            top_artists=top_artists,
-            top_genres=top_genres,
-            top_album=top_album,
-            top_playlists=top_playlists,
-            top_suggested_songs=top_suggested_songs,
             spirit_animal=spirit_animal,
+            **wrap_params,
+            **spotify_data
         )
-        print('_____________________TOP TRACKS _________________________')
-        print(top_tracks)
-        print('_____________________TOP ARTISTS _________________________')
-        print(top_artists)
-        print('_____________________TOP ALBUM _________________________')
-        print(top_album)
-        print('_____________________TOP SUGGESTED _________________________')
-        print(top_suggested_songs)
-        print('_____________________TOP TRACKS URIs _________________________')
-        print(track_uris)
-        for i in range(len(track_uris)):
-            track_uris[i] = track_uris[i][14:]
-        print(track_uris)
 
+        # Extract method to prepare render context
+        context = _prepare_wrap_context(wrap, spotify_data)
 
+        return render(request, 'Spotify_Wrapped/wrapped.html', context)
 
-        return render(request, 'Spotify_Wrapped/wrapped.html', {
-            'title': title,
-            'theme': theme,
-            'theme_gifs': theme_gifs,
-            'time_range': time_range,
-            'top_tracks': top_tracks,
-            'top_artists': top_artists,
-            'top_genres': top_genres,
-            'top_album': top_album,
-            'top_playlists': top_playlists,
-            'top_suggested_songs': top_suggested_songs,
-            'spotify_access_token': access_token,
-            'track_uris': track_uris,
-            'spirit_animal': spirit_animal,
-        })
-
-    # If the request method is not POST, render the form
-    print("Hello world 4")
     return render(request, 'Spotify_Wrapped/title-wrap.html')
 
+
+def _parse_wrap_request(request):
+    return {
+        'title': request.POST.get('title'),
+        'time_range': request.POST.get('time_range', 'medium_term'),
+        'theme': request.POST.get('theme', 'space'),
+        'is_public': request.POST.get('is_public') == 'true',
+        'theme_gifs': THEME_GIFS.get(request.POST.get('theme', 'space'), THEME_GIFS['space'])
+    }
+
+
+def _fetch_spotify_data(user, time_range):
+    access_token = refresh_spotify_token(user)
+    top_tracks = get_top_tracks(access_token, time_range)
+    top_artists = get_top_artists(access_token, time_range)
+    return {
+        'top_tracks': top_tracks,
+        'top_artists': top_artists,
+        'top_album': get_top_album(top_tracks),
+        'top_genres': get_top_genres(top_artists),
+        'top_playlists': get_top_playlists(access_token, time_range),
+    }
+
+
+def _generate_spirit_animal(spotify_data):
+    wrap_data = {
+        "top_tracks": spotify_data['top_tracks'],
+        "top_artists": spotify_data['top_artists'],
+        "top_genres": spotify_data['top_genres'],
+        "top_album": spotify_data['top_album'],
+    }
+    question = "Based on this user's Spotify data, what is their spirit animal?"
+    return get_insight_from_llm(wrap_data, question)
+
+
+def _create_wrap_entry(user, spirit_animal, **kwargs):
+    return Wrap.objects.create(
+        user=user,
+        spirit_animal=spirit_animal,
+        **kwargs
+    )
+
+
+def _prepare_wrap_context(wrap, spotify_data):
+    track_uris = [track['track_uri'][14:] for track in spotify_data['top_tracks']]
+    return {
+        'title': wrap.title,
+        'theme': wrap.theme,
+        'theme_gifs': wrap.theme_gifs,
+        'time_range': wrap.time_range,
+        **spotify_data,
+        'spotify_access_token': refresh_spotify_token(wrap.user),
+        'track_uris': track_uris,
+        'spirit_animal': wrap.spirit_animal,
+    }
 
 @login_required
 def feed_view(request):
@@ -317,7 +309,6 @@ def wrap_detail(request, wrap_id):
         'top_genres': wrap.top_genres,
         'top_album': wrap.top_album,
         'top_playlists': wrap.top_playlists,
-        'top_suggested_songs': wrap.top_suggested_songs,
         'spirit_animal': wrap.spirit_animal,
     })
 
