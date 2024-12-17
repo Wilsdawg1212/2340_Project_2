@@ -259,7 +259,7 @@ def _generate_spirit_animal(spotify_data):
         "top_genres": spotify_data['top_genres'],
         "top_album": spotify_data['top_album'],
     }
-    question = "Based on this user's Spotify data, what is their spirit animal?"
+    question = "Based on this user's Spotify data, what is their spirit animal in less than 255 characters?"
     return get_insight_from_llm(wrap_data, question)
 
 
